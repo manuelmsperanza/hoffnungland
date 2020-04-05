@@ -1,62 +1,114 @@
 <project>
    <modelVersion>4.0.0</modelVersion>
-   <groupId>root</groupId>
+   <groupId>com.hoffnungland</groupId>
    <version>1.0</version>
-   <artifactId>project</artifactId>
+   <artifactId>hoffnungland</artifactId>
    <packaging>pom</packaging>
-   <name>project</name>
+   <name>hoffnungland</name>
+   	<prerequisites>
+		<maven>3.0.5</maven>
+	</prerequisites>
+   	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
    <modules>
       <module>projects</module>
       <module>primary-source</module>
       <module>servlets</module>
       <module>ejbs</module>
       <module>ear</module>
-      <module>site</module>
    </modules>
-   <build>
-      <pluginManagement>
-         <plugins>
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-site-plugin</artifactId>
-               <configuration>
-                  <unzipCommand>/usr/bin/unzip -o > err.txt</unzipCommand>
-               </configuration>
-            </plugin>
-         </plugins>
-      </pluginManagement>
-   </build>
+  <build>
+		<pluginManagement><!-- lock down plugins versions to avoid using Maven 
+				defaults (may be moved to parent pom) -->
+			<plugins>
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
+				<!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.8.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.0.0-M2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.1.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>3.0.0-M1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>3.0.0-M1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>3.0.0-M2</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>enforce-maven</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireMavenVersion>
+									<version>3.0.5</version>
+								</requireMavenVersion>
+								<requireJavaVersion>
+									<version>1.8.0</version>
+								</requireJavaVersion>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
    <dependencyManagement>
       <dependencies>
          <dependency>
-            <groupId>root.project.projects</groupId>
+            <groupId>com.hoffnungland</groupId>
             <artifactId>logging</artifactId>
             <version>1.0</version>
          </dependency>
          <dependency>
-            <groupId>root.project</groupId>
+            <groupId>com.hoffnungland</groupId>
             <artifactId>primary-source</artifactId>
             <version>1.0</version>
          </dependency>
          <dependency>
-            <groupId>root.project.servlets</groupId>
+            <groupId>com.hoffnungland</groupId>
             <artifactId>servlet</artifactId>
             <version>1.0</version>
             <type>war</type>
          </dependency>
          <dependency>
-            <groupId>root.project</groupId>
+            <groupId>com.hoffnungland</groupId>
             <artifactId>ejbs</artifactId>
             <version>1.0</version>
             <type>ejb</type>
          </dependency>
       </dependencies>
    </dependencyManagement>
-   <distributionManagement>
-      <site>
-         <id>site</id>
-         <name>project website</name>
-         <url>scp://local.company.com/websites/project.company.com/</url>
-      </site>
-   </distributionManagement>
 </project>

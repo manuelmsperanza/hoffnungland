@@ -1,13 +1,13 @@
 <project>
    <modelVersion>4.0.0</modelVersion>
-   <groupId>root.project</groupId>
+   <groupId>com.hoffnungland</groupId>
    <artifactId>servlets</artifactId>
    <packaging>pom</packaging>
    <name>servlets</name>
    <version>1.0</version>
    <parent>
-      <groupId>root</groupId>
-      <artifactId>project</artifactId>
+      <groupId>com.hoffnungland</groupId>
+      <artifactId>hoffnungland</artifactId>
       <version>1.0</version>
    </parent>
    <modules>
