@@ -1,26 +1,26 @@
 <project>
-   <modelVersion>4.0.0</modelVersion>
-   <groupId>com.hoffnungland</groupId>
-   <version>1.0</version>
-   <artifactId>hoffnungland</artifactId>
-   <packaging>pom</packaging>
-   <name>hoffnungland</name>
-   	<prerequisites>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.hoffnungland</groupId>
+	<version>1.0</version>
+	<artifactId>hoffnungland</artifactId>
+	<packaging>pom</packaging>
+	<name>hoffnungland</name>
+	<prerequisites>
 		<maven>3.0.5</maven>
 	</prerequisites>
-   	<properties>
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
-   <modules>
-      <module>projects</module>
-      <module>primary-source</module>
-      <module>servlets</module>
-      <module>ejbs</module>
-      <module>ear</module>
-   </modules>
-  <build>
+	<modules>
+		<module>projects</module>
+		<module>primary-source</module>
+		<module>servlets</module>
+		<module>ejbs</module>
+		<module>ear</module>
+	</modules>
+	<build>
 		<pluginManagement><!-- lock down plugins versions to avoid using Maven 
 				defaults (may be moved to parent pom) -->
 			<plugins>
@@ -54,6 +54,21 @@
 					<version>3.0.0-M1</version>
 				</plugin>
 				<plugin>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>3.2.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-ear-plugin</artifactId>
+					<version>3.0.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-ejb-plugin</artifactId>
+					<version>3.0.1</version>
+					<configuration>
+						<ejbVersion>3.0</ejbVersion>
+					</configuration>
+				</plugin>
+				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-enforcer-plugin</artifactId>
 					<version>3.0.0-M2</version>
@@ -85,30 +100,30 @@
 			</plugin>
 		</plugins>
 	</build>
-   <dependencyManagement>
-      <dependencies>
-         <dependency>
-            <groupId>com.hoffnungland</groupId>
-            <artifactId>logging</artifactId>
-            <version>1.0</version>
-         </dependency>
-         <dependency>
-            <groupId>com.hoffnungland</groupId>
-            <artifactId>primary-source</artifactId>
-            <version>1.0</version>
-         </dependency>
-         <dependency>
-            <groupId>com.hoffnungland</groupId>
-            <artifactId>servlet</artifactId>
-            <version>1.0</version>
-            <type>war</type>
-         </dependency>
-         <dependency>
-            <groupId>com.hoffnungland</groupId>
-            <artifactId>ejbs</artifactId>
-            <version>1.0</version>
-            <type>ejb</type>
-         </dependency>
-      </dependencies>
-   </dependencyManagement>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.hoffnungland</groupId>
+				<artifactId>logging</artifactId>
+				<version>1.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.hoffnungland</groupId>
+				<artifactId>primary-source</artifactId>
+				<version>1.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.hoffnungland</groupId>
+				<artifactId>servlet</artifactId>
+				<version>1.0</version>
+				<type>war</type>
+			</dependency>
+			<dependency>
+				<groupId>com.hoffnungland</groupId>
+				<artifactId>ejbs</artifactId>
+				<version>1.0</version>
+				<type>ejb</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>
