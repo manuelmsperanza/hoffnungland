@@ -14,5 +14,6 @@
    <modules>
       <module>servlet</module>
     <module>longDrinkWeb</module>
+    <module>readyToDrink</module>
   </modules>
 </project>
