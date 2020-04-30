@@ -17,7 +17,7 @@
         <dependent-module archiveName="longDrinkWeb-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/longDrinkWeb/longDrinkWeb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="readyToDrink-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/hoffnungland/readyToDrink/0.0.1-SNAPSHOT/readyToDrink-0.0.1-SNAPSHOT.war">
+        <dependent-module archiveName="readyToDrink-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/readyToDrink/readyToDrink">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="primary-source-1.0.jar" deploy-path="/" handle="module:/resource/primary-source/primary-source">
