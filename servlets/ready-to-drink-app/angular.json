@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ready-to-drink-app"
+    }
+  },
+  "defaultProject": "ready-to-drink-app",
+  "cli": {
+    "analytics": "12034882-8aa2-45df-93ad-8b0af88bbf77"
+  }
 }
