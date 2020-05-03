@@ -1,0 +1,8 @@
+mat-grid-tile {
+    background: rgb(177, 191, 221);
+}
+
+.center {
+  margin: auto;
+  width: 60%;
+}

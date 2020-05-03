@@ -40,3 +40,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 [ng-bootstrap.github.io](https://ng-bootstrap.github.io/)
 
 	ng add @ng-bootstrap/ng-bootstrap
+
+### Material
+[material.angular.io](https://material.angular.io/)
+
+	ng add @angular/material

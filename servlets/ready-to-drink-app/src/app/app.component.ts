@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ready-to-drink-app';
+  title : String = 'ready-to-drink-app';
+  
+  message : String;
+
+  setMessage(msg : String) {
+    this.message = msg;
+  }
+
+  closeAlert(){
+    this.message = null;
+  }
+
 }
