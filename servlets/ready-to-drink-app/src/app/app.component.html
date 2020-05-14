@@ -1,13 +1,13 @@
 <title>{{title}}</title>
 <div class="center">
     <mat-grid-list cols="2" rowHeight="5:2" gutterSize="2px">
-        <mat-grid-tile colspan="2" (click)="setMessage('go to Naty\'s menu')">
+        <mat-grid-tile colspan="2" (click)="message = 'go to Naty\'s menu'">
             <img src="https://natys.it/wp-content/uploads/2019/03/logo-natys.png" alt="Naty's" height="150px"> 
         </mat-grid-tile>
-        <mat-grid-tile (click)="setMessage('go to Bar Magenta')">
+        <mat-grid-tile (click)="message = 'go to Bar Magenta'">
             <img src="http://barmagenta.it/wp-content/uploads/2020/03/brand-alpha-white-logo-barmagenta.png" alt="Bar Magenta" height="100px">
         </mat-grid-tile>
-        <mat-grid-tile (click)="setMessage('go to Britvic')">
+        <mat-grid-tile (click)="message = 'go to Britvic'">
             <img src="https://www.britvic.com/~/media/Images/B/Britvic-V3/banners/logo-thumb/britvic-logo-v2.jpg" alt="Britvic" height="100px">
         </mat-grid-tile>
     </mat-grid-list>

@@ -8,10 +8,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title : String = 'ready-to-drink-app';
   
-  message : String;
+  private _message : String;
 
-  setMessage(msg : String) {
-    this.message = msg;
+  set message (msg : String) {
+    this._message = msg;
+  }
+
+  get message () : String {
+    return this._message;
   }
 
   closeAlert(){
