@@ -12,10 +12,27 @@
         </mat-grid-tile>
     </mat-grid-list>
 </div>
+
 <div class="center" *ngIf="message">
     <ngb-alert type="success" dismissible="true" (close)="closeAlert()">{{message}}</ngb-alert>
+    
+    <!--form class="example-form"-->
+        <mat-form-field class="example-full-width">
+          <input type="text"
+                 placeholder="Make a donation"
+                 aria-label="Number"
+                 matInput
+                 [formControl]="myControl"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      <!--/form-->
 </div>
-<div id="thkto">
+<!--div id="thkto">
     <p>Thanks to:</p>
     <a href="https://www.vultr.com/?ref=8575368-6G" target="_blank"><img src="https://www.vultr.com/media/logo_onwhite.png" height="75"></a>
     <a href="https://www.payara.org" target="_blank"><img src="https://www.payara.org/images/payara_logo_-_blue_large.jpg" height="75"></a>
@@ -23,4 +40,4 @@
     <a href="https://hibernate.org" target="_blank"><img src="https://hibernate.org/images/hibernate-logo.svg" height="75"></a>
     <a href="https://angular.io" target="_blank"><img src="https://angular.io/assets/images/logos/angular/angular.svg" height="75"></a>
     <a href="https://forgerock.github.io/opendj-community-edition" target="_blank"><img src="https://forgerock.github.io/opendj-community-edition/img/logos/opendj-logo.png" height="75"></a>
-</div>
+</div-->
