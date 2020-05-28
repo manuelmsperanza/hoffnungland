@@ -10,18 +10,19 @@
 	</parent>
 
 	<groupId>com.hoffnungland</groupId>
-	<artifactId>readyToDrink</artifactId>
+	<artifactId>orderEntryWeb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>readyToDrink Maven Webapp</name>
-	<url>http://hoffnungland.com/readyToDrink</url>
+	<name>orderEntryWeb Maven Webapp</name>
+	<url>http://hoffnungland.com/orderEntryWeb</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
 	<build>
-		<finalName>readyToDrink</finalName>
+		<finalName>orderEntryWeb</finalName>
 		<pluginManagement><!-- lock down plugins versions to avoid using Maven 
 				defaults (may be moved to parent pom) -->
 			<plugins>
@@ -69,7 +70,7 @@
 						<configuration>
 							<resources>
 								<resource>
-									<directory>${basedir}/../ready-to-drink-app/dist/ready-to-drink-app</directory>
+									<directory>${basedir}/../order-entry-app/dist/order-entry-app</directory>
 									<include>**/*</include>
 								</resource>
 							</resources>

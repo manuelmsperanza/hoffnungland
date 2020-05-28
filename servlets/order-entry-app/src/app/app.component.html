@@ -1,0 +1,12 @@
+<title>{{title}}</title>
+
+<ul ngbNav [(activeId)]="activeId" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <a ngbNavLink routerLink="/new-order" routerLinkActive="active">New Order</a>
+  </li>
+  <li [ngbNavItem]="2">
+    <a ngbNavLink routerLink="/list-orders" routerLinkActive="active">List Orders</a>
+  </li>
+</ul>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>
