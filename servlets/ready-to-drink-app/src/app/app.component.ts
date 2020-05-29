@@ -12,7 +12,7 @@ export class AppComponent implements OnInit{
   title : String = 'ready-to-drink-app';
   
   myControl = new FormControl('');
-  options: string[] = ['Naty\'s', 'Bar Magenta', 'Britvic'];
+  options: string[] = ['Provider #1', 'Provider #2', 'Provider #3', 'Provider #4', 'Provider #5'];
   
   filteredOptions : Observable<string[]>;
 
