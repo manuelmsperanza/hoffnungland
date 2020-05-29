@@ -37,3 +37,21 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 [material.angular.io](https://material.angular.io/)
 
 	ng add @angular/material
+
+## Add Modules
+
+### Catalog Module
+	
+	ng g m catalog -m app --routing
+
+### Orders Module
+	
+	ng g m orders -m app --routing
+	
+#### New Order Component
+	
+	ng g c orders/new-order
+
+#### List Orders Component
+	
+	ng g c orders/list-orders

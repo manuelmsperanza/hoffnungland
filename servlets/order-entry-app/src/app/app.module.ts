@@ -5,24 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NewOrderComponent } from './new-order/new-order.component';
-import { ListOrdersComponent } from './list-orders/list-orders.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { OrdersModule } from './orders/orders.module';
+import { CatalogModule } from './catalog/catalog.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewOrderComponent,
-    ListOrdersComponent,
     LoginComponent,
     PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    OrdersModule,
+    CatalogModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
