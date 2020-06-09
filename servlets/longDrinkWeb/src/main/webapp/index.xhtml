@@ -1,67 +1,97 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelets Hello Greeting</title>
-        <meta name="test web page" content="Free Web tutorials"/>
-        <meta name="keywords" content="JavaEE, Angular, Hibernate"/>
-        <meta name="author" content="manuel.m.speranza"/>
-    </h:head>
-    <h:body>
-        <h2>Hello, my name is Manuel. What's yours?</h2>
-        <h:form>
-            <h:inputText id="username"
-                         title="My name is: "
-                         value="#{agent.name}"
-                         required="true"
-                         requiredMessage="Error: A name is required."
-                         maxlength="25" />
-            <p></p>
-            <h:commandButton id="submit" value="Submit" 
-                             action="response" />
-            <h:commandButton id="reset" value="Reset" type="reset" action="${agent.reset}"/>
-        </h:form>
-        <div class="messagecolor">
-            <h:messages showSummary="true" 
-                        showDetail="false"
-                        errorStyle="color: #d20005" 
-                        infoStyle="color: blue"/>
-        </div>
-        <a href="/orderEntryWeb">Simple Order Entry</a>
-		<a href="/readyToDrink">Ready To Drink</a>
-		<p>developed by</p>
-	<p>
-		<a href="mailto:manuel.m.speranza@gmail.com?subject=ciao%20Manuel&amp;body=sei%20un%20figo">manuel.m.speranza@gmail.com</a>
-	</p>
-	<p>
-		<a href="mailto:manuel.m.speranza@outlook.it?subject=ciao%20Manuel&amp;body=sei%20un%20figo">manuel.m.speranza@outlook.it</a>
-	</p>
-	<p>
-		<a href="mailto:m.speranza@email.it?subject=ciao%20Manuel&amp;body=sei%20un%20figo">m.speranza@email.it</a>
-	</p>
-	<div id="thkto">
-		<p>Thanks to:</p>
-		<a href="https://www.vultr.com/?ref=8575368-6G" target="_blank">
-			<img src="https://www.vultr.com/media/logo_onwhite.png" height="75" />
-		</a>
-		<a href="https://www.payara.org" target="_blank">
-			<img src="https://www.payara.org/images/payara_logo_-_blue_large.jpg" height="75" />
-		</a>
-		<a href="http://www.h2database.com" target="_blank">
-			<img src="http://www.h2database.com/html/images/h2-logo-2.png" height="75" />
-		</a>
-		<a href="https://hibernate.org" target="_blank">
-			<img src="https://hibernate.org/images/hibernate-logo.svg" height="75" /></a>
-		<a href="https://angular.io" target="_blank">
-			<img src="https://angular.io/assets/images/logos/angular/angular.svg" height="75" />
-		</a>
-		<a href="https://forgerock.github.io/opendj-community-edition" target="_blank">
-			<img src="https://forgerock.github.io/opendj-community-edition/img/logos/opendj-logo.png" height="75" />
-		</a>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+	<title>Facelets Hello Greeting</title>
+	<meta name="test web page" content="Free Web tutorials" />
+	<meta name="keywords" content="JavaEE, Angular, Hibernate" />
+	<meta name="author" content="manuel.m.speranza" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
+	<style>
+body, h1 {
+	font-family: "Raleway", sans-serif
+}
+
+body, html {
+	height: 100%
+}
+
+.bgimg {
+	background-image: url('https://www.w3schools.com/w3images/forestbridge.jpg');
+	min-height: 100%;
+	background-position: center;
+	background-size: cover;
+}
+</style>
+</h:head>
+<h:body>
+	<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+		<div class="w3-display-topleft w3-padding-large w3-xlarge">Logo</div>
+		<div class="w3-display-middle">
+			<h1 class="w3-jumbo w3-animate-top">COMING SOON</h1>
+			<hr class="w3-border-grey" style="margin: auto; width: 40%"/>
+			<h2 class="w3-large w3-center">Hello, my name is Manuel. What's yours?</h2>
+			<h:form>
+				<h:inputText id="username" title="My name is: " value="#{agent.name}"
+					required="true" requiredMessage="Error: A name is required."
+					maxlength="25" />
+				<p></p>
+				<h:commandButton id="submit" value="Submit" action="response" />
+				<h:commandButton id="reset" value="Reset" type="reset"
+					action="${agent.reset}" />
+			</h:form>
+			<div class="messagecolor">
+				<h:messages showSummary="true" showDetail="false" errorStyle="color: #d20005" infoStyle="color: blue" />
+			</div>
+			<a href="/orderEntryWeb">Simple Order Entry</a>
+			<a href="/readyToDrink">Ready To Drink</a>
+			
+			<div class="w3-card-4">
+				<header class="w3-container w3-blue">
+				  <h1>developed by</h1>
+				</header>
+				<div class="w3-container">
+					<p>
+						<a href="mailto:manuel.m.speranza@gmail.com?subject=ciao%20Manuel&amp;body=sei%20un%20figo">manuel.m.speranza@gmail.com</a>
+					</p>
+					<p>
+						<a href="mailto:manuel.m.speranza@outlook.it?subject=ciao%20Manuel&amp;body=sei%20un%20figo">manuel.m.speranza@outlook.it</a>
+					</p>
+					<p>
+						<a href="mailto:m.speranza@email.it?subject=ciao%20Manuel&amp;body=sei%20un%20figo">m.speranza@email.it</a>
+					</p>
+				</div>
+			</div>
+			
+		</div>
+		<div id="thkto" class="w3-display-bottomleft w3-padding-large">
+			<p>Thanks to:</p>
+			<a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
+			<a href="https://www.vultr.com/?ref=8575368-6G" target="_blank">
+				<img src="https://www.vultr.com/media/logo_onwhite.png" height="75" />
+			</a>
+			<a href="https://www.payara.org" target="_blank">
+				<img src="https://www.payara.org/images/payara_logo_-_blue_large.jpg" height="75" />
+			</a>
+			<a href="http://www.h2database.com" target="_blank">
+				<img src="http://www.h2database.com/html/images/h2-logo-2.png" height="75" />
+			</a>
+			<a href="https://hibernate.org" target="_blank">
+				<img src="https://hibernate.org/images/hibernate-logo.svg" height="75" />
+			</a>
+			<a href="https://angular.io" target="_blank">
+				<img src="https://angular.io/assets/images/logos/angular/angular.svg" height="75" />
+			</a>
+			<a href="https://forgerock.github.io/opendj-community-edition" target="_blank">
+				<img src="https://forgerock.github.io/opendj-community-edition/img/logos/opendj-logo.png" height="75" />
+			</a>
+		</div>
 	</div>
-    </h:body>
+</h:body>
 </html>
 

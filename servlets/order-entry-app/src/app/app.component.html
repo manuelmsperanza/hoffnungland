@@ -1,12 +1,24 @@
 <title>{{title}}</title>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+  <ul ngbNav [(activeId)]="activeId" class="nav-tabs">
+    <li [ngbNavItem]="1">
+      <a ngbNavLink routerLink="/new-order" routerLinkActive="active">New Order</a>
+    </li>
+    <li [ngbNavItem]="2">
+      <a ngbNavLink routerLink="/list-orders" routerLinkActive="active">List Orders</a>
+    </li>
+  </ul>
+  <!-- The routed views render in the <router-outlet>-->
+  <router-outlet></router-outlet>
+  <footer class="w3-container w3-padding-16 w3-light-grey">
+    <h4>Follow Me</h4>
+  <a class="w3-button w3-large w3-teal" href="https://www.facebook.com/manuel.m.speranza" title="Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="w3-button w3-large w3-teal" href="https://twitter.com/SperanzaManuel" title="Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="w3-button w3-large w3-teal" href="https://www.instagram.com/manuel.m.speranza/" title="Instagram"><i class="fa fa-instagram"></i></a>
+  <a class="w3-button w3-large w3-teal w3-hide-small" href="https://www.linkedin.com/in/manuelmsperanza" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+  <a class="w3-button w3-large w3-teal w3-hide-small" href="https://github.com/manuelmsperanza" title="Github"><i class="fa fa-github"></i></a>
 
-<ul ngbNav [(activeId)]="activeId" class="nav-tabs">
-  <li [ngbNavItem]="1">
-    <a ngbNavLink routerLink="/new-order" routerLinkActive="active">New Order</a>
-  </li>
-  <li [ngbNavItem]="2">
-    <a ngbNavLink routerLink="/list-orders" routerLinkActive="active">List Orders</a>
-  </li>
-</ul>
-<!-- The routed views render in the <router-outlet>-->
-<router-outlet></router-outlet>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+  </footer>
+</div>
