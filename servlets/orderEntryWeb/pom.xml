@@ -15,7 +15,7 @@
 	<packaging>war</packaging>
 
 	<name>orderEntryWeb Maven Webapp</name>
-	<url>http://hoffnungland.com/orderEntryWeb</url>
+	<url>http://${webdomain}/${build.finalName}</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

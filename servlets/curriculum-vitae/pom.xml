@@ -8,15 +8,24 @@
   </parent>
 
   <groupId>com.hoffnungland</groupId>
-  <artifactId>longDrinkWeb</artifactId>
+  <artifactId>curriculum-vitae</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>longDrinkWeb</name>
+  <name>curriculum-vitae Maven Webapp</name>
   <url>http://${webdomain}/${build.finalName}</url>
 
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
   <build>
-    <finalName>longDrinkWeb</finalName>
+    <finalName>curriculum-vitae</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>

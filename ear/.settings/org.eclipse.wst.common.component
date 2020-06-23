@@ -8,9 +8,6 @@
         <dependent-module archiveName="javax.ejb-api-3.2.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/javax/ejb/javax.ejb-api/3.2/javax.ejb-api-3.2.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="javax.transaction-api-1.2.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/javax/transaction/javax.transaction-api/1.2/javax.transaction-api-1.2.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="servlet-1.0.war" deploy-path="/" handle="module:/resource/servlet/servlet">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -20,7 +17,7 @@
         <dependent-module archiveName="readyToDrink-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/readyToDrink/readyToDrink">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="orderEntryWeb-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/hoffnungland/orderEntryWeb/0.0.1-SNAPSHOT/orderEntryWeb-0.0.1-SNAPSHOT.war">
+        <dependent-module archiveName="orderEntryWeb-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/orderEntryWeb/orderEntryWeb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="primary-source-1.0.jar" deploy-path="/" handle="module:/resource/primary-source/primary-source">
