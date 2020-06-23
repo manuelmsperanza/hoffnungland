@@ -2,6 +2,9 @@
     <wb-module deploy-name="hoffnungland">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
+        <dependent-module archiveName="curriculum-vitae-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/curriculum-vitae/curriculum-vitae">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="ejbs-1.0.jar" deploy-path="/" handle="module:/resource/ejbs/ejbs">
             <dependency-type>uses</dependency-type>
         </dependent-module>
