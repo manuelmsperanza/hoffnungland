@@ -15,7 +15,7 @@
 	<packaging>war</packaging>
 
 	<name>readyToDrink Maven Webapp</name>
-	<url>http://${webdomain}/${build.finalName}</url>
+	<url>http://${webdomain}/${project.build.finalName}</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -13,7 +13,7 @@
   <packaging>war</packaging>
 
   <name>longDrinkWeb</name>
-  <url>http://${webdomain}/${build.finalName}</url>
+  <url>http://${webdomain}/${project.build.finalName}</url>
 
   <build>
     <finalName>longDrinkWeb</finalName>
