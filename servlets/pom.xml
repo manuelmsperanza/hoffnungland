@@ -13,7 +13,7 @@
 	</parent>
 	<modules>
 		<module>servlet</module>
-		<module>longDrinkWeb</module>
+		<module>faceletWeb</module>
 		<module>order-entry-app</module>
 		<module>orderEntryWeb</module>
 		<module>ready-to-drink-app</module>
