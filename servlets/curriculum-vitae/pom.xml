@@ -59,5 +59,28 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>prepare-war</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<resources>
+								<resource>
+									<directory>${basedir}/../cv-app/dist/cv-app</directory>
+									<include>**/*</include>
+								</resource>
+							</resources>
+							<outputDirectory>${basedir}/target/${project.artifactId}</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
   </build>
 </project>

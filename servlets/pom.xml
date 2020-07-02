@@ -18,6 +18,7 @@
 		<module>orderEntryWeb</module>
 		<module>ready-to-drink-app</module>
 		<module>readyToDrink</module>
-    <module>curriculum-vitae</module>
+		<module>cv-app</module>
+    	<module>curriculum-vitae</module>
   </modules>
 </project>
