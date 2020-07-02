@@ -1,0 +1,14 @@
+
+Hope you enjoy your new logo, here are the people that
+made your beautiful logo happen :)
+font name: steelfish rg it
+font link: https://www.fontspring.com/fonts/typodermic/steelfish/steelfish-italic
+font author: Typodermic Fonts
+font author site: http://typodermicfonts.com/
+
+
+icon designer: Hans Paul Mösl Junior
+icon designer link: /hansmosl
+        
+{"bg-gradient-0":"#0978A6","bg-gradient-1":"#FB9447","icon":"#ffffff","font":"#ffffff","slogan":"#ffffff"}
+      
