@@ -1,0 +1,10 @@
+<h1>{{title}}</h1>
+
+<ag-grid-angular
+	#agGrid
+	style="width: auto; height: 500px;"
+	class="ag-theme-alpine"
+	[defaultColDef]="defaultColDef"
+	[rowData]="rowData"
+	[columnDefs]="columnDefs"></ag-grid-angular>
+<router-outlet></router-outlet>
