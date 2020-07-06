@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-     this.http.get('/assets/marvel-film-list.json').pipe(
+     this.http.get('/marvelFilmListApp/assets/marvel-film-list.json').pipe(
       catchError((err, caught) => caught)
      )
       .subscribe(
