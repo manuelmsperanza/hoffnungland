@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { tap, map, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -27,13 +27,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.http.get('/assets/marvel-film-list.json')
+
+     this.http.get('/assets/marvel-film-list.json').pipe(
+      catchError((err, caught) => caught)
+     )
       .subscribe(
-        data => this.rowData = { ...data }
+        data => this.rowData = data
       );
-      /*.pipe(
-       tap(data => this.rowData = data)
-     );*/
   }
 
 
