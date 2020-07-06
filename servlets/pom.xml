@@ -18,6 +18,8 @@
 		<module>orderEntryWeb</module>
 		<module>ready-to-drink-app</module>
 		<module>readyToDrink</module>
+		<module>marvel-film-list-app</module>
+    	<module>marvelFilmListApp</module>
 		<module>cv-app</module>
     	<module>curriculum-vitae</module>
   </modules>

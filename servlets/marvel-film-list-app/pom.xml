@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.hoffnungland</groupId>
+	<artifactId>marvel-film-list-app</artifactId>
+	<packaging>pom</packaging>
+	<name>marvel-film-list-app</name>
+	<version>1.0</version>
+	<parent>
+		<artifactId>servlets</artifactId>
+		<groupId>com.hoffnungland</groupId>
+		<version>1.0</version>
+	</parent>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<filesets>
+						<!-- fileset>
+							<directory>${basedir}/node_modules</directory>
+						</fileset -->
+						<fileset>
+							<directory>${basedir}/dist</directory>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>exec-maven-plugin</artifactId>
+				<groupId>org.codehaus.mojo</groupId>
+				<version>1.2.1</version>
+				<executions>
+					<execution>
+						<id>install required packages</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>npm.cmd</executable>
+							<commandlineArgs>install</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>Build angular using ng</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>ng.cmd</executable>
+							<commandlineArgs>build --prod --base-href=/marvelFilmListApp/</commandlineArgs>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
