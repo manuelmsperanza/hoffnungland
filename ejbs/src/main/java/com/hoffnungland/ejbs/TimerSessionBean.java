@@ -37,7 +37,7 @@ public class TimerSessionBean {
         logger.info("Programmatic timeout occurred.");
     }
 
-    @Schedule(minute = "*", hour = "*", dayOfMonth = "1-31", persistent = false)
+    @Schedule(minute = "0", hour = "0", dayOfMonth = "1-31", persistent = false)
     public void automaticTimeout() {
         this.setLastAutomaticTimeout(new Date());
         logger.info("Automatic timeout occurred");

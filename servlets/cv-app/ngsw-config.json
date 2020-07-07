@@ -24,6 +24,18 @@
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
       }
+    }, {
+      "name": "external",
+      "installMode": "lazy",
+      "updateMode": "lazy",
+      "resources": {
+        "urls": [
+          "faceletWeb",
+          "marvelFilmListApp",
+          "orderEntryWeb",
+          "readyToDrink"
+        ]
+      }
     }
   ]
 }
