@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap, map, catchError } from 'rxjs/operators';
+import * as d3 from "d3";
+
 
 @Component({
   selector: 'app-root',
@@ -34,7 +36,13 @@ export class AppComponent implements OnInit {
       .subscribe(
         data => this.rowData = data
       );
+      
+      this.drawChart();
+
   }
 
+  drawChart() : void {
+    d3.selectAll("p").style("color", "blue");
+  }
 
 }
