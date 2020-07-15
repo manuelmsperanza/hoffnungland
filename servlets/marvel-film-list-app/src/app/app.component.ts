@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnChanges, SimpleChanges, AfterContentChecked, AfterViewChecked } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap, map, catchError } from 'rxjs/operators';
 import * as d3 from "d3";
@@ -9,7 +9,7 @@ import * as d3 from "d3";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnChanges, AfterViewChecked, AfterContentChecked {
   title = 'marvel-film-list-app';
 
   defaultColDef;
@@ -25,11 +25,24 @@ export class AppComponent implements OnInit {
   rowData : any;
 
   constructor(private http: HttpClient) {
-    this.defaultColDef = { resizable: true };
+    
+  }
+  ngAfterContentChecked(): void {
+    console.log("ngOnChanges");
+    //this.drawChart();
+  }
+  ngAfterViewChecked(): void {
+    console.log("AfterViewChecked");
+    //this.drawChart();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("ngOnChanges");
+    //this.drawChart();
   }
 
   ngOnInit() {
-
+    console.log("ngOnInit");
      this.http.get('/marvelFilmListApp/assets/marvel-film-list.json').pipe(
       catchError((err, caught) => caught)
      )
@@ -42,7 +55,16 @@ export class AppComponent implements OnInit {
   }
 
   drawChart() : void {
-    d3.selectAll("p").style("color", "blue");
+    console.log("drawChart");
+    var chartElement = d3.selectAll("#chart");
+    console.log(chartElement);
+    chartElement.style("color", "blue");
+    chartElement.selectAll("p")
+    .data([4, 8, 15, 16, 23, 42])
+    .enter().append("p")
+      .text(function(d) { return "I’m number " + d + "!"; });
+
   }
+  
 
 }
