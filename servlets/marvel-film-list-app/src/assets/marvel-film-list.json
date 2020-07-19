@@ -1,9 +1,11 @@
 [
 	{ "title": "X-Men", "releaseDate": "2000-07-14T00:00:00.000Z" },
 	{ "title": "Spider-Man", "releaseDate": "2002-05-03T00:00:00.000Z" },
+	{ "title": "Daredevil", "releaseDate": "2003-02-14T00:00:00.000Z" },
 	{ "title": "X2: X-Men United", "releaseDate": "2003-05-02T00:00:00.000Z" },
 	{ "title": "Hulk", "releaseDate": "2003-06-20T00:00:00.000Z" },
 	{ "title": "Spider-Man 2", "releaseDate": "2004-06-30T00:00:00.000Z" },
+	{ "title": "Elektra", "releaseDate": "2005-01-14T00:00:00.000Z" },
 	{ "title": "Fantastic Four", "releaseDate": "2005-07-08T00:00:00.000Z" },
 	{ "title": "X-Men - The Last Stand", "releaseDate": "2006-05-26T00:00:00.000Z" },
 	{ "title": "Spider-Man 3", "releaseDate": "2007-05-04T00:00:00.000Z" },
@@ -228,10 +230,10 @@
 	{ "title": "Agents of S.H.I.E.L.D.", "season": "7", "episode": "7", "episodeName": "The Totally Excellent Adventures of Mack and The D", "releaseDate": "2020-07-08T00:00:00.000Z" },
 	{ "title": "Agents of S.H.I.E.L.D.", "season": "7", "episode": "8", "episodeName": "After, Before", "releaseDate": "2020-07-15T00:00:00.000Z" },
 	{ "title": "Agents of S.H.I.E.L.D.", "season": "7", "episode": "9", "episodeName": "As I Have Always Been", "releaseDate": "2020-07-22T00:00:00.000Z" },
-	{ "title": "Agents of S.H.I.E.L.D.", "season": "7", "episode": "10", "episodeName": "Stolen" },
-	{ "title": "Agents of S.H.I.E.L.D.", "season": "7", "episode": "11", "episodeName": "Brand New Day" },
-	{ "title": "Agents of S.H.I.E.L.D.", "season": "7", "episode": "12", "episodeName": "The End is at Hand" },
-	{ "title": "Agents of S.H.I.E.L.D.", "season": "7", "episode": "13", "episodeName": "What We're Fighting For" },
+	{ "title": "Agents of S.H.I.E.L.D.", "season": "7", "episode": "10", "episodeName": "Stolen", "releaseDate": "2020-07-29T00:00:00.000Z" },
+	{ "title": "Agents of S.H.I.E.L.D.", "season": "7", "episode": "11", "episodeName": "Brand New Day", "releaseDate": "2020-08-05T00:00:00.000Z" },
+	{ "title": "Agents of S.H.I.E.L.D.", "season": "7", "episode": "12", "episodeName": "The End is at Hand", "releaseDate": "2020-08-12T00:00:00.000Z" },
+	{ "title": "Agents of S.H.I.E.L.D.", "season": "7", "episode": "13", "episodeName": "What We're Fighting For", "releaseDate": "2020-08-19T00:00:00.000Z" },
 	{ "title": "Black Widow", "releaseDate": "2020-11-06T00:00:00.000Z" },
 	{ "title": "The Eternals", "releaseDate": "2021-02-12T00:00:00.000Z" }	
 ]
