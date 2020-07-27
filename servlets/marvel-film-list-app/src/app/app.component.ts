@@ -13,7 +13,7 @@ export class AppComponent implements OnInit, OnChanges, AfterViewChecked, AfterC
   title = 'marvel-film-list-app';
 
   defaultColDef;
-
+  columnTypes;
   columnDefs = [
     {headerName: 'Title', field: 'title', sortable: true, filter: true},
     {headerName: 'Season', field: 'season', sortable: true, filter: true},
@@ -23,17 +23,20 @@ export class AppComponent implements OnInit, OnChanges, AfterViewChecked, AfterC
 ];
 
   rowData : any;
+  chartElement : any;
 
   constructor(private http: HttpClient) {
-    
+    this.columnTypes = {dateColumn: {
+      filter: 'agDateColumnFilter'}
+    }
   }
   ngAfterContentChecked(): void {
-    console.log("ngOnChanges");
+    console.log("ngAfterContentChecked");
     //this.drawChart();
   }
   ngAfterViewChecked(): void {
     console.log("AfterViewChecked");
-    //this.drawChart();
+    this.drawChart();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -56,14 +59,14 @@ export class AppComponent implements OnInit, OnChanges, AfterViewChecked, AfterC
 
   drawChart() : void {
     console.log("drawChart");
-    var chartElement = d3.selectAll("#chart");
-    console.log(chartElement);
-    chartElement.style("color", "blue");
-    chartElement.selectAll("p")
+    
+    this.chartElement.selectAll("p").exit().remove();
+
+    this.chartElement.selectAll("p")
     .data([4, 8, 15, 16, 23, 42])
     .enter().append("p")
       .text(function(d) { return "I’m number " + d + "!"; });
-
+    
   }
   
 
