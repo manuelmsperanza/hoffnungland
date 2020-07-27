@@ -50,7 +50,7 @@ export class AppComponent implements OnInit, OnChanges, AfterViewChecked, AfterC
         data => this.rowData = data
       );
       
-      this.drawChart();
+      //this.drawChart();
 
   }
 
