@@ -24,6 +24,10 @@ export class AppComponent implements OnInit, OnChanges, AfterViewChecked, AfterC
 
   rowData : any;
   chartElement : any;
+  height = 202;
+  width = 640;
+  margin = ({top: 20, right: 0, bottom: 0, left: 30});
+
 
   constructor(private http: HttpClient) {
     this.columnTypes = {dateColumn: {
@@ -53,22 +57,46 @@ export class AppComponent implements OnInit, OnChanges, AfterViewChecked, AfterC
         data => this.rowData = data
       );
       
-      this.chartElement = d3.selectAll("#chart");
-      console.log(this.chartElement);
-      this.chartElement.style("color", "blue");
-      this.drawChart();
+      //this.chartElement = d3.selectAll("#chart");
+      //console.log(this.chartElement);
+      //this.chartElement.style("color", "blue");
+      //this.drawChart();
 
   }
 
   drawChart() : void {
     console.log("drawChart");
+    //console.log(d3.min(this.rowData, (d: { releaseDate: Date; }) => d.releaseDate));
+    //console.log(d3.max(this.rowData, (d: { releaseDate: Date; }) => d.releaseDate));
     
-    this.chartElement.selectAll("p").exit().remove();
+    var svg = d3.create("svg")
+      .attr("viewBox", [0, 0, this.width, this.height]);
+    
+    var x = d3.scaleLinear()
+    .domain(d3.extent(this.rowData)).nice()
+    .range([this.margin.left, this.width - this.margin.right]);
+
+    var xAxis = g => g
+    .attr("transform", `translate(0,${this.height - this.margin.bottom})`)
+    .call(d3.axisBottom(x).ticks(this.width / 80 ).tickSizeOuter(0))
+    .call(g => g.append("text")
+        .attr("x", this.width - this.margin.right)
+        .attr("y", -4)
+        .attr("fill", "currentColor")
+        .attr("font-weight", "bold")
+        .attr("text-anchor", "end")
+        .text(this.rowData.releaseDate));
+
+    svg.append("g").call(xAxis);
+
+    this.chartElement.selectAll("svg").exit().remove();
+    this.chartElement.selectAll("svg").enter().append(svg.node());
+    /*this.chartElement.selectAll("p").exit().remove();
 
     this.chartElement.selectAll("p")
     .data([4, 8, 15, 16, 23, 42])
     .enter().append("p")
-      .text(function(d) { return "I’m number " + d + "!"; });
+      .text(function(d) { return "I’m number " + d + "!"; });*/
     
   }
   
