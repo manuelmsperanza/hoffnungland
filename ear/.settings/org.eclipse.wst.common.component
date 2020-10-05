@@ -1,15 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-                
-    
-    
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="hoffnungland">
-                                
-        
-        
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
-                                
-        
-        
         <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
         <dependent-module archiveName="curriculum-vitae-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/curriculum-vitae/curriculum-vitae">
             <dependency-type>uses</dependency-type>
@@ -29,9 +21,6 @@
         <dependent-module archiveName="faceletWeb-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/faceletWeb/faceletWeb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="marvelFilmListApp-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/hoffnungland/marvelFilmListApp/0.0.1-SNAPSHOT/marvelFilmListApp-0.0.1-SNAPSHOT.war">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="readyToDrink-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/readyToDrink/readyToDrink">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -44,11 +33,5 @@
         <dependent-module archiveName="logging-1.0.jar" deploy-path="/" handle="module:/resource/logging/logging">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-                            
-    
-    
     </wb-module>
-            
-
-
 </project-modules>
