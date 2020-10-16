@@ -11,7 +11,6 @@
 	git remote add origin git@github.com:manuelmsperanza/hoffnungland.git
 	git push -u origin master
 
-	#Build settings
 #Build settings
 ##Add prerequisites
 
