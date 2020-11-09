@@ -1,9 +1,5 @@
 #Generate
-	mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-j2ee-simple -DarchetypeVersion=1.4
-	-Dgroupid=com.hoffnungland
-	-DartifactId=hoffnungland
-	-Dpackage=com.hoffnungland
-	-Dversion=0.0.1-SNAPSHOT
+	mvn archetype:generate -Dfilter="org.apache.maven.archetypes:maven-archetype-j2ee-simple" -Dgroupid="com.hoffnungland" -DartifactId=hoffnungland -Dpackage="com.hoffnungland" -Dversion="0.0.1-SNAPSHOT"
 
 #Add to git
 	git init

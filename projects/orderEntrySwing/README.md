@@ -2,7 +2,7 @@
 
 #Create a new project
 
-	mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion="1.4" -DgroupId="com.hoffnungland" -DartifactId=orderEntrySwing -Dpackage="com.hoffnungland" -Dversion="0.0.1-SNAPSHOT"
+	mvn archetype:generate -Dfilter="org.apache.maven.archetypes:maven-archetype-quickstart" -DgroupId="com.hoffnungland" -DartifactId=orderEntrySwing -Dpackage="com.hoffnungland" -Dversion="0.0.1-SNAPSHOT"
 
 #Build settings
 ##Add prerequisites
