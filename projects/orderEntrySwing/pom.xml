@@ -10,4 +10,12 @@
   <artifactId>orderEntrySwing</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>orderEntrySwing</name>
+  <dependencies>
+ 	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-core</artifactId>
+		<version>5.4.23.Final</version>
+	</dependency>
+  </dependencies>
 </project>
