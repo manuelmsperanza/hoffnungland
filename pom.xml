@@ -167,5 +167,10 @@
 			<version>${javaee.api.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.hoffnungland</groupId>
+			<artifactId>Log4j</artifactId>
+			<version>1.0.7</version>
+		</dependency>
 	</dependencies>
 </project>
