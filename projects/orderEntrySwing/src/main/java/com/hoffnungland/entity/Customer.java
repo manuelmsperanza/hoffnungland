@@ -1,6 +1,8 @@
 package com.hoffnungland.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -11,8 +13,10 @@ public class Customer {
 	@GeneratedValue
 	private int id;
 	
+	@Enumerated(EnumType.STRING)
 	private String companyName;
 	
+	@Enumerated(EnumType.STRING)
 	private ShopType shopType;
 	
 	private String vatCode;
@@ -21,6 +25,7 @@ public class Customer {
 	
 	private String IBAN;
 	
+	@Enumerated(EnumType.STRING)
 	private PaymentType preferredPaymentType;
 	
 }
