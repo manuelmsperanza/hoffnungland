@@ -8,6 +8,12 @@ import javax.persistence.Id;
 
 import org.hibernate.annotations.NaturalId;
 
+/**
+ * 
+ * @author manuel.m.speranza
+ * @version 0.2
+ */
+
 @Entity
 public class Agent {
 	
