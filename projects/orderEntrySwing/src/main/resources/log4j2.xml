@@ -26,6 +26,9 @@
 		<Logger name="com.hoffnungland" level="${activeLevel}" additivity="false">
 			<AppenderRef ref="${activeProfile}"/>
 		</Logger>
+		<Logger name="org.hibernate" level="${activeLevel}" additivity="false">
+			<AppenderRef ref="${activeProfile}"/>
+		</Logger>
 		<Root level="error">
 			<AppenderRef ref="${activeProfile}"/>
 			<AppenderRef ref="rollingFile"/>

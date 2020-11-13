@@ -1,17 +1,24 @@
 package com.hoffnungland;
 
 import java.awt.EventQueue;
+import java.io.File;
 
 import javax.swing.JFrame;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.SessionFactoryBuilder;
+import org.hibernate.boot.registry.BootstrapServiceRegistry;
+import org.hibernate.boot.registry.BootstrapServiceRegistryBuilder;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
 public class App {
-	
+
 	private static final Logger logger = LogManager.getLogger(App.class);
 	private JFrame frame;
 
@@ -19,9 +26,9 @@ public class App {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
+
 		logger.traceEntry();
-		
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -49,24 +56,44 @@ public class App {
 	 */
 	private void initialize() {
 		logger.traceEntry();
-		
+
 		this.initializeHibernate();
-		
+
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
+
+
 		logger.traceExit();
 	}
-	
+
 	private void initializeHibernate() {
 		logger.traceEntry();
-		ServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().build();
+		
+		BootstrapServiceRegistryBuilder bootstrapServiceRegistryBuilder = new BootstrapServiceRegistryBuilder();
+		
+		BootstrapServiceRegistry bootstrapRegistry = bootstrapServiceRegistryBuilder.build();
+
+		StandardServiceRegistryBuilder standardRegistryBuilder = new StandardServiceRegistryBuilder( bootstrapRegistry );
+		//standardRegistryBuilder.configure(resourceName)
+		ServiceRegistry standardRegistry = standardRegistryBuilder.configure(new File("hibernate.cfg.xml")).build();
 
 		MetadataSources sources = new MetadataSources(standardRegistry);
-		
-		
+
+		sources.addAnnotatedClass(com.hoffnungland.entity.Agent.class);
+
+		Metadata metadata = sources.buildMetadata();
+
+		SessionFactoryBuilder sessionFactoryBuilder = metadata.getSessionFactoryBuilder();
+
+		SessionFactory sessionFactory = sessionFactoryBuilder.build();
+
+		Session session = sessionFactory.openSession();
+
+		session.getTransaction().begin();
+		session.persist( new com.hoffnungland.entity.Agent() );
+		session.getTransaction().commit();
+
 		logger.traceExit();
 	}
 
