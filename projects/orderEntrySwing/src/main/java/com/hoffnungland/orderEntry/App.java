@@ -102,7 +102,7 @@ public class App {
 		session.getTransaction().begin();
 		
 		com.hoffnungland.orderEntry.entity.Agent agent = new com.hoffnungland.orderEntry.entity.Agent();
-		agent.setUserName("valentina.desantis");
+		agent.setUserName("manuel.m.speranza");
 		
 		com.hoffnungland.orderEntry.entity.Customer customer = new com.hoffnungland.orderEntry.entity.Customer();
 		customer.setReferent(agent);
