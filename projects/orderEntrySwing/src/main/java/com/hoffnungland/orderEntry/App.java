@@ -77,7 +77,7 @@ public class App {
 		StandardServiceRegistryBuilder standardRegistryBuilder = new StandardServiceRegistryBuilder( bootstrapRegistry );
 		
 		String resourceName = "./src/main/resources/hibernate.cfg.xml";
-		standardRegistryBuilder = standardRegistryBuilder.configure(resourceName);
+		standardRegistryBuilder = standardRegistryBuilder.configure(new File(resourceName));
 		//ServiceRegistry standardRegistry = standardRegistryBuilder.configure(new File("hibernate.cfg.xml")).build();
 		ServiceRegistry standardRegistry = standardRegistryBuilder.build();
 
@@ -102,6 +102,8 @@ public class App {
 		session.getTransaction().begin();
 		
 		com.hoffnungland.orderEntry.entity.Agent agent = new com.hoffnungland.orderEntry.entity.Agent();
+		agent.setUserName("valentina.desantis");
+		
 		com.hoffnungland.orderEntry.entity.Customer customer = new com.hoffnungland.orderEntry.entity.Customer();
 		customer.setReferent(agent);
 		

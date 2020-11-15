@@ -21,7 +21,6 @@ public class Customer {
 	@GeneratedValue
 	private long id;
 	
-	@Enumerated(EnumType.STRING)
 	private String companyName;
 	
 	@Enumerated(EnumType.STRING)
