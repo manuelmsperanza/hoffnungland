@@ -28,7 +28,7 @@
 							</descriptorRefs>
 							<archive>
 								<manifest>
-									<mainClass>com.hoffnungland.App</mainClass>
+									<mainClass>com.hoffnungland.orderEntry.App</mainClass>
 								</manifest>
 							</archive>
 						</configuration>
@@ -42,7 +42,6 @@
 				<targetPath>${project.build.directory}</targetPath>
 				<includes>
 					<include>log4j2.xml</include>
-					<include>hibernate.properties</include>
 					<include>hibernate.cfg.xml</include>
 					<include>META-INF/persistence.xml</include>
 				</includes>

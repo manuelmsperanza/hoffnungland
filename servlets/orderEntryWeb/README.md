@@ -1,5 +1,5 @@
 #Generate
-	mvn archetype:generate -Dfilter="org.apache.maven.archetypes:maven-archetype-webapp" -DgroupId="com.hoffnungland" -DartifactId=orderEntryWeb -Dpackage="com.hoffnungland" -Dversion="0.0.1-SNAPSHOT"
+	mvn archetype:generate -Dfilter="org.apache.maven.archetypes:maven-archetype-webapp" -DgroupId="com.hoffnungland" -DartifactId=orderEntryWeb -Dpackage="com.hoffnungland.orderEntryWeb" -Dversion="0.0.1-SNAPSHOT"
 
 
 #Angular Build

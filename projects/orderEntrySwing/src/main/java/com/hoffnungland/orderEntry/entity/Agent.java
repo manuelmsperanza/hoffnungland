@@ -1,4 +1,4 @@
-package com.hoffnungland.entity;
+package com.hoffnungland.orderEntry.entity;
 
 import java.util.Objects;
 
@@ -19,7 +19,7 @@ public class Agent {
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private long id;
 	
 	@NaturalId
 	private String userName;
@@ -30,11 +30,11 @@ public class Agent {
 	
 	private String email;
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

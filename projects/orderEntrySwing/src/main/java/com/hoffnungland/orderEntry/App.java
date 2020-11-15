@@ -1,4 +1,4 @@
-package com.hoffnungland;
+package com.hoffnungland.orderEntry;
 
 import java.awt.EventQueue;
 import java.io.File;
@@ -75,13 +75,22 @@ public class App {
 		BootstrapServiceRegistry bootstrapRegistry = bootstrapServiceRegistryBuilder.build();
 
 		StandardServiceRegistryBuilder standardRegistryBuilder = new StandardServiceRegistryBuilder( bootstrapRegistry );
-		//standardRegistryBuilder.configure(resourceName)
-		ServiceRegistry standardRegistry = standardRegistryBuilder.configure(new File("hibernate.cfg.xml")).build();
+		
+		String resourceName = "./src/main/resources/hibernate.cfg.xml";
+		standardRegistryBuilder = standardRegistryBuilder.configure(resourceName);
+		//ServiceRegistry standardRegistry = standardRegistryBuilder.configure(new File("hibernate.cfg.xml")).build();
+		ServiceRegistry standardRegistry = standardRegistryBuilder.build();
 
 		MetadataSources sources = new MetadataSources(standardRegistry);
 
-		sources.addAnnotatedClass(com.hoffnungland.entity.Agent.class);
-
+		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Agent.class);
+		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Address.class);
+		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Customer.class);
+		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Item.class);
+		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Order.class);
+		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Product.class);
+		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Product.class);
+		
 		Metadata metadata = sources.buildMetadata();
 
 		SessionFactoryBuilder sessionFactoryBuilder = metadata.getSessionFactoryBuilder();
@@ -91,7 +100,13 @@ public class App {
 		Session session = sessionFactory.openSession();
 
 		session.getTransaction().begin();
-		session.persist( new com.hoffnungland.entity.Agent() );
+		
+		com.hoffnungland.orderEntry.entity.Agent agent = new com.hoffnungland.orderEntry.entity.Agent();
+		com.hoffnungland.orderEntry.entity.Customer customer = new com.hoffnungland.orderEntry.entity.Customer();
+		customer.setReferent(agent);
+		
+		session.persist(agent);
+		session.persist(customer);
 		session.getTransaction().commit();
 
 		logger.traceExit();

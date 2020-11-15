@@ -1,4 +1,4 @@
-package com.hoffnungland.entity;
+package com.hoffnungland.orderEntry.entity;
 
 /**
  * 
