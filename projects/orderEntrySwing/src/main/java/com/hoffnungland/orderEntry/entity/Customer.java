@@ -4,8 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 import org.h2.util.StringUtils;
 
@@ -18,7 +20,14 @@ import org.h2.util.StringUtils;
 public class Customer {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(
+		strategy = GenerationType.SEQUENCE,
+		generator = "customer-generator"
+	)
+	@SequenceGenerator(
+		name = "customer-generator",
+		sequenceName = "customer_sequence"
+	)
 	private long id;
 	
 	private String companyName;
@@ -44,127 +53,85 @@ public class Customer {
 	@ManyToOne
 	private Address deliveryAddress;
 	
-	
-	
 	public long getId() {
 		return id;
 	}
-
-
 
 	public String getCompanyName() {
 		return companyName;
 	}
 
-
-
 	public ShopType getShopType() {
 		return shopType;
 	}
-
-
 
 	public String getVatCode() {
 		return vatCode;
 	}
 
-
-
 	public String getFiscalCode() {
 		return fiscalCode;
 	}
-
-
 
 	public String getIBAN() {
 		return IBAN;
 	}
 
-
-
 	public PaymentType getPreferredPaymentType() {
 		return preferredPaymentType;
 	}
-
-
 
 	public Agent getReferent() {
 		return referent;
 	}
 
-
-
 	public Address getRegisteredOffice() {
 		return registeredOffice;
 	}
-
-
 
 	public Address getDeliveryAddress() {
 		return deliveryAddress;
 	}
 
-
-
 	public void setId(long id) {
 		this.id = id;
 	}
-
-
 
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
 
-
-
 	public void setShopType(ShopType shopType) {
 		this.shopType = shopType;
 	}
-
-
 
 	public void setVatCode(String vatCode) {
 		this.vatCode = vatCode;
 	}
 
-
-
 	public void setFiscalCode(String fiscalCode) {
 		this.fiscalCode = fiscalCode;
 	}
-
-
 
 	public void setIBAN(String iBAN) {
 		IBAN = iBAN;
 	}
 
-
-
 	public void setPreferredPaymentType(PaymentType preferredPaymentType) {
 		this.preferredPaymentType = preferredPaymentType;
 	}
-
-
 
 	public void setReferent(Agent referent) {
 		this.referent = referent;
 	}
 
-
-
 	public void setRegisteredOffice(Address registeredOffice) {
 		this.registeredOffice = registeredOffice;
 	}
 
-
-
 	public void setDeliveryAddress(Address deliveryAddress) {
 		this.deliveryAddress = deliveryAddress;
 	}
-
-
 
 	public String getFiscalId() {
 		

@@ -1,10 +1,15 @@
 package com.hoffnungland.orderEntry.entity;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.NaturalId;
 
@@ -18,7 +23,14 @@ import org.hibernate.annotations.NaturalId;
 public class Agent {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(
+		strategy=GenerationType.SEQUENCE,
+		generator="agent_generator"
+	)
+	@SequenceGenerator(
+		name="agent_generator",
+		sequenceName="agent_sequence"
+	)
 	private long id;
 	
 	@NaturalId
@@ -29,6 +41,12 @@ public class Agent {
 	private String surname;
 	
 	private String email;
+	
+	@OneToMany(mappedBy="referent", fetch=FetchType.LAZY)
+	private List<Customer> customerList;
+	
+	@OneToMany(mappedBy="seller", fetch=FetchType.LAZY)
+	private List<Order> orderList;
 	
 	public long getId() {
 		return id;
@@ -70,6 +88,22 @@ public class Agent {
 		this.email = email;
 	}
 
+	public List<Customer> getCustomerList() {
+		return customerList;
+	}
+
+	public List<Order> getOrderList() {
+		return orderList;
+	}
+
+	public void setCustomerList(List<Customer> customerList) {
+		this.customerList = customerList;
+	}
+
+	public void setOrderList(List<Order> orderList) {
+		this.orderList = orderList;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hashCode(this.userName);
@@ -92,7 +126,23 @@ public class Agent {
 		return true;
 	}
 	
+	public void addCustomer(Customer customer) {
+		this.customerList.add(customer);
+		customer.setReferent(this);
+	}
 	
+	public void removeCustomer(Customer customer) {
+		this.customerList.remove(customer);
+		customer.setReferent(null);
+	}
 	
+	public void addOrder(Order order) {
+		this.orderList.add(order);
+		order.setSeller(this);
+	}
 	
+	public void removeOrder(Order order) {
+		this.orderList.remove(order);
+		order.setSeller(null);
+	}
 }

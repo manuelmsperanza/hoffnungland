@@ -6,10 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 /**
  * 
@@ -20,7 +24,20 @@ import javax.persistence.TemporalType;
 public class Order {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(
+		strategy=GenerationType.SEQUENCE,
+		generator="order_generator"
+	)
+	@GenericGenerator(
+		name = "order_generator",
+		strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+		parameters = {
+			@Parameter(name = "sequence_name", value = "order_sequence"),
+			@Parameter(name = "initial_value", value = "1"),
+			@Parameter(name = "increment_size", value = "5"),
+			@Parameter(name = "optimizer", value = "pooled")
+		}
+	)
 	private long id;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -51,6 +68,9 @@ public class Order {
 	
 	@ManyToOne
 	private Address orderAddress;
+	
+	@ManyToOne
+	private Agent seller;
 	
 	public long getId() {
 		return id;
@@ -146,6 +166,14 @@ public class Order {
 
 	public void setOrderAddress(Address orderAddress) {
 		this.orderAddress = orderAddress;
+	}
+
+	public Agent getSeller() {
+		return seller;
+	}
+
+	public void setSeller(Agent seller) {
+		this.seller = seller;
 	}
 
 	public void copyCustomerInformation() {
