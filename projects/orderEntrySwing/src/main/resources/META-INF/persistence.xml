@@ -4,19 +4,18 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <!-- Define the classes -->
-        <class>org.hibernate.brmeyer.demo.entity.User</class>
-        <class>org.hibernate.brmeyer.demo.entity.Tool</class>
-        <class>org.hibernate.brmeyer.demo.entity.Skill</class>
-        <class>org.hibernate.brmeyer.demo.entity.Community</class>
-        <class>org.hibernate.brmeyer.demo.entity.Donation</class>
-        <class>org.hibernate.brmeyer.demo.entity.Comment</class>
-        <class>org.hibernate.brmeyer.demo.entity.ServiceEvent</class>
-        <class>org.hibernate.brmeyer.demo.entity.Project</class>
+        <class>com.hoffnungland.orderEntry.entity.Address</class>
+        <class>com.hoffnungland.orderEntry.entity.Agent</class>
+        <class>com.hoffnungland.orderEntry.entity.Customer</class>
+        <class>com.hoffnungland.orderEntry.entity.Item</class>
+        <class>com.hoffnungland.orderEntry.entity.Order</class>
+        <class>com.hoffnungland.orderEntry.entity.Product</class>
+        <class>com.hoffnungland.orderEntry.entity.ProductCategory</class>
 
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
             <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
-            <property name="hibernate.connection.url" value="jdbc:h2:tcp://localhost/~/orderEntryDb;DB_CLOSE_DELAY=-1;MVCC=TRUE"/>
+            <property name="hibernate.connection.url" value="jdbc:h2:tcp://localhost/~/orderEntryDb;DB_CLOSE_DELAY=-1"/>
             <property name="hibernate.connection.username" value="orderUser"/>
 
             <property name="hibernate.connection.pool_size" value="5"/>

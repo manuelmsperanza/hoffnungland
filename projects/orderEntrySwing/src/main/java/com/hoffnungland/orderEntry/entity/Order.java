@@ -1,7 +1,9 @@
 package com.hoffnungland.orderEntry.entity;
 
 import java.time.DayOfWeek;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -9,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -71,6 +74,9 @@ public class Order {
 	
 	@ManyToOne
 	private Agent seller;
+	
+	@OneToMany(mappedBy="orderItems", cascade = CascadeType.ALL, orphanRemoval = true)
+	List<Item> itemList;
 	
 	public long getId() {
 		return id;
@@ -175,7 +181,17 @@ public class Order {
 	public void setSeller(Agent seller) {
 		this.seller = seller;
 	}
-
+	
+	public void addItem(Item item) {
+		this.itemList.add(item);
+		item.setOrderItems(this);
+	}
+	
+	public void removeItem(Item item) {
+		this.itemList.remove(item);
+		item.setOrderItems(null);
+	}
+	
 	public void copyCustomerInformation() {
 		this.IBAN = this.customerOrder.getIBAN();
 		this.paymentType = this.customerOrder.getPreferredPaymentType();
