@@ -76,7 +76,7 @@ public class Order {
 	private Agent seller;
 	
 	@OneToMany(mappedBy="orderItems", cascade = CascadeType.ALL, orphanRemoval = true)
-	List<Item> itemList;
+	private List<Item> itemList;
 	
 	public long getId() {
 		return id;
@@ -182,6 +182,14 @@ public class Order {
 		this.seller = seller;
 	}
 	
+	public List<Item> getItemList() {
+		return itemList;
+	}
+
+	public void setItemList(List<Item> itemList) {
+		this.itemList = itemList;
+	}
+
 	public void addItem(Item item) {
 		this.itemList.add(item);
 		item.setOrderItems(this);

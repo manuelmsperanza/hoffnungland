@@ -89,7 +89,7 @@ public class App {
 		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Item.class);
 		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Order.class);
 		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Product.class);
-		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Product.class);
+		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.ProductCategory.class);
 		
 		Metadata metadata = sources.buildMetadata();
 

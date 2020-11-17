@@ -1,12 +1,17 @@
 package com.hoffnungland.orderEntry.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import org.h2.util.StringUtils;
@@ -52,6 +57,9 @@ public class Customer {
 	
 	@ManyToOne
 	private Address deliveryAddress;
+	
+	@OneToMany(mappedBy="customerOrder", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)
+	private List<Order> orderList;
 	
 	public long getId() {
 		return id;
@@ -133,10 +141,26 @@ public class Customer {
 		this.deliveryAddress = deliveryAddress;
 	}
 
+	public List<Order> getOrderList() {
+		return orderList;
+	}
+
+	public void setOrderList(List<Order> orderList) {
+		this.orderList = orderList;
+	}
+
+	public void addOrder(Order order) {
+		this.orderList.add(order);
+		order.setCustomerOrder(this);
+	}
+	
+	public void removeOrder(Order order) {
+		this.orderList.remove(order);
+		order.setCustomerOrder(null);
+	}
+	
 	public String getFiscalId() {
-		
 		return StringUtils.isNullOrEmpty(this.vatCode) ? this.fiscalCode : this.vatCode;
-		
 	}
 	
 }

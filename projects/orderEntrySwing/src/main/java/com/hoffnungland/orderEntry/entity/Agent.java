@@ -45,9 +45,6 @@ public class Agent {
 	@OneToMany(mappedBy="referent", fetch=FetchType.LAZY)
 	private List<Customer> customerList;
 	
-	@OneToMany(mappedBy="seller", fetch=FetchType.LAZY)
-	private List<Order> orderList;
-	
 	public long getId() {
 		return id;
 	}
@@ -92,16 +89,8 @@ public class Agent {
 		return customerList;
 	}
 
-	public List<Order> getOrderList() {
-		return orderList;
-	}
-
 	public void setCustomerList(List<Customer> customerList) {
 		this.customerList = customerList;
-	}
-
-	public void setOrderList(List<Order> orderList) {
-		this.orderList = orderList;
 	}
 
 	@Override
@@ -135,14 +124,5 @@ public class Agent {
 		this.customerList.remove(customer);
 		customer.setReferent(null);
 	}
-	
-	public void addOrder(Order order) {
-		this.orderList.add(order);
-		order.setSeller(this);
-	}
-	
-	public void removeOrder(Order order) {
-		this.orderList.remove(order);
-		order.setSeller(null);
-	}
+
 }
