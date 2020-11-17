@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
-    <persistence-unit name="Demo">
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd" version="2.2">
+    <persistence-unit name="orderEntryDb">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
         <!-- Define the classes -->
         <class>com.hoffnungland.orderEntry.entity.Address</class>
         <class>com.hoffnungland.orderEntry.entity.Agent</class>
@@ -11,18 +10,14 @@
         <class>com.hoffnungland.orderEntry.entity.Order</class>
         <class>com.hoffnungland.orderEntry.entity.Product</class>
         <class>com.hoffnungland.orderEntry.entity.ProductCategory</class>
-
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
             <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
             <property name="hibernate.connection.url" value="jdbc:h2:tcp://localhost/~/orderEntryDb;DB_CLOSE_DELAY=-1"/>
             <property name="hibernate.connection.username" value="orderUser"/>
-
             <property name="hibernate.connection.pool_size" value="5"/>
-
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
-
             <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
         </properties>
     </persistence-unit>
