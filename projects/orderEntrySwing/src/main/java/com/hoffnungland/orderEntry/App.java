@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.io.File;
 
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,6 +23,7 @@ public class App {
 
 	private static final Logger logger = LogManager.getLogger(App.class);
 	private JFrame frame;
+	private Session session;
 
 	/**
 	 * Launch the application.
@@ -28,14 +31,21 @@ public class App {
 	public static void main(String[] args) {
 
 		logger.traceEntry();
-
+		
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| UnsupportedLookAndFeelException e) {
+			logger.error(e);
+		}
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					App window = new App();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.error(e);
 				}
 			}
 		});
@@ -60,7 +70,7 @@ public class App {
 		this.initializeHibernate();
 
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
@@ -98,8 +108,12 @@ public class App {
 		SessionFactory sessionFactory = sessionFactoryBuilder.build();
 
 		Session session = sessionFactory.openSession();
-
-		session.getTransaction().begin();
+		
+		logger.traceExit();
+	}
+	
+	private void addAgent() {
+		this.session.getTransaction().begin();
 		
 		com.hoffnungland.orderEntry.entity.Agent agent = new com.hoffnungland.orderEntry.entity.Agent();
 		agent.setUserName("manuel.m.speranza");
@@ -107,11 +121,9 @@ public class App {
 		com.hoffnungland.orderEntry.entity.Customer customer = new com.hoffnungland.orderEntry.entity.Customer();
 		customer.setReferent(agent);
 		
-		session.persist(agent);
-		session.persist(customer);
-		session.getTransaction().commit();
-
-		logger.traceExit();
+		this.session.persist(agent);
+		this.session.persist(customer);
+		this.session.getTransaction().commit();
 	}
 
 }
