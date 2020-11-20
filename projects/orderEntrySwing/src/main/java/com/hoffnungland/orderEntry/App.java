@@ -1,5 +1,6 @@
 package com.hoffnungland.orderEntry;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.io.File;
 
@@ -18,12 +19,17 @@ import org.hibernate.boot.registry.BootstrapServiceRegistry;
 import org.hibernate.boot.registry.BootstrapServiceRegistryBuilder;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
+import javax.swing.SpringLayout;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
 
 public class App {
 
 	private static final Logger logger = LogManager.getLogger(App.class);
 	private JFrame frame;
 	private Session session;
+	private JComboBox comboBox;
 
 	/**
 	 * Launch the application.
@@ -67,11 +73,30 @@ public class App {
 	private void initialize() {
 		logger.traceEntry();
 
-		this.initializeHibernate();
+		//this.initializeHibernate();
 
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		SpringLayout springLayout = new SpringLayout();
+		frame.getContentPane().setLayout(springLayout);
+		
+		JLabel companyNameLabel = new JLabel("Company Name");
+		Dimension companyNamePreferredSize = new Dimension(124, 30);
+		companyNameLabel.setPreferredSize(companyNamePreferredSize);
+		companyNameLabel.setMinimumSize(companyNamePreferredSize);
+		companyNameLabel.setMaximumSize(companyNamePreferredSize);
+		springLayout.putConstraint(SpringLayout.NORTH, companyNameLabel, 10, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, companyNameLabel, 5, SpringLayout.WEST, frame.getContentPane());
+		frame.getContentPane().add(companyNameLabel);
+		
+		comboBox = new JComboBox();
+		comboBox.setMaximumSize(new Dimension(32767, 30));
+		comboBox.setMinimumSize(new Dimension(350, 30));
+		comboBox.setPreferredSize(new Dimension(350, 30));
+		springLayout.putConstraint(SpringLayout.NORTH, comboBox, 0, SpringLayout.NORTH, companyNameLabel);
+		springLayout.putConstraint(SpringLayout.WEST, comboBox, 5, SpringLayout.EAST, companyNameLabel);
+		frame.getContentPane().add(comboBox);
 
 
 		logger.traceExit();
@@ -125,5 +150,4 @@ public class App {
 		this.session.persist(customer);
 		this.session.getTransaction().commit();
 	}
-
 }
