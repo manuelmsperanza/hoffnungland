@@ -1,9 +1,11 @@
 package com.hoffnungland.orderEntry.entity;
 
 import java.time.DayOfWeek;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -75,8 +77,8 @@ public class Order {
 	@ManyToOne
 	private Agent seller;
 	
-	@OneToMany(mappedBy="orderItems", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Item> itemList;
+	@ElementCollection
+	private List<Item> itemList = new ArrayList<Item>();
 	
 	public long getId() {
 		return id;
@@ -188,16 +190,6 @@ public class Order {
 
 	public void setItemList(List<Item> itemList) {
 		this.itemList = itemList;
-	}
-
-	public void addItem(Item item) {
-		this.itemList.add(item);
-		item.setOrderItems(this);
-	}
-	
-	public void removeItem(Item item) {
-		this.itemList.remove(item);
-		item.setOrderItems(null);
 	}
 	
 	public void copyCustomerInformation() {

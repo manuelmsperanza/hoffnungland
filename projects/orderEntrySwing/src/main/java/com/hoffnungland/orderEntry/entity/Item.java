@@ -1,39 +1,16 @@
 package com.hoffnungland.orderEntry.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
-
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
 
 /**
  * 
  * @author manuel.m.speranza
  * @version 0.1
  */
-@Entity
+@Embeddable
 public class Item {
-	
-	@Id
-	@GeneratedValue(
-		strategy=GenerationType.SEQUENCE,
-		generator="order_item_generator"
-	)
-	@GenericGenerator(
-		name = "order_item_generator",
-		strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
-		parameters = {
-			@Parameter(name = "sequence_name", value = "order_item_sequence"),
-			@Parameter(name = "initial_value", value = "1"),
-			@Parameter(name = "increment_size", value = "5"),
-			@Parameter(name = "optimizer", value = "pooled")
-		}
-	)
-	private long id;
-	
+		
 	private short quantity;
 	
 	private float discount;
@@ -43,23 +20,12 @@ public class Item {
 	private double invoicePrice;
 	
 	private double netPrice;
-	
-	@ManyToOne
-	private Order orderItems;
-	
+		
 	@ManyToOne
 	private ProductCategory productType;
 	
 	@ManyToOne
 	private Product productDetail;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public short getQuantity() {
 		return quantity;
@@ -99,14 +65,6 @@ public class Item {
 
 	public void setNetPrice(double netPrice) {
 		this.netPrice = netPrice;
-	}
-
-	public Order getOrderItems() {
-		return orderItems;
-	}
-
-	public void setOrderItems(Order orderItems) {
-		this.orderItems = orderItems;
 	}
 
 	public ProductCategory getProductType() {

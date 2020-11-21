@@ -1,5 +1,6 @@
 package com.hoffnungland.orderEntry.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -38,7 +39,7 @@ public class ProductCategory {
 	private float maxDiscount;
 	
 	@OneToMany(mappedBy="productCategory", cascade=CascadeType.ALL, orphanRemoval=true)
-	private List<Product> productList;
+	private List<Product> productList = new ArrayList<Product>();
 
 	public long getId() {
 		return id;

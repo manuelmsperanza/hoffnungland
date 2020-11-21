@@ -23,13 +23,19 @@ import javax.swing.SpringLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.swing.JButton;
+import java.awt.Rectangle;
 
 public class App {
 
 	private static final Logger logger = LogManager.getLogger(App.class);
-	private JFrame frame;
 	private Session session;
-	private JComboBox comboBox;
+	private EntityManager entityManager;
+	private JFrame frame;
+	private JComboBox companyComboBox;
 
 	/**
 	 * Launch the application.
@@ -74,6 +80,7 @@ public class App {
 		logger.traceEntry();
 
 		//this.initializeHibernate();
+		this.initializeJPA();
 
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 600);
@@ -83,20 +90,29 @@ public class App {
 		
 		JLabel companyNameLabel = new JLabel("Company Name");
 		Dimension companyNamePreferredSize = new Dimension(124, 30);
-		companyNameLabel.setPreferredSize(companyNamePreferredSize);
-		companyNameLabel.setMinimumSize(companyNamePreferredSize);
-		companyNameLabel.setMaximumSize(companyNamePreferredSize);
+		companyNameLabel.setPreferredSize(new Dimension(90, 25));
+		companyNameLabel.setMinimumSize(new Dimension(80, 25));
+		companyNameLabel.setMaximumSize(new Dimension(100, 25));
 		springLayout.putConstraint(SpringLayout.NORTH, companyNameLabel, 10, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.WEST, companyNameLabel, 5, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(companyNameLabel);
 		
-		comboBox = new JComboBox();
-		comboBox.setMaximumSize(new Dimension(32767, 30));
-		comboBox.setMinimumSize(new Dimension(350, 30));
-		comboBox.setPreferredSize(new Dimension(350, 30));
-		springLayout.putConstraint(SpringLayout.NORTH, comboBox, 0, SpringLayout.NORTH, companyNameLabel);
-		springLayout.putConstraint(SpringLayout.WEST, comboBox, 5, SpringLayout.EAST, companyNameLabel);
-		frame.getContentPane().add(comboBox);
+		companyComboBox = new JComboBox();
+		companyComboBox.setBorder(UIManager.getBorder("ComboBox.border"));
+		companyComboBox.setPreferredSize(new Dimension(200, 25));
+		companyComboBox.setMaximumSize(new Dimension(32767, 25));
+		companyComboBox.setMinimumSize(new Dimension(150, 25));
+		springLayout.putConstraint(SpringLayout.NORTH, companyComboBox, 0, SpringLayout.NORTH, companyNameLabel);
+		springLayout.putConstraint(SpringLayout.WEST, companyComboBox, 5, SpringLayout.EAST, companyNameLabel);
+		frame.getContentPane().add(companyComboBox);
+		
+		JButton newCustomerButton = new JButton("+");
+		springLayout.putConstraint(SpringLayout.NORTH, newCustomerButton, 0, SpringLayout.NORTH, companyNameLabel);
+		springLayout.putConstraint(SpringLayout.WEST, newCustomerButton, 5, SpringLayout.EAST, companyComboBox);
+		newCustomerButton.setPreferredSize(new Dimension(41, 25));
+		newCustomerButton.setMinimumSize(new Dimension(41, 25));
+		newCustomerButton.setMaximumSize(new Dimension(41, 25));
+		frame.getContentPane().add(newCustomerButton);
 
 
 		logger.traceExit();
@@ -111,7 +127,7 @@ public class App {
 
 		StandardServiceRegistryBuilder standardRegistryBuilder = new StandardServiceRegistryBuilder( bootstrapRegistry );
 		
-		String resourceName = "./src/main/resources/hibernate.cfg.xml";
+		String resourceName = "hibernate.cfg.xml";
 		standardRegistryBuilder = standardRegistryBuilder.configure(new File(resourceName));
 		//ServiceRegistry standardRegistry = standardRegistryBuilder.configure(new File("hibernate.cfg.xml")).build();
 		ServiceRegistry standardRegistry = standardRegistryBuilder.build();
@@ -135,6 +151,28 @@ public class App {
 		Session session = sessionFactory.openSession();
 		
 		logger.traceExit();
+	}
+	
+	private void initializeJPA() {
+		logger.traceEntry();
+		
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( "orderEntryDb" );
+		
+		this.entityManager = entityManagerFactory.createEntityManager();
+		
+		this.entityManager.getTransaction().begin();
+		com.hoffnungland.orderEntry.entity.Agent agent = new com.hoffnungland.orderEntry.entity.Agent();
+		agent.setUserName("manuel.m.speranza");
+		
+		com.hoffnungland.orderEntry.entity.Customer customer = new com.hoffnungland.orderEntry.entity.Customer();
+		customer.setReferent(agent);
+		
+		this.entityManager.persist(agent);
+		this.entityManager.persist(customer);
+		this.entityManager.getTransaction().commit();
+		
+		logger.traceExit();
+		
 	}
 	
 	private void addAgent() {

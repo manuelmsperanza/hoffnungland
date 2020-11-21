@@ -1,5 +1,6 @@
 package com.hoffnungland.orderEntry.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -59,7 +60,7 @@ public class Customer {
 	private Address deliveryAddress;
 	
 	@OneToMany(mappedBy="customerOrder", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)
-	private List<Order> orderList;
+	private List<Order> orderList = new ArrayList<Order>();
 	
 	public long getId() {
 		return id;

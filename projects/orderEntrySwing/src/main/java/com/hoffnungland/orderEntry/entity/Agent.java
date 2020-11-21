@@ -1,5 +1,6 @@
 package com.hoffnungland.orderEntry.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,7 +44,7 @@ public class Agent {
 	private String email;
 	
 	@OneToMany(mappedBy="referent", fetch=FetchType.LAZY)
-	private List<Customer> customerList;
+	private List<Customer> customerList = new ArrayList<Customer>();
 	
 	public long getId() {
 		return id;
