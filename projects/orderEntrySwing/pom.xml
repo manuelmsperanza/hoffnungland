@@ -37,19 +37,18 @@
 			</plugin>
   		</plugins>
   		<resources>
-			<resource>
+  			<resource>
 				<directory>src/main/resources</directory>
-				<targetPath>${project.build.directory}</targetPath>
+				<targetPath>${project.build.outputDirectory}</targetPath>
 				<includes>
 					<include>log4j2.xml</include>
-					<include>hibernate.cfg.xml</include>
 					<include>META-INF/persistence.xml</include>
 				</includes>
 			</resource>
 			<resource>
 				<directory>${basedir}</directory>
 				<includes>
-					<include>etc/**</include>
+					<include>hibernate.cfg.xml</include>
 				</includes>
 				<targetPath>${project.build.directory}</targetPath>
 			</resource>

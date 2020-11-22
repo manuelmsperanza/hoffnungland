@@ -150,6 +150,8 @@ public class App {
 
 		Session session = sessionFactory.openSession();
 		
+		this.addAgent();
+		
 		logger.traceExit();
 	}
 	
@@ -179,7 +181,7 @@ public class App {
 		this.session.getTransaction().begin();
 		
 		com.hoffnungland.orderEntry.entity.Agent agent = new com.hoffnungland.orderEntry.entity.Agent();
-		agent.setUserName("manuel.m.speranza");
+		agent.setUserName("valentina.desantis");
 		
 		com.hoffnungland.orderEntry.entity.Customer customer = new com.hoffnungland.orderEntry.entity.Customer();
 		customer.setReferent(agent);
