@@ -10,27 +10,26 @@ import javax.swing.JOptionPane;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.hoffnungland.orderEntry.entity.Agent;
+
 public class AgentDetailActionListener implements ActionListener {
 	
 	private static final Logger logger = LogManager.getLogger(AgentDetailActionListener.class);
 	private JFrame frame;
+	private Agent agent;
 
-	public AgentDetailActionListener(JFrame frame) {
+	public AgentDetailActionListener(JFrame frame, Agent agent) {
 		this.frame = frame;
+		this.agent = agent;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		logger.traceEntry();
 		
-		AgentDetailPanel newAgentPanel = new AgentDetailPanel();
-		int option = JOptionPane.showOptionDialog(this.frame, newAgentPanel, "Agent Details", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
-		if(option == JOptionPane.OK_OPTION) { // pressing OK button
-			
-		} else {
-			logger.traceExit();
-			return;
-		}
+		AgentDetailDialog agentDetailDialog = new AgentDetailDialog(frame, agent);
+		agentDetailDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		agentDetailDialog.setVisible(true);
 		
 		logger.traceExit();
 	}

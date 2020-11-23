@@ -7,16 +7,62 @@ import javax.swing.JTextField;
 import java.awt.Dimension;
 import javax.swing.SwingConstants;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputMethodListener;
+import java.awt.event.InputMethodEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+
 public class AgentDetailPanel extends JPanel {
+	
+	private static final Logger logger = LogManager.getLogger(AgentDetailPanel.class);
+	
 	private JTextField usernameTextField;
 	private JTextField emailTextField;
 	private JTextField nameTextField;
 	private JTextField surnameTextField;
+	
+	public JTextField getUsernameTextField() {
+		return usernameTextField;
+	}
+
+	public void setUsernameTextField(JTextField usernameTextField) {
+		this.usernameTextField = usernameTextField;
+	}
+
+	public JTextField getEmailTextField() {
+		return emailTextField;
+	}
+
+	public void setEmailTextField(JTextField emailTextField) {
+		this.emailTextField = emailTextField;
+	}
+
+	public JTextField getNameTextField() {
+		return nameTextField;
+	}
+
+	public void setNameTextField(JTextField nameTextField) {
+		this.nameTextField = nameTextField;
+	}
+
+	public JTextField getSurnameTextField() {
+		return surnameTextField;
+	}
+
+	public void setSurnameTextField(JTextField surnameTextField) {
+		this.surnameTextField = surnameTextField;
+	}
+
 
 	/**
 	 * Create the panel.
+	 * @param agentDetailDialog 
 	 */
-	public AgentDetailPanel() {
+	public AgentDetailPanel(AgentDetailDialog agentDetailDialog) {
 		setMinimumSize(new Dimension(555, 85));
 		setPreferredSize(new Dimension(555, 85));
 		SpringLayout springLayout = new SpringLayout();
@@ -63,6 +109,7 @@ public class AgentDetailPanel extends JPanel {
 		add(nameLabel);
 		
 		nameTextField = new JTextField();
+
 		nameLabel.setLabelFor(nameTextField);
 		springLayout.putConstraint(SpringLayout.NORTH, nameTextField, 0, SpringLayout.NORTH, nameLabel);
 		springLayout.putConstraint(SpringLayout.WEST, nameTextField, 0, SpringLayout.WEST, usernameTextField);

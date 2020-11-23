@@ -116,6 +116,11 @@ public class Agent {
 		return true;
 	}
 	
+	@Override
+	public String toString() {
+		return userName;
+	}
+
 	public void addCustomer(Customer customer) {
 		this.customerList.add(customer);
 		customer.setReferent(this);

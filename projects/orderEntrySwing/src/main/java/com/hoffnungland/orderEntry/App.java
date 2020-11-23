@@ -19,6 +19,10 @@ import org.hibernate.boot.registry.BootstrapServiceRegistry;
 import org.hibernate.boot.registry.BootstrapServiceRegistryBuilder;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
+
+import com.hoffnungland.orderEntry.entity.Agent;
+import com.hoffnungland.orderEntry.entity.Customer;
+
 import javax.swing.SpringLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -42,8 +46,9 @@ public class App {
 	private Session session;
 	private EntityManager entityManager;
 	private JFrame frame;
-	private JComboBox companyComboBox;
-	private JComboBox agentComboBox;
+	private JComboBox<Customer> companyComboBox;
+	private JComboBox<Agent> agentComboBox;
+	private Agent agent;
 
 	/**
 	 * Launch the application.
@@ -66,6 +71,7 @@ public class App {
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					logger.error(e);
+					e.printStackTrace();
 				}
 			}
 		});
@@ -88,7 +94,7 @@ public class App {
 		logger.traceEntry();
 
 		//this.initializeHibernate();
-		//this.initializeJPA();
+		this.initializeJPA();
 
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 600);
@@ -98,7 +104,7 @@ public class App {
 		
 		JLabel companyNameLabel = new JLabel("Company Name");
 		companyNameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		Dimension companyNamePreferredSize = new Dimension(124, 30);
+		
 		companyNameLabel.setPreferredSize(new Dimension(90, 25));
 		companyNameLabel.setMinimumSize(new Dimension(80, 25));
 		companyNameLabel.setMaximumSize(new Dimension(100, 25));
@@ -141,11 +147,14 @@ public class App {
 		agentComboBox.setPreferredSize(new Dimension(200, 25));
 		agentComboBox.setMinimumSize(new Dimension(150, 25));
 		agentComboBox.setBorder(UIManager.getBorder("ComboBox.border"));
+		
+		this.retrieveAgents();
+		
 		springLayout.putConstraint(SpringLayout.NORTH, agentComboBox, 0, SpringLayout.NORTH, companyNameLabel);
 		frame.getContentPane().add(agentComboBox);
 		
 		JButton newAgentButton = new JButton("+");
-		newAgentButton.addActionListener(new AgentDetailActionListener(frame));
+		newAgentButton.addActionListener(new AgentDetailActionListener(frame, agent));
 		springLayout.putConstraint(SpringLayout.EAST, agentComboBox, -5, SpringLayout.WEST, newAgentButton);
 		springLayout.putConstraint(SpringLayout.EAST, newAgentButton, -5, SpringLayout.EAST, frame.getContentPane());
 		newAgentButton.setPreferredSize(new Dimension(41, 25));
@@ -154,7 +163,12 @@ public class App {
 		springLayout.putConstraint(SpringLayout.NORTH, newAgentButton, 0, SpringLayout.NORTH, companyNameLabel);
 		frame.getContentPane().add(newAgentButton);
 
+		logger.traceExit();
+	}
 
+	private void retrieveAgents() {
+		logger.traceEntry();
+		
 		logger.traceExit();
 	}
 
@@ -175,10 +189,10 @@ public class App {
 		MetadataSources sources = new MetadataSources(standardRegistry);
 
 		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Agent.class);
-		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Address.class);
 		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Customer.class);
-		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Item.class);
+		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Address.class);
 		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Order.class);
+		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Item.class);
 		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Product.class);
 		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.ProductCategory.class);
 		
@@ -188,9 +202,8 @@ public class App {
 
 		SessionFactory sessionFactory = sessionFactoryBuilder.build();
 
-		Session session = sessionFactory.openSession();
+		session = sessionFactory.openSession();
 		
-		this.addAgent();
 		
 		logger.traceExit();
 	}
@@ -202,22 +215,11 @@ public class App {
 		
 		this.entityManager = entityManagerFactory.createEntityManager();
 		
-		this.entityManager.getTransaction().begin();
-		com.hoffnungland.orderEntry.entity.Agent agent = new com.hoffnungland.orderEntry.entity.Agent();
-		agent.setUserName("manuel.m.speranza");
-		
-		com.hoffnungland.orderEntry.entity.Customer customer = new com.hoffnungland.orderEntry.entity.Customer();
-		customer.setReferent(agent);
-		
-		this.entityManager.persist(agent);
-		this.entityManager.persist(customer);
-		this.entityManager.getTransaction().commit();
-		
 		logger.traceExit();
 		
 	}
 	
-	private void addAgent() {
+	private void addAgentHbn() {
 		this.session.getTransaction().begin();
 		
 		com.hoffnungland.orderEntry.entity.Agent agent = new com.hoffnungland.orderEntry.entity.Agent();
@@ -230,12 +232,18 @@ public class App {
 		this.session.persist(customer);
 		this.session.getTransaction().commit();
 	}
-	private class SwingAction extends AbstractAction {
-		public SwingAction() {
-			putValue(NAME, "SwingAction");
-			putValue(SHORT_DESCRIPTION, "Some short description");
-		}
-		public void actionPerformed(ActionEvent e) {
-		}
+	
+	private void addAgentJpa(String name, String surname, String email, String userName) {
+		
+		this.entityManager.getTransaction().begin();
+		this.agent = new com.hoffnungland.orderEntry.entity.Agent();
+		this.agent.setEmail(email);
+		this.agent.setName(name);
+		this.agent.setSurname(surname);
+		this.agent.setUserName(userName);
+	
+		this.entityManager.persist(this.agent);
+		this.entityManager.getTransaction().commit();
+		
 	}
 }

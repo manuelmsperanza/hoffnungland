@@ -59,8 +59,8 @@ public class Customer {
 	@ManyToOne
 	private Address deliveryAddress;
 	
-	@OneToMany(mappedBy="customerOrder", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)
-	private List<Order> orderList = new ArrayList<Order>();
+	/*@OneToMany(mappedBy="customerOrder", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)
+	private List<Order> orderList = new ArrayList<Order>();*/
 	
 	public long getId() {
 		return id;
@@ -142,15 +142,20 @@ public class Customer {
 		this.deliveryAddress = deliveryAddress;
 	}
 
-	public List<Order> getOrderList() {
+	/*public List<Order> getOrderList() {
 		return orderList;
 	}
 
 	public void setOrderList(List<Order> orderList) {
 		this.orderList = orderList;
+	}*/
+	
+	@Override
+	public String toString() {
+		return companyName;
 	}
 
-	public void addOrder(Order order) {
+	/*public void addOrder(Order order) {
 		this.orderList.add(order);
 		order.setCustomerOrder(this);
 	}
@@ -158,7 +163,7 @@ public class Customer {
 	public void removeOrder(Order order) {
 		this.orderList.remove(order);
 		order.setCustomerOrder(null);
-	}
+	}*/
 	
 	public String getFiscalId() {
 		return StringUtils.isNullOrEmpty(this.vatCode) ? this.fiscalCode : this.vatCode;
