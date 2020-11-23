@@ -28,6 +28,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JButton;
 import java.awt.Rectangle;
+import javax.swing.SwingConstants;
+import java.awt.Component;
+import javax.swing.Box;
+import javax.swing.AbstractAction;
+import java.awt.event.ActionEvent;
+import javax.swing.Action;
+import java.awt.event.ActionListener;
 
 public class App {
 
@@ -36,6 +43,7 @@ public class App {
 	private EntityManager entityManager;
 	private JFrame frame;
 	private JComboBox companyComboBox;
+	private JComboBox agentComboBox;
 
 	/**
 	 * Launch the application.
@@ -80,7 +88,7 @@ public class App {
 		logger.traceEntry();
 
 		//this.initializeHibernate();
-		this.initializeJPA();
+		//this.initializeJPA();
 
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 600);
@@ -89,6 +97,7 @@ public class App {
 		frame.getContentPane().setLayout(springLayout);
 		
 		JLabel companyNameLabel = new JLabel("Company Name");
+		companyNameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		Dimension companyNamePreferredSize = new Dimension(124, 30);
 		companyNameLabel.setPreferredSize(new Dimension(90, 25));
 		companyNameLabel.setMinimumSize(new Dimension(80, 25));
@@ -98,21 +107,52 @@ public class App {
 		frame.getContentPane().add(companyNameLabel);
 		
 		companyComboBox = new JComboBox();
+		springLayout.putConstraint(SpringLayout.WEST, companyComboBox, 5, SpringLayout.EAST, companyNameLabel);
+		companyNameLabel.setLabelFor(companyComboBox);
 		companyComboBox.setBorder(UIManager.getBorder("ComboBox.border"));
 		companyComboBox.setPreferredSize(new Dimension(200, 25));
 		companyComboBox.setMaximumSize(new Dimension(32767, 25));
 		companyComboBox.setMinimumSize(new Dimension(150, 25));
 		springLayout.putConstraint(SpringLayout.NORTH, companyComboBox, 0, SpringLayout.NORTH, companyNameLabel);
-		springLayout.putConstraint(SpringLayout.WEST, companyComboBox, 5, SpringLayout.EAST, companyNameLabel);
 		frame.getContentPane().add(companyComboBox);
 		
 		JButton newCustomerButton = new JButton("+");
+		springLayout.putConstraint(SpringLayout.EAST, companyComboBox, -5, SpringLayout.WEST, newCustomerButton);
 		springLayout.putConstraint(SpringLayout.NORTH, newCustomerButton, 0, SpringLayout.NORTH, companyNameLabel);
-		springLayout.putConstraint(SpringLayout.WEST, newCustomerButton, 5, SpringLayout.EAST, companyComboBox);
 		newCustomerButton.setPreferredSize(new Dimension(41, 25));
 		newCustomerButton.setMinimumSize(new Dimension(41, 25));
 		newCustomerButton.setMaximumSize(new Dimension(41, 25));
 		frame.getContentPane().add(newCustomerButton);
+		
+		JLabel agentNameLabel = new JLabel("Agent");
+		springLayout.putConstraint(SpringLayout.WEST, agentNameLabel, 400, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, newCustomerButton, -5, SpringLayout.WEST, agentNameLabel);
+		springLayout.putConstraint(SpringLayout.WEST, agentNameLabel, 5, SpringLayout.HORIZONTAL_CENTER, frame.getContentPane());
+		agentNameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+		agentNameLabel.setPreferredSize(new Dimension(90, 25));
+		agentNameLabel.setMinimumSize(new Dimension(80, 25));
+		agentNameLabel.setMaximumSize(new Dimension(100, 25));
+		springLayout.putConstraint(SpringLayout.NORTH, agentNameLabel, 0, SpringLayout.NORTH, companyNameLabel);
+		frame.getContentPane().add(agentNameLabel);
+		
+		agentComboBox = new JComboBox();
+		agentNameLabel.setLabelFor(agentComboBox);
+		springLayout.putConstraint(SpringLayout.WEST, agentComboBox, 5, SpringLayout.EAST, agentNameLabel);
+		agentComboBox.setPreferredSize(new Dimension(200, 25));
+		agentComboBox.setMinimumSize(new Dimension(150, 25));
+		agentComboBox.setBorder(UIManager.getBorder("ComboBox.border"));
+		springLayout.putConstraint(SpringLayout.NORTH, agentComboBox, 0, SpringLayout.NORTH, companyNameLabel);
+		frame.getContentPane().add(agentComboBox);
+		
+		JButton newAgentButton = new JButton("+");
+		newAgentButton.addActionListener(new AgentDetailActionListener(frame));
+		springLayout.putConstraint(SpringLayout.EAST, agentComboBox, -5, SpringLayout.WEST, newAgentButton);
+		springLayout.putConstraint(SpringLayout.EAST, newAgentButton, -5, SpringLayout.EAST, frame.getContentPane());
+		newAgentButton.setPreferredSize(new Dimension(41, 25));
+		newAgentButton.setMinimumSize(new Dimension(41, 25));
+		newAgentButton.setMaximumSize(new Dimension(41, 25));
+		springLayout.putConstraint(SpringLayout.NORTH, newAgentButton, 0, SpringLayout.NORTH, companyNameLabel);
+		frame.getContentPane().add(newAgentButton);
 
 
 		logger.traceExit();
@@ -189,5 +229,13 @@ public class App {
 		this.session.persist(agent);
 		this.session.persist(customer);
 		this.session.getTransaction().commit();
+	}
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "SwingAction");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
+		}
 	}
 }
