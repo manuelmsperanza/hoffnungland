@@ -15,13 +15,19 @@ import com.hoffnungland.orderEntry.entity.Agent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class AgentDetailDialog extends JDialog {
+public class AgentDetailDialog extends JDialog implements ActionListener {
 	
 	private static final Logger logger = LogManager.getLogger(AgentDetailDialog.class);
 	
 	private final AgentDetailPanel agentDetailPanel;
 	private JButton okButton;
-
+	private String resultAction;
+	private Agent agent;
+	
+	public String getResultAction() {
+		return resultAction;
+	}
+	
 	/**
 	 * Launch the application.
 	 */
@@ -40,9 +46,18 @@ public class AgentDetailDialog extends JDialog {
 	 */
 	public AgentDetailDialog(Frame owner, Agent agent) {
 		super(owner, true);
+		this.agent = agent;
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		this.agentDetailPanel = new AgentDetailPanel(this);
+		if(this.agent != null) {
+			this.agentDetailPanel.getNameTextField().setText(this.agent.getName());
+			this.agentDetailPanel.getSurnameTextField().setText(this.agent.getSurname());
+			this.agentDetailPanel.getUsernameTextField().setText(this.agent.getUserName());
+			this.agentDetailPanel.getUsernameTextField().setEnabled(false);
+			this.agentDetailPanel.getEmailTextField().setText(this.agent.getEmail());
+		}
+		
 		getContentPane().add(agentDetailPanel, BorderLayout.CENTER);
 		{
 			JPanel buttonPane = new JPanel();
@@ -50,13 +65,8 @@ public class AgentDetailDialog extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				okButton = new JButton("OK");
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						logger.traceEntry();
-						dispose();
-						logger.traceExit();
-					}
-				});
+				
+				okButton.addActionListener(this);
 				okButton.setActionCommand("OK");
 				this.checkOkButton();
 				buttonPane.add(okButton);
@@ -64,13 +74,7 @@ public class AgentDetailDialog extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
-				cancelButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						logger.traceEntry();
-						dispose();
-						logger.traceExit();
-					}
-				});
+				cancelButton.addActionListener(this);
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
@@ -93,5 +97,26 @@ public class AgentDetailDialog extends JDialog {
 		
 		logger.traceExit();
 	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		logger.traceEntry();
+		this.resultAction = e.getActionCommand();
+		logger.debug(this.resultAction);
+		if("OK".equals(e.getActionCommand())) {
+			if(this.agent == null) {
+				this.agent = new Agent();
+				this.agent.setUserName(this.agentDetailPanel.getUsernameTextField().getText());
+			}
+			
+			this.agent.setName(this.agentDetailPanel.getNameTextField().getText());
+			this.agent.setSurname(this.agentDetailPanel.getSurnameTextField().getText());
+			this.agent.setEmail(this.agentDetailPanel.getEmailTextField().getText());
+		}
+		
+		this.dispose();
+		logger.traceExit();
 
+	}
+	
 }

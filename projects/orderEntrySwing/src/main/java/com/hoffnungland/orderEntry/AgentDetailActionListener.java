@@ -15,21 +15,22 @@ import com.hoffnungland.orderEntry.entity.Agent;
 public class AgentDetailActionListener implements ActionListener {
 	
 	private static final Logger logger = LogManager.getLogger(AgentDetailActionListener.class);
-	private JFrame frame;
-	private Agent agent;
+	private App app;
 
-	public AgentDetailActionListener(JFrame frame, Agent agent) {
-		this.frame = frame;
-		this.agent = agent;
+	public AgentDetailActionListener(App app) {
+		this.app = app;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		logger.traceEntry();
 		
-		AgentDetailDialog agentDetailDialog = new AgentDetailDialog(frame, agent);
+		AgentDetailDialog agentDetailDialog = new AgentDetailDialog(this.app.getFrame(), this.app.getAgent());
 		agentDetailDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		agentDetailDialog.setVisible(true);
+		if("OK".equals(agentDetailDialog.getResultAction())) {
+			this.app.saveAgent();
+		}
 		
 		logger.traceExit();
 	}

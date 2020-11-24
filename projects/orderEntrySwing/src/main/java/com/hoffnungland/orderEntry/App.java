@@ -49,6 +49,22 @@ public class App {
 	private JComboBox<Customer> companyComboBox;
 	private JComboBox<Agent> agentComboBox;
 	private Agent agent;
+	
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+	
+	public Agent getAgent() {
+		return agent;
+	}
+	
+	public void setAgent(Agent agent) {
+		this.agent = agent;
+	}
 
 	/**
 	 * Launch the application.
@@ -112,7 +128,7 @@ public class App {
 		springLayout.putConstraint(SpringLayout.WEST, companyNameLabel, 5, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(companyNameLabel);
 		
-		companyComboBox = new JComboBox();
+		companyComboBox = new JComboBox<Customer>();
 		springLayout.putConstraint(SpringLayout.WEST, companyComboBox, 5, SpringLayout.EAST, companyNameLabel);
 		companyNameLabel.setLabelFor(companyComboBox);
 		companyComboBox.setBorder(UIManager.getBorder("ComboBox.border"));
@@ -141,7 +157,7 @@ public class App {
 		springLayout.putConstraint(SpringLayout.NORTH, agentNameLabel, 0, SpringLayout.NORTH, companyNameLabel);
 		frame.getContentPane().add(agentNameLabel);
 		
-		agentComboBox = new JComboBox();
+		agentComboBox = new JComboBox<Agent>();
 		agentNameLabel.setLabelFor(agentComboBox);
 		springLayout.putConstraint(SpringLayout.WEST, agentComboBox, 5, SpringLayout.EAST, agentNameLabel);
 		agentComboBox.setPreferredSize(new Dimension(200, 25));
@@ -154,7 +170,7 @@ public class App {
 		frame.getContentPane().add(agentComboBox);
 		
 		JButton newAgentButton = new JButton("+");
-		newAgentButton.addActionListener(new AgentDetailActionListener(frame, agent));
+		newAgentButton.addActionListener(new AgentDetailActionListener(this));
 		springLayout.putConstraint(SpringLayout.EAST, agentComboBox, -5, SpringLayout.WEST, newAgentButton);
 		springLayout.putConstraint(SpringLayout.EAST, newAgentButton, -5, SpringLayout.EAST, frame.getContentPane());
 		newAgentButton.setPreferredSize(new Dimension(41, 25));
@@ -220,6 +236,7 @@ public class App {
 	}
 	
 	private void addAgentHbn() {
+		logger.traceEntry();
 		this.session.getTransaction().begin();
 		
 		com.hoffnungland.orderEntry.entity.Agent agent = new com.hoffnungland.orderEntry.entity.Agent();
@@ -231,10 +248,11 @@ public class App {
 		this.session.persist(agent);
 		this.session.persist(customer);
 		this.session.getTransaction().commit();
+		logger.traceExit();
 	}
 	
 	private void addAgentJpa(String name, String surname, String email, String userName) {
-		
+		logger.traceEntry();
 		this.entityManager.getTransaction().begin();
 		this.agent = new com.hoffnungland.orderEntry.entity.Agent();
 		this.agent.setEmail(email);
@@ -244,6 +262,17 @@ public class App {
 	
 		this.entityManager.persist(this.agent);
 		this.entityManager.getTransaction().commit();
+		logger.traceExit();
+	}
+
+	public void saveAgent() {
+		logger.traceEntry();
+		this.entityManager.getTransaction().begin();
+		logger.info("Persist agent");
+		this.entityManager.persist(this.agent);
+		this.entityManager.getTransaction().commit();
+		this.agentComboBox.addItem(this.agent);
+		logger.traceExit();
 		
 	}
 }

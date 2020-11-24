@@ -29,34 +29,17 @@ public class AgentDetailPanel extends JPanel {
 		return usernameTextField;
 	}
 
-	public void setUsernameTextField(JTextField usernameTextField) {
-		this.usernameTextField = usernameTextField;
-	}
-
 	public JTextField getEmailTextField() {
 		return emailTextField;
-	}
-
-	public void setEmailTextField(JTextField emailTextField) {
-		this.emailTextField = emailTextField;
 	}
 
 	public JTextField getNameTextField() {
 		return nameTextField;
 	}
 
-	public void setNameTextField(JTextField nameTextField) {
-		this.nameTextField = nameTextField;
-	}
-
 	public JTextField getSurnameTextField() {
 		return surnameTextField;
 	}
-
-	public void setSurnameTextField(JTextField surnameTextField) {
-		this.surnameTextField = surnameTextField;
-	}
-
 
 	/**
 	 * Create the panel.
