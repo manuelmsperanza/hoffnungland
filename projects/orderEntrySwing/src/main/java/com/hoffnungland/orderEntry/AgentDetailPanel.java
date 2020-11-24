@@ -68,9 +68,46 @@ public class AgentDetailPanel extends JPanel {
 		SpringLayout springLayout = new SpringLayout();
 		setLayout(springLayout);
 		
+		JLabel nameLabel = new JLabel("name");
+		springLayout.putConstraint(SpringLayout.WEST, nameLabel, 10, SpringLayout.WEST, this);
+		nameLabel.setPreferredSize(new Dimension(47, 20));
+		nameLabel.setMinimumSize(new Dimension(47, 20));
+		nameLabel.setMaximumSize(new Dimension(47, 20));
+		nameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+		
+		springLayout.putConstraint(SpringLayout.NORTH, nameLabel, 10, SpringLayout.NORTH, this);
+		add(nameLabel);
+		
+		nameTextField = new JTextField();
+		springLayout.putConstraint(SpringLayout.WEST, nameTextField, 5, SpringLayout.EAST, nameLabel);
+
+		nameLabel.setLabelFor(nameTextField);
+		springLayout.putConstraint(SpringLayout.NORTH, nameTextField, 0, SpringLayout.NORTH, nameLabel);
+		nameTextField.getDocument().addDocumentListener(new AgentDetailDocumentListener(agentDetailDialog));
+		add(nameTextField);
+		nameTextField.setColumns(20);
+		
+		JLabel surnameLabel = new JLabel("surname");
+		springLayout.putConstraint(SpringLayout.WEST, surnameLabel, 5, SpringLayout.EAST, nameTextField);
+		surnameLabel.setPreferredSize(new Dimension(47, 20));
+		surnameLabel.setMinimumSize(new Dimension(47, 20));
+		surnameLabel.setMaximumSize(new Dimension(47, 20));
+		surnameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+		springLayout.putConstraint(SpringLayout.NORTH, surnameLabel, 0, SpringLayout.NORTH, nameLabel);
+		add(surnameLabel);
+		
+		surnameTextField = new JTextField();
+		springLayout.putConstraint(SpringLayout.NORTH, surnameTextField, 0, SpringLayout.NORTH, nameLabel);
+		springLayout.putConstraint(SpringLayout.WEST, surnameTextField, 5, SpringLayout.EAST, surnameLabel);
+		springLayout.putConstraint(SpringLayout.EAST, surnameTextField, -10, SpringLayout.EAST, this);
+		surnameTextField.getDocument().addDocumentListener(new AgentDetailDocumentListener(agentDetailDialog));
+		add(surnameTextField);
+		surnameTextField.setColumns(30);
+		
 		JLabel usernameLabel = new JLabel("username");
 		usernameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		usernameLabel.setPreferredSize(new Dimension(47, 20));
+		springLayout.putConstraint(SpringLayout.NORTH, usernameLabel, 10, SpringLayout.SOUTH, nameLabel);
 		springLayout.putConstraint(SpringLayout.WEST, usernameLabel, 10, SpringLayout.WEST, this);
 		add(usernameLabel);
 		
@@ -78,6 +115,7 @@ public class AgentDetailPanel extends JPanel {
 		springLayout.putConstraint(SpringLayout.NORTH, usernameTextField, 0, SpringLayout.NORTH, usernameLabel);
 		springLayout.putConstraint(SpringLayout.WEST, usernameTextField, 5, SpringLayout.EAST, usernameLabel);
 		usernameLabel.setLabelFor(usernameTextField);
+		usernameTextField.getDocument().addDocumentListener(new AgentDetailDocumentListener(agentDetailDialog));
 		add(usernameTextField);
 		usernameTextField.setColumns(20);
 		
@@ -95,42 +133,9 @@ public class AgentDetailPanel extends JPanel {
 		springLayout.putConstraint(SpringLayout.NORTH, emailTextField, 0, SpringLayout.NORTH, usernameLabel);
 		springLayout.putConstraint(SpringLayout.WEST, emailTextField, 5, SpringLayout.EAST, emailLabel);
 		springLayout.putConstraint(SpringLayout.EAST, emailTextField, -10, SpringLayout.EAST, this);
+		emailTextField.getDocument().addDocumentListener(new AgentDetailDocumentListener(agentDetailDialog));
 		add(emailTextField);
 		emailTextField.setColumns(30);
 		
-		JLabel nameLabel = new JLabel("name");
-		nameLabel.setPreferredSize(new Dimension(47, 20));
-		nameLabel.setMinimumSize(new Dimension(47, 20));
-		nameLabel.setMaximumSize(new Dimension(47, 20));
-		nameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		springLayout.putConstraint(SpringLayout.NORTH, usernameLabel, 10, SpringLayout.SOUTH, nameLabel);
-		springLayout.putConstraint(SpringLayout.NORTH, nameLabel, 10, SpringLayout.NORTH, this);
-		springLayout.putConstraint(SpringLayout.WEST, nameLabel, 0, SpringLayout.WEST, usernameLabel);
-		add(nameLabel);
-		
-		nameTextField = new JTextField();
-
-		nameLabel.setLabelFor(nameTextField);
-		springLayout.putConstraint(SpringLayout.NORTH, nameTextField, 0, SpringLayout.NORTH, nameLabel);
-		springLayout.putConstraint(SpringLayout.WEST, nameTextField, 0, SpringLayout.WEST, usernameTextField);
-		add(nameTextField);
-		nameTextField.setColumns(20);
-		
-		JLabel surnameLabel = new JLabel("surname");
-		surnameLabel.setPreferredSize(new Dimension(47, 20));
-		surnameLabel.setMinimumSize(new Dimension(47, 20));
-		surnameLabel.setMaximumSize(new Dimension(47, 20));
-		surnameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		springLayout.putConstraint(SpringLayout.NORTH, surnameLabel, 0, SpringLayout.NORTH, nameLabel);
-		springLayout.putConstraint(SpringLayout.WEST, surnameLabel, 0, SpringLayout.WEST, emailLabel);
-		add(surnameLabel);
-		
-		surnameTextField = new JTextField();
-		springLayout.putConstraint(SpringLayout.NORTH, surnameTextField, 0, SpringLayout.NORTH, nameLabel);
-		springLayout.putConstraint(SpringLayout.WEST, surnameTextField, 0, SpringLayout.WEST, emailTextField);
-		springLayout.putConstraint(SpringLayout.EAST, surnameTextField, -10, SpringLayout.EAST, this);
-		add(surnameTextField);
-		surnameTextField.setColumns(30);
-
 	}
 }
