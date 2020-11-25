@@ -219,20 +219,15 @@ public class App {
 		SessionFactory sessionFactory = sessionFactoryBuilder.build();
 
 		session = sessionFactory.openSession();
-		
-		
+				
 		logger.traceExit();
 	}
 	
 	private void initializeJPA() {
 		logger.traceEntry();
-		
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( "orderEntryDb" );
-		
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( "orderEntryDb" );		
 		this.entityManager = entityManagerFactory.createEntityManager();
-		
 		logger.traceExit();
-		
 	}
 	
 	private void addAgentHbn() {
@@ -265,8 +260,9 @@ public class App {
 		logger.traceExit();
 	}
 
-	public void saveAgent() {
+	public void saveAgent(Agent agent) {
 		logger.traceEntry();
+		this.agent = agent;
 		this.entityManager.getTransaction().begin();
 		logger.info("Persist agent");
 		this.entityManager.persist(this.agent);

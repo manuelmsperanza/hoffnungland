@@ -29,7 +29,7 @@ public class AgentDetailActionListener implements ActionListener {
 		agentDetailDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		agentDetailDialog.setVisible(true);
 		if("OK".equals(agentDetailDialog.getResultAction())) {
-			this.app.saveAgent();
+			this.app.saveAgent(agentDetailDialog.getAgent());
 		}
 		
 		logger.traceExit();

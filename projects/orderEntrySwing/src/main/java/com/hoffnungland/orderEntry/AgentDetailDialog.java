@@ -24,6 +24,10 @@ public class AgentDetailDialog extends JDialog implements ActionListener {
 	private String resultAction;
 	private Agent agent;
 	
+	public Agent getAgent() {
+		return agent;
+	}
+
 	public String getResultAction() {
 		return resultAction;
 	}
