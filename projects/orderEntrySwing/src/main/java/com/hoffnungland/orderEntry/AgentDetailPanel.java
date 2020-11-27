@@ -53,9 +53,9 @@ public class AgentDetailPanel extends JPanel {
 		
 		JLabel nameLabel = new JLabel("name");
 		springLayout.putConstraint(SpringLayout.WEST, nameLabel, 10, SpringLayout.WEST, this);
-		nameLabel.setPreferredSize(new Dimension(47, 20));
-		nameLabel.setMinimumSize(new Dimension(47, 20));
-		nameLabel.setMaximumSize(new Dimension(47, 20));
+		nameLabel.setPreferredSize(new Dimension(55, 20));
+		nameLabel.setMinimumSize(new Dimension(55, 20));
+		nameLabel.setMaximumSize(new Dimension(55, 20));
 		nameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		
 		springLayout.putConstraint(SpringLayout.NORTH, nameLabel, 10, SpringLayout.NORTH, this);
@@ -88,8 +88,10 @@ public class AgentDetailPanel extends JPanel {
 		surnameTextField.setColumns(30);
 		
 		JLabel usernameLabel = new JLabel("username");
+		usernameLabel.setMaximumSize(new Dimension(55, 20));
+		usernameLabel.setMinimumSize(new Dimension(55, 20));
 		usernameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		usernameLabel.setPreferredSize(new Dimension(47, 20));
+		usernameLabel.setPreferredSize(new Dimension(55, 20));
 		springLayout.putConstraint(SpringLayout.NORTH, usernameLabel, 10, SpringLayout.SOUTH, nameLabel);
 		springLayout.putConstraint(SpringLayout.WEST, usernameLabel, 10, SpringLayout.WEST, this);
 		add(usernameLabel);

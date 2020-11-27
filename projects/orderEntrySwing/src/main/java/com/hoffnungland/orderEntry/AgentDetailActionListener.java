@@ -22,14 +22,18 @@ public class AgentDetailActionListener implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent event) {
 		logger.traceEntry();
-		
-		AgentDetailDialog agentDetailDialog = new AgentDetailDialog(this.app.getFrame(), this.app.getAgent());
-		agentDetailDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		agentDetailDialog.setVisible(true);
-		if("OK".equals(agentDetailDialog.getResultAction())) {
-			this.app.saveAgent(agentDetailDialog.getAgent());
+		try {
+			AgentDetailDialog agentDetailDialog = new AgentDetailDialog(this.app.getFrame(), this.app.getAgent());
+			agentDetailDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			agentDetailDialog.setVisible(true);
+			if("OK".equals(agentDetailDialog.getResultAction())) {
+				this.app.saveAgent(agentDetailDialog.getAgent());
+			}
+		} catch (Exception e) {
+			logger.error(e);
+			JOptionPane.showMessageDialog(this.app.getFrame(), e.getMessage(), "Exception", JOptionPane.ERROR_MESSAGE);
 		}
 		
 		logger.traceExit();
