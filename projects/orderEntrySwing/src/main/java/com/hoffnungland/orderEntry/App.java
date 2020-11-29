@@ -31,6 +31,10 @@ import javax.swing.JComboBox;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.swing.JButton;
 import java.awt.Rectangle;
 import javax.swing.SwingConstants;
@@ -47,8 +51,8 @@ public class App {
 	private Session session;
 	private EntityManager entityManager;
 	private JFrame frame;
-	private JComboBox<Customer> companyComboBox;
-	private JComboBox<Agent> agentComboBox;
+	private JComboBox<String> companyComboBox;
+	private JComboBox<String> agentComboBox;
 	private Agent agent;
 	
 	public EntityManager getEntityManager() {
@@ -129,7 +133,7 @@ public class App {
 			springLayout.putConstraint(SpringLayout.WEST, companyNameLabel, 5, SpringLayout.WEST, frame.getContentPane());
 			frame.getContentPane().add(companyNameLabel);
 			
-			companyComboBox = new JComboBox<Customer>();
+			companyComboBox = new JComboBox<String>();
 			springLayout.putConstraint(SpringLayout.WEST, companyComboBox, 5, SpringLayout.EAST, companyNameLabel);
 			companyNameLabel.setLabelFor(companyComboBox);
 			companyComboBox.setBorder(UIManager.getBorder("ComboBox.border"));
@@ -158,7 +162,7 @@ public class App {
 			springLayout.putConstraint(SpringLayout.NORTH, agentNameLabel, 0, SpringLayout.NORTH, companyNameLabel);
 			frame.getContentPane().add(agentNameLabel);
 			
-			agentComboBox = new JComboBox<Agent>();
+			agentComboBox = new JComboBox<String>();
 			agentNameLabel.setLabelFor(agentComboBox);
 			springLayout.putConstraint(SpringLayout.WEST, agentComboBox, 5, SpringLayout.EAST, agentNameLabel);
 			agentComboBox.setPreferredSize(new Dimension(200, 25));
@@ -190,6 +194,18 @@ public class App {
 
 	private void retrieveAgents() {
 		logger.traceEntry();
+		
+		CriteriaBuilder cb = this.entityManager.getCriteriaBuilder();
+		CriteriaQuery<Agent> q = cb.createQuery(Agent.class);
+		Root<Agent> c = q.from(Agent.class);
+		q.select(c);
+		
+		TypedQuery<Agent> agentListQuery = this.entityManager.createQuery(q);
+		//TypedQuery<Agent> agentListQuery = this.entityManager.createQuery("select a from Agent a", Agent.class);
+		
+		for (Agent curAgent: agentListQuery.getResultList()) {
+			this.agentComboBox.addItem(curAgent.getUserName());
+		}
 		
 		logger.traceExit();
 	}
@@ -231,7 +247,7 @@ public class App {
 	
 	private void initializeJPA() {
 		logger.traceEntry();
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( "orderEntryDb" );		
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("orderEntryDb");		
 		this.entityManager = entityManagerFactory.createEntityManager();
 		logger.traceExit();
 	}
@@ -273,7 +289,7 @@ public class App {
 		logger.info("Persist agent");
 		this.entityManager.persist(this.agent);
 		this.entityManager.getTransaction().commit();
-		this.agentComboBox.addItem(this.agent);
+		this.agentComboBox.addItem(this.agent.getUserName());
 		logger.traceExit();
 		
 	}
