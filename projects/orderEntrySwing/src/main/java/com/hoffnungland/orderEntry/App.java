@@ -354,6 +354,7 @@ public class App implements ActionListener {
 		this.entityManager.persist(this.agent);
 		this.entityManager.getTransaction().commit();
 		this.agentComboBox.addItem(this.agent.getUserName());
+		this.agentComboBox.setSelectedItem(this.agent.getUserName());
 		logger.traceExit();
 		
 	}
