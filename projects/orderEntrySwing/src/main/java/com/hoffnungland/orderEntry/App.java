@@ -348,13 +348,16 @@ public class App implements ActionListener {
 
 	private void saveAgent(Agent agent) {
 		logger.traceEntry();
-		this.agent = agent;
 		this.entityManager.getTransaction().begin();
 		logger.info("Persist agent");
-		this.entityManager.persist(this.agent);
+		this.entityManager.persist(agent);
 		this.entityManager.getTransaction().commit();
-		this.agentComboBox.addItem(this.agent.getUserName());
-		this.agentComboBox.setSelectedItem(this.agent.getUserName());
+		
+		if(this.agent == null) {
+			this.agentComboBox.addItem(agent.getUserName());
+		}
+		
+		this.agentComboBox.setSelectedItem(agent.getUserName());
 		logger.traceExit();
 		
 	}
