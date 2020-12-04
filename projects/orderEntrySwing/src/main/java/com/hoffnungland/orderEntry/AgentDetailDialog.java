@@ -87,7 +87,10 @@ public class AgentDetailDialog extends JDialog implements ActionListener {
 
 	public void checkOkButton() {
 		logger.traceEntry();
-		
+		if(this.okButton == null) {
+			logger.traceExit();
+			return;
+		}
 		
 		boolean agentEmailIsEmpty = this.agentDetailPanel.getEmailTextField().getText().isEmpty();
 		boolean agentNameIsEmpty = this.agentDetailPanel.getNameTextField().getText().isEmpty();
