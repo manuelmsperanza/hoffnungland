@@ -10,6 +10,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.h2.util.StringUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -337,7 +338,11 @@ public class App implements ActionListener {
 	private void chooseAgent(ActionEvent event) {
 		logger.traceEntry();
         String agentName = (String) this.agentComboBox.getSelectedItem();
-        this.retrieveAgent(agentName);
+        if(StringUtils.isNullOrEmpty(agentName)) {
+        	this.agent = null;
+        } else {
+        	this.retrieveAgent(agentName);
+        }
 		logger.traceExit();
 	}
 
