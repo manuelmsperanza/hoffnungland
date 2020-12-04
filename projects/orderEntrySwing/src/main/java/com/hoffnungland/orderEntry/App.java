@@ -55,12 +55,13 @@ import javax.swing.DefaultComboBoxModel;
 public class App implements ActionListener {
 
 	private static final Logger logger = LogManager.getLogger(App.class);
-	private Session session;
+	
 	private EntityManager entityManager;
 	private JFrame frmOrderEntry;
 	private JComboBox<String> companyComboBox;
 	private JComboBox<String> agentComboBox;
 	private Agent agent;
+	private Customer customer;
 	
 	public EntityManager getEntityManager() {
 		return entityManager;
@@ -121,7 +122,7 @@ public class App implements ActionListener {
 	private void initialize() {
 		logger.traceEntry();
 		try {
-			//this.initializeHibernate();
+
 			this.initializeJPA();
 			
 			frmOrderEntry = new JFrame();
@@ -224,7 +225,7 @@ public class App implements ActionListener {
 		logger.traceExit();
 	}
 	
-	public void retrieveAgent(String agentName) {
+	public Agent retrieveAgent(String agentName) {
 		logger.traceEntry();
 		
 		CriteriaBuilder cb = this.entityManager.getCriteriaBuilder();
@@ -236,83 +237,14 @@ public class App implements ActionListener {
 		
 		TypedQuery<Agent> agentListQuery = this.entityManager.createQuery(q);
 		agentListQuery.setParameter(p, agentName);
-		
-		this.agent = agentListQuery.getSingleResult();
-		
-		logger.debug(this.agent);
-		
-		logger.traceExit();
-	}
 
-	private void initializeHibernate() {
-		logger.traceEntry();
-		
-		BootstrapServiceRegistryBuilder bootstrapServiceRegistryBuilder = new BootstrapServiceRegistryBuilder();
-		
-		BootstrapServiceRegistry bootstrapRegistry = bootstrapServiceRegistryBuilder.build();
-
-		StandardServiceRegistryBuilder standardRegistryBuilder = new StandardServiceRegistryBuilder( bootstrapRegistry );
-		
-		String resourceName = "hibernate.cfg.xml";
-		standardRegistryBuilder = standardRegistryBuilder.configure(new File(resourceName));
-		//ServiceRegistry standardRegistry = standardRegistryBuilder.configure(new File("hibernate.cfg.xml")).build();
-		ServiceRegistry standardRegistry = standardRegistryBuilder.build();
-
-		MetadataSources sources = new MetadataSources(standardRegistry);
-
-		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Agent.class);
-		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Customer.class);
-		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Address.class);
-		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Order.class);
-		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Item.class);
-		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.Product.class);
-		sources.addAnnotatedClass(com.hoffnungland.orderEntry.entity.ProductCategory.class);
-		
-		Metadata metadata = sources.buildMetadata();
-
-		SessionFactoryBuilder sessionFactoryBuilder = metadata.getSessionFactoryBuilder();
-
-		SessionFactory sessionFactory = sessionFactoryBuilder.build();
-
-		session = sessionFactory.openSession();
-				
-		logger.traceExit();
+		return logger.traceExit(agentListQuery.getSingleResult());
 	}
 	
 	private void initializeJPA() {
 		logger.traceEntry();
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("orderEntryDb");		
 		this.entityManager = entityManagerFactory.createEntityManager();
-		logger.traceExit();
-	}
-	
-	private void addAgentHbn() {
-		logger.traceEntry();
-		this.session.getTransaction().begin();
-		
-		com.hoffnungland.orderEntry.entity.Agent agent = new com.hoffnungland.orderEntry.entity.Agent();
-		agent.setUserName("valentina.desantis");
-		
-		com.hoffnungland.orderEntry.entity.Customer customer = new com.hoffnungland.orderEntry.entity.Customer();
-		customer.setReferent(agent);
-		
-		this.session.persist(agent);
-		this.session.persist(customer);
-		this.session.getTransaction().commit();
-		logger.traceExit();
-	}
-	
-	private void addAgentJpa(String name, String surname, String email, String userName) {
-		logger.traceEntry();
-		this.entityManager.getTransaction().begin();
-		this.agent = new com.hoffnungland.orderEntry.entity.Agent();
-		this.agent.setEmail(email);
-		this.agent.setName(name);
-		this.agent.setSurname(surname);
-		this.agent.setUserName(userName);
-	
-		this.entityManager.persist(this.agent);
-		this.entityManager.getTransaction().commit();
 		logger.traceExit();
 	}
 	
@@ -341,7 +273,7 @@ public class App implements ActionListener {
         if(StringUtils.isNullOrEmpty(agentName)) {
         	this.agent = null;
         } else {
-        	this.retrieveAgent(agentName);
+        	this.agent = this.retrieveAgent(agentName);
         }
 		logger.traceExit();
 	}
