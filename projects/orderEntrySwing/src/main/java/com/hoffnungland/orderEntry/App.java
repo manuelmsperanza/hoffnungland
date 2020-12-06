@@ -1,56 +1,38 @@
 package com.hoffnungland.orderEntry;
 
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.io.File;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
-import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.h2.util.StringUtils;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.Metadata;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.SessionFactoryBuilder;
-import org.hibernate.boot.registry.BootstrapServiceRegistry;
-import org.hibernate.boot.registry.BootstrapServiceRegistryBuilder;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.service.ServiceRegistry;
-
-import com.hoffnungland.orderEntry.entity.Agent;
-import com.hoffnungland.orderEntry.entity.Customer;
-
-import javax.swing.SpringLayout;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 import javax.swing.JButton;
-import java.awt.Rectangle;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
-import java.awt.Component;
-import java.awt.Container;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
-import javax.swing.Box;
-import javax.swing.AbstractAction;
-import java.awt.event.ActionEvent;
-import javax.swing.Action;
-import java.awt.event.ActionListener;
-import javax.swing.DefaultComboBoxModel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.h2.util.StringUtils;
+
+import com.hoffnungland.orderEntry.entity.Agent;
+import com.hoffnungland.orderEntry.entity.Customer;
 
 public class App implements ActionListener {
 
@@ -126,6 +108,14 @@ public class App implements ActionListener {
 			this.initializeJPA();
 			
 			frmOrderEntry = new JFrame();
+			frmOrderEntry.addWindowListener(new WindowAdapter() {
+				@Override
+				public void windowClosing(WindowEvent e) {
+					logger.traceEntry();
+					entityManager.close();
+					logger.traceExit();
+				}
+			});
 			frmOrderEntry.setName("orderEntryFrame");
 			frmOrderEntry.setTitle("Order Entry");
 			frmOrderEntry.setBounds(100, 100, 800, 600);
@@ -188,16 +178,16 @@ public class App implements ActionListener {
 			springLayout.putConstraint(SpringLayout.NORTH, agentComboBox, 0, SpringLayout.NORTH, companyNameLabel);
 			frmOrderEntry.getContentPane().add(agentComboBox);
 			
-			JButton newAgentButton = new JButton("+");
-			newAgentButton.setName("agentDetailButton");
-			newAgentButton.addActionListener(this);
-			springLayout.putConstraint(SpringLayout.EAST, agentComboBox, -5, SpringLayout.WEST, newAgentButton);
-			springLayout.putConstraint(SpringLayout.EAST, newAgentButton, -5, SpringLayout.EAST, frmOrderEntry.getContentPane());
-			newAgentButton.setPreferredSize(new Dimension(41, 25));
-			newAgentButton.setMinimumSize(new Dimension(41, 25));
-			newAgentButton.setMaximumSize(new Dimension(41, 25));
-			springLayout.putConstraint(SpringLayout.NORTH, newAgentButton, 0, SpringLayout.NORTH, companyNameLabel);
-			frmOrderEntry.getContentPane().add(newAgentButton);
+			JButton agentDetailButton = new JButton("+");
+			agentDetailButton.setName("agentDetailButton");
+			agentDetailButton.addActionListener(this);
+			springLayout.putConstraint(SpringLayout.EAST, agentComboBox, -5, SpringLayout.WEST, agentDetailButton);
+			springLayout.putConstraint(SpringLayout.EAST, agentDetailButton, -5, SpringLayout.EAST, frmOrderEntry.getContentPane());
+			agentDetailButton.setPreferredSize(new Dimension(41, 25));
+			agentDetailButton.setMinimumSize(new Dimension(41, 25));
+			agentDetailButton.setMaximumSize(new Dimension(41, 25));
+			springLayout.putConstraint(SpringLayout.NORTH, agentDetailButton, 0, SpringLayout.NORTH, companyNameLabel);
+			frmOrderEntry.getContentPane().add(agentDetailButton);
 			
 		} catch (Exception e) {
 			logger.error(e);
@@ -243,7 +233,7 @@ public class App implements ActionListener {
 	
 	private void initializeJPA() {
 		logger.traceEntry();
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("orderEntryDb");		
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("orderEntryDb");
 		this.entityManager = entityManagerFactory.createEntityManager();
 		logger.traceExit();
 	}
