@@ -301,9 +301,8 @@ public class App extends WindowAdapter implements ActionListener {
 			AgentDetailDialog agentDetailDialog = new AgentDetailDialog(this.frmOrderEntry, agentDetailPanel);
 			agentDetailDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			agentDetailDialog.setVisible(true);
+			
 			if("OK".equals(agentDetailDialog.getResultAction())) {
-				
-				
 				
 				if(newAgent) {
 					this.agent = new Agent();
