@@ -287,19 +287,23 @@ public class App extends WindowAdapter implements ActionListener {
 		
 		try {
 			AgentDetailPanel agentDetailPanel = new AgentDetailPanel();
-			if(this.agent != null) {
+			
+			boolean newAgent = (this.agent == null);
+			
+			if(!newAgent) {
 				agentDetailPanel.getNameTextField().setText(this.agent.getName());
 				agentDetailPanel.getSurnameTextField().setText(this.agent.getSurname());
 				agentDetailPanel.getUsernameTextField().setText(this.agent.getUserName());
 				agentDetailPanel.getUsernameTextField().setEnabled(false);
 				agentDetailPanel.getEmailTextField().setText(this.agent.getEmail());
 			}
+			
 			AgentDetailDialog agentDetailDialog = new AgentDetailDialog(this.frmOrderEntry, agentDetailPanel);
 			agentDetailDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			agentDetailDialog.setVisible(true);
 			if("OK".equals(agentDetailDialog.getResultAction())) {
 				
-				boolean newAgent = (this.agent == null);
+				
 				
 				if(newAgent) {
 					this.agent = new Agent();
