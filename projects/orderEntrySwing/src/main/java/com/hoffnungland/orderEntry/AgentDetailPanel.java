@@ -17,7 +17,9 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
 
 public class AgentDetailPanel extends JPanel {
-	
+
+	private static final long serialVersionUID = -7570192431786289005L;
+
 	private static final Logger logger = LogManager.getLogger(AgentDetailPanel.class);
 	
 	private JTextField usernameTextField;
@@ -45,7 +47,9 @@ public class AgentDetailPanel extends JPanel {
 	 * Create the panel.
 	 * @param agentDetailDialog 
 	 */
-	public AgentDetailPanel(AgentDetailDialog agentDetailDialog) {
+	public AgentDetailPanel() {
+		logger.traceEntry();
+		
 		setMinimumSize(new Dimension(555, 85));
 		setPreferredSize(new Dimension(555, 85));
 		SpringLayout springLayout = new SpringLayout();
@@ -66,7 +70,6 @@ public class AgentDetailPanel extends JPanel {
 
 		nameLabel.setLabelFor(nameTextField);
 		springLayout.putConstraint(SpringLayout.NORTH, nameTextField, 0, SpringLayout.NORTH, nameLabel);
-		nameTextField.getDocument().addDocumentListener(new AgentDetailDocumentListener(agentDetailDialog));
 		add(nameTextField);
 		nameTextField.setColumns(20);
 		
@@ -83,7 +86,6 @@ public class AgentDetailPanel extends JPanel {
 		springLayout.putConstraint(SpringLayout.NORTH, surnameTextField, 0, SpringLayout.NORTH, nameLabel);
 		springLayout.putConstraint(SpringLayout.WEST, surnameTextField, 5, SpringLayout.EAST, surnameLabel);
 		springLayout.putConstraint(SpringLayout.EAST, surnameTextField, -10, SpringLayout.EAST, this);
-		surnameTextField.getDocument().addDocumentListener(new AgentDetailDocumentListener(agentDetailDialog));
 		add(surnameTextField);
 		surnameTextField.setColumns(30);
 		
@@ -100,7 +102,6 @@ public class AgentDetailPanel extends JPanel {
 		springLayout.putConstraint(SpringLayout.NORTH, usernameTextField, 0, SpringLayout.NORTH, usernameLabel);
 		springLayout.putConstraint(SpringLayout.WEST, usernameTextField, 5, SpringLayout.EAST, usernameLabel);
 		usernameLabel.setLabelFor(usernameTextField);
-		usernameTextField.getDocument().addDocumentListener(new AgentDetailDocumentListener(agentDetailDialog));
 		add(usernameTextField);
 		usernameTextField.setColumns(20);
 		
@@ -118,9 +119,17 @@ public class AgentDetailPanel extends JPanel {
 		springLayout.putConstraint(SpringLayout.NORTH, emailTextField, 0, SpringLayout.NORTH, usernameLabel);
 		springLayout.putConstraint(SpringLayout.WEST, emailTextField, 5, SpringLayout.EAST, emailLabel);
 		springLayout.putConstraint(SpringLayout.EAST, emailTextField, -10, SpringLayout.EAST, this);
-		emailTextField.getDocument().addDocumentListener(new AgentDetailDocumentListener(agentDetailDialog));
 		add(emailTextField);
 		emailTextField.setColumns(30);
-		
+		logger.traceExit();
+	}
+	
+	public void addDialogListeners(AgentDetailDialog agentDetailDialog) {
+		logger.traceEntry();
+		nameTextField.getDocument().addDocumentListener(agentDetailDialog);
+		surnameTextField.getDocument().addDocumentListener(agentDetailDialog);
+		usernameTextField.getDocument().addDocumentListener(agentDetailDialog);
+		emailTextField.getDocument().addDocumentListener(agentDetailDialog);
+		logger.traceExit();
 	}
 }

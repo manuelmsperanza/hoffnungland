@@ -278,11 +278,6 @@ public class App extends WindowAdapter implements ActionListener {
 		this.entityManager.persist(agent);
 		this.entityManager.getTransaction().commit();
 		
-		if(this.agent == null) {
-			this.agentComboBox.addItem(agent.getUserName());
-		}
-		
-		this.agentComboBox.setSelectedItem(agent.getUserName());
 		logger.traceExit();
 		
 	}
@@ -291,11 +286,36 @@ public class App extends WindowAdapter implements ActionListener {
 		logger.traceEntry();
 		
 		try {
-			AgentDetailDialog agentDetailDialog = new AgentDetailDialog(this.frmOrderEntry, this.agent);
+			AgentDetailPanel agentDetailPanel = new AgentDetailPanel();
+			if(this.agent != null) {
+				agentDetailPanel.getNameTextField().setText(this.agent.getName());
+				agentDetailPanel.getSurnameTextField().setText(this.agent.getSurname());
+				agentDetailPanel.getUsernameTextField().setText(this.agent.getUserName());
+				agentDetailPanel.getUsernameTextField().setEnabled(false);
+				agentDetailPanel.getEmailTextField().setText(this.agent.getEmail());
+			}
+			AgentDetailDialog agentDetailDialog = new AgentDetailDialog(this.frmOrderEntry, agentDetailPanel);
 			agentDetailDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			agentDetailDialog.setVisible(true);
 			if("OK".equals(agentDetailDialog.getResultAction())) {
-				this.saveAgent(agentDetailDialog.getAgent());
+				
+				boolean newAgent = (this.agent == null);
+				
+				if(newAgent) {
+					this.agent = new Agent();
+					this.agent.setUserName(agentDetailPanel.getUsernameTextField().getText());
+				}
+				
+				this.agent.setName(agentDetailPanel.getNameTextField().getText());
+				this.agent.setSurname(agentDetailPanel.getSurnameTextField().getText());
+				this.agent.setEmail(agentDetailPanel.getEmailTextField().getText());
+				
+				this.saveAgent(this.agent);
+				
+				if(newAgent) {	
+					this.agentComboBox.addItem(this.agent.getUserName());		
+					this.agentComboBox.setSelectedItem(this.agent.getUserName());
+				}
 			}
 		} catch (Exception e) {
 			logger.error(e);
