@@ -34,7 +34,7 @@ import org.h2.util.StringUtils;
 import com.hoffnungland.orderEntry.entity.Agent;
 import com.hoffnungland.orderEntry.entity.Customer;
 
-public class App implements ActionListener {
+public class App extends WindowAdapter implements ActionListener {
 
 	private static final Logger logger = LogManager.getLogger(App.class);
 	
@@ -44,6 +44,8 @@ public class App implements ActionListener {
 	private JComboBox<String> agentComboBox;
 	private Agent agent;
 	private Customer customer;
+
+	private EntityManagerFactory entityManagerFactory;
 	
 	public EntityManager getEntityManager() {
 		return entityManager;
@@ -108,14 +110,7 @@ public class App implements ActionListener {
 			this.initializeJPA();
 			
 			frmOrderEntry = new JFrame();
-			frmOrderEntry.addWindowListener(new WindowAdapter() {
-				@Override
-				public void windowClosing(WindowEvent e) {
-					logger.traceEntry();
-					entityManager.close();
-					logger.traceExit();
-				}
-			});
+			frmOrderEntry.addWindowListener(this);
 			frmOrderEntry.setName("orderEntryFrame");
 			frmOrderEntry.setTitle("Order Entry");
 			frmOrderEntry.setBounds(100, 100, 800, 600);
@@ -233,8 +228,16 @@ public class App implements ActionListener {
 	
 	private void initializeJPA() {
 		logger.traceEntry();
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("orderEntryDb");
+		this.entityManagerFactory = Persistence.createEntityManagerFactory("orderEntryDb");
 		this.entityManager = entityManagerFactory.createEntityManager();
+		logger.traceExit();
+	}
+	
+	@Override
+	public void windowClosing(WindowEvent e) {
+		logger.traceEntry();
+		this.entityManager.close();
+		this.entityManagerFactory.close();
 		logger.traceExit();
 	}
 	
@@ -301,4 +304,7 @@ public class App implements ActionListener {
 		
 		logger.traceExit();
 	}
+	
+	
+	
 }
