@@ -160,8 +160,6 @@ public class App extends WindowAdapter implements ActionListener {
 			agentComboBox = new JComboBox<String>();
 			agentComboBox.setName("agentComboBox");
 			agentComboBox.addActionListener(this);
-			
-			agentComboBox.setEditable(true);
 			agentNameLabel.setLabelFor(agentComboBox);
 			springLayout.putConstraint(SpringLayout.WEST, agentComboBox, 5, SpringLayout.EAST, agentNameLabel);
 			agentComboBox.setPreferredSize(new Dimension(200, 25));
@@ -183,6 +181,15 @@ public class App extends WindowAdapter implements ActionListener {
 			agentDetailButton.setMaximumSize(new Dimension(41, 25));
 			springLayout.putConstraint(SpringLayout.NORTH, agentDetailButton, 0, SpringLayout.NORTH, companyNameLabel);
 			frmOrderEntry.getContentPane().add(agentDetailButton);
+			
+			JLabel addressLabel = new JLabel("Address");
+			addressLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+			addressLabel.setMaximumSize(new Dimension(100, 25));
+			addressLabel.setPreferredSize(new Dimension(90, 25));
+			addressLabel.setMinimumSize(new Dimension(80, 25));
+			springLayout.putConstraint(SpringLayout.NORTH, addressLabel, 26, SpringLayout.SOUTH, companyNameLabel);
+			springLayout.putConstraint(SpringLayout.WEST, addressLabel, 10, SpringLayout.WEST, frmOrderEntry.getContentPane());
+			frmOrderEntry.getContentPane().add(addressLabel);
 			
 		} catch (Exception e) {
 			logger.error(e);
@@ -267,6 +274,7 @@ public class App extends WindowAdapter implements ActionListener {
         	this.agent = null;
         } else {
         	this.agent = this.retrieveAgent(agentName);
+        	
         }
 		logger.traceExit();
 	}
@@ -327,7 +335,4 @@ public class App extends WindowAdapter implements ActionListener {
 		
 		logger.traceExit();
 	}
-	
-	
-	
 }
