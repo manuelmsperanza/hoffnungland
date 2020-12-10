@@ -121,9 +121,9 @@ public class App extends WindowAdapter implements ActionListener {
 			JLabel companyNameLabel = new JLabel("Company Name");
 			companyNameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 			
-			companyNameLabel.setPreferredSize(new Dimension(90, 25));
-			companyNameLabel.setMinimumSize(new Dimension(80, 25));
-			companyNameLabel.setMaximumSize(new Dimension(100, 25));
+			companyNameLabel.setPreferredSize(new Dimension(90, 22));
+			companyNameLabel.setMinimumSize(new Dimension(80, 22));
+			companyNameLabel.setMaximumSize(new Dimension(100, 22));
 			springLayout.putConstraint(SpringLayout.NORTH, companyNameLabel, 10, SpringLayout.NORTH, frmOrderEntry.getContentPane());
 			springLayout.putConstraint(SpringLayout.WEST, companyNameLabel, 5, SpringLayout.WEST, frmOrderEntry.getContentPane());
 			frmOrderEntry.getContentPane().add(companyNameLabel);
@@ -132,18 +132,18 @@ public class App extends WindowAdapter implements ActionListener {
 			springLayout.putConstraint(SpringLayout.WEST, companyComboBox, 5, SpringLayout.EAST, companyNameLabel);
 			companyNameLabel.setLabelFor(companyComboBox);
 			companyComboBox.setBorder(UIManager.getBorder("ComboBox.border"));
-			companyComboBox.setPreferredSize(new Dimension(200, 25));
-			companyComboBox.setMaximumSize(new Dimension(32767, 25));
-			companyComboBox.setMinimumSize(new Dimension(150, 25));
+			companyComboBox.setPreferredSize(new Dimension(200, 22));
+			companyComboBox.setMaximumSize(new Dimension(32767, 22));
+			companyComboBox.setMinimumSize(new Dimension(150, 22));
 			springLayout.putConstraint(SpringLayout.NORTH, companyComboBox, 0, SpringLayout.NORTH, companyNameLabel);
 			frmOrderEntry.getContentPane().add(companyComboBox);
 			
 			JButton newCustomerButton = new JButton("+");
 			springLayout.putConstraint(SpringLayout.EAST, companyComboBox, -5, SpringLayout.WEST, newCustomerButton);
 			springLayout.putConstraint(SpringLayout.NORTH, newCustomerButton, 0, SpringLayout.NORTH, companyNameLabel);
-			newCustomerButton.setPreferredSize(new Dimension(41, 25));
-			newCustomerButton.setMinimumSize(new Dimension(41, 25));
-			newCustomerButton.setMaximumSize(new Dimension(41, 25));
+			newCustomerButton.setPreferredSize(new Dimension(41, 22));
+			newCustomerButton.setMinimumSize(new Dimension(41, 22));
+			newCustomerButton.setMaximumSize(new Dimension(41, 22));
 			frmOrderEntry.getContentPane().add(newCustomerButton);
 			
 			JLabel agentNameLabel = new JLabel("Agent");
@@ -151,19 +151,20 @@ public class App extends WindowAdapter implements ActionListener {
 			springLayout.putConstraint(SpringLayout.EAST, newCustomerButton, -5, SpringLayout.WEST, agentNameLabel);
 			springLayout.putConstraint(SpringLayout.WEST, agentNameLabel, 5, SpringLayout.HORIZONTAL_CENTER, frmOrderEntry.getContentPane());
 			agentNameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-			agentNameLabel.setPreferredSize(new Dimension(90, 25));
-			agentNameLabel.setMinimumSize(new Dimension(80, 25));
-			agentNameLabel.setMaximumSize(new Dimension(100, 25));
+			agentNameLabel.setPreferredSize(new Dimension(90, 22));
+			agentNameLabel.setMinimumSize(new Dimension(80, 22));
+			agentNameLabel.setMaximumSize(new Dimension(100, 22));
 			springLayout.putConstraint(SpringLayout.NORTH, agentNameLabel, 0, SpringLayout.NORTH, companyNameLabel);
 			frmOrderEntry.getContentPane().add(agentNameLabel);
 			
 			agentComboBox = new JComboBox<String>();
+			agentComboBox.setMaximumSize(new Dimension(32767, 22));
 			agentComboBox.setName("agentComboBox");
 			agentComboBox.addActionListener(this);
 			agentNameLabel.setLabelFor(agentComboBox);
 			springLayout.putConstraint(SpringLayout.WEST, agentComboBox, 5, SpringLayout.EAST, agentNameLabel);
-			agentComboBox.setPreferredSize(new Dimension(200, 25));
-			agentComboBox.setMinimumSize(new Dimension(150, 25));
+			agentComboBox.setPreferredSize(new Dimension(200, 22));
+			agentComboBox.setMinimumSize(new Dimension(150, 22));
 			agentComboBox.setBorder(UIManager.getBorder("ComboBox.border"));
 			agentComboBox.addItem(null);
 			this.retrieveAgents();
@@ -176,17 +177,17 @@ public class App extends WindowAdapter implements ActionListener {
 			agentDetailButton.addActionListener(this);
 			springLayout.putConstraint(SpringLayout.EAST, agentComboBox, -5, SpringLayout.WEST, agentDetailButton);
 			springLayout.putConstraint(SpringLayout.EAST, agentDetailButton, -5, SpringLayout.EAST, frmOrderEntry.getContentPane());
-			agentDetailButton.setPreferredSize(new Dimension(41, 25));
-			agentDetailButton.setMinimumSize(new Dimension(41, 25));
-			agentDetailButton.setMaximumSize(new Dimension(41, 25));
+			agentDetailButton.setPreferredSize(new Dimension(41, 22));
+			agentDetailButton.setMinimumSize(new Dimension(41, 22));
+			agentDetailButton.setMaximumSize(new Dimension(41, 22));
 			springLayout.putConstraint(SpringLayout.NORTH, agentDetailButton, 0, SpringLayout.NORTH, companyNameLabel);
 			frmOrderEntry.getContentPane().add(agentDetailButton);
 			
 			JLabel addressLabel = new JLabel("Address");
 			addressLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-			addressLabel.setMaximumSize(new Dimension(100, 25));
-			addressLabel.setPreferredSize(new Dimension(90, 25));
-			addressLabel.setMinimumSize(new Dimension(80, 25));
+			addressLabel.setMaximumSize(new Dimension(100, 22));
+			addressLabel.setPreferredSize(new Dimension(90, 22));
+			addressLabel.setMinimumSize(new Dimension(80, 22));
 			springLayout.putConstraint(SpringLayout.NORTH, addressLabel, 26, SpringLayout.SOUTH, companyNameLabel);
 			springLayout.putConstraint(SpringLayout.WEST, addressLabel, 10, SpringLayout.WEST, frmOrderEntry.getContentPane());
 			frmOrderEntry.getContentPane().add(addressLabel);
