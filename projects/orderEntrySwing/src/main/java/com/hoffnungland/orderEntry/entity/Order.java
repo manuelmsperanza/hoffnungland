@@ -195,7 +195,7 @@ public class Order {
 	public void copyCustomerInformation() {
 		this.IBAN = this.customerOrder.getIBAN();
 		this.paymentType = this.customerOrder.getPreferredPaymentType();
-		this.orderAddress = this.customerOrder.getDeliveryAddress();
+		this.orderAddress = this.customerOrder.getRegisteredOffice();
 		this.copyAddressInformation();
 	}
 	
