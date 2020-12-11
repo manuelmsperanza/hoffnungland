@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import org.h2.util.StringUtils;
@@ -53,11 +54,11 @@ public class Customer {
 	@ManyToOne
 	private Agent referent;
 	
-	@ManyToOne
+	@OneToOne
 	private Address registeredOffice;
 	
-	@ManyToOne
-	private Address deliveryAddress;
+	@OneToMany(mappedBy="customer", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)
+	private List<Address> deliveryAddress = new ArrayList<>();
 	
 	/*@OneToMany(mappedBy="customerOrder", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)
 	private List<Order> orderList = new ArrayList<Order>();*/
@@ -98,7 +99,7 @@ public class Customer {
 		return registeredOffice;
 	}
 
-	public Address getDeliveryAddress() {
+	public List<Address> getDeliveryAddress() {
 		return deliveryAddress;
 	}
 
@@ -138,7 +139,7 @@ public class Customer {
 		this.registeredOffice = registeredOffice;
 	}
 
-	public void setDeliveryAddress(Address deliveryAddress) {
+	public void setDeliveryAddress(List<Address> deliveryAddress) {
 		this.deliveryAddress = deliveryAddress;
 	}
 
@@ -150,15 +151,15 @@ public class Customer {
 		this.orderList = orderList;
 	}*/
 
-	/*public void addOrder(Order order) {
-		this.orderList.add(order);
-		order.setCustomerOrder(this);
+	public void addDeliveryAddress(Address address) {
+		this.deliveryAddress.add(address);
+		address.setCustomer(this);
 	}
 	
-	public void removeOrder(Order order) {
-		this.orderList.remove(order);
-		order.setCustomerOrder(null);
-	}*/
+	public void removeOrder(Address address) {
+		this.deliveryAddress.remove(address);
+		address.setCustomer(null);
+	}
 	
 	public String getFiscalId() {
 		return StringUtils.isNullOrEmpty(this.vatCode) ? this.fiscalCode : this.vatCode;

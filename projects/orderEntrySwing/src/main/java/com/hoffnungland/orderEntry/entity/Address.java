@@ -7,6 +7,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -52,6 +53,9 @@ public class Address {
 	private DayOfWeek closingDate;
 	
 	private String otherAddressDetail;
+	
+	@ManyToOne
+	private Customer customer;
 
 	public long getId() {
 		return id;
@@ -172,7 +176,13 @@ public class Address {
 	public void setOtherAddressDetail(String otherAddressDetail) {
 		this.otherAddressDetail = otherAddressDetail;
 	}
-	
-	
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 	
 }
