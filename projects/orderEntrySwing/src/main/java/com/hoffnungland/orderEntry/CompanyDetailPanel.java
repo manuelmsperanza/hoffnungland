@@ -43,10 +43,10 @@ public class CompanyDetailPanel extends JPanel {
 		add(companyNameTextField);
 		
 		JLabel shopTypeLabel = new JLabel("Shop Type");
-		shopTypeLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		shopTypeLabel.setPreferredSize(new Dimension(60, 22));
 		shopTypeLabel.setMinimumSize(new Dimension(70, 22));
+		shopTypeLabel.setPreferredSize(new Dimension(60, 22));
 		shopTypeLabel.setMaximumSize(new Dimension(70, 22));
+		shopTypeLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		springLayout.putConstraint(SpringLayout.NORTH, shopTypeLabel, 0, SpringLayout.NORTH, companyNameLabel);
 		springLayout.putConstraint(SpringLayout.WEST, shopTypeLabel, 5, SpringLayout.EAST, companyNameTextField);
 		add(shopTypeLabel);
