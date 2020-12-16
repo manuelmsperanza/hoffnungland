@@ -34,6 +34,7 @@ import org.h2.util.StringUtils;
 import com.hoffnungland.orderEntry.entity.Agent;
 import com.hoffnungland.orderEntry.entity.Customer;
 import javax.swing.JTextField;
+import javax.swing.JPanel;
 
 public class App extends WindowAdapter implements ActionListener {
 
@@ -130,204 +131,242 @@ public class App extends WindowAdapter implements ActionListener {
 			SpringLayout springLayout = new SpringLayout();
 			frmOrderEntry.getContentPane().setLayout(springLayout);
 			
+			JPanel firstLinePanel = new JPanel();
+			SpringLayout firstLineSpringLayout = new SpringLayout();
+			firstLinePanel.setLayout(firstLineSpringLayout);
+			springLayout.putConstraint(SpringLayout.NORTH, firstLinePanel, 10, SpringLayout.NORTH, frmOrderEntry.getContentPane());
+			springLayout.putConstraint(SpringLayout.WEST, firstLinePanel, 0, SpringLayout.WEST, frmOrderEntry.getContentPane());
+			springLayout.putConstraint(SpringLayout.EAST, firstLinePanel, 0, SpringLayout.EAST, frmOrderEntry.getContentPane());
+			frmOrderEntry.getContentPane().add(firstLinePanel);
+			
 			JLabel companyNameLabel = new JLabel("Company Name");
-			springLayout.putConstraint(SpringLayout.NORTH, companyNameLabel, 10, SpringLayout.NORTH, frmOrderEntry.getContentPane());
-			springLayout.putConstraint(SpringLayout.WEST, companyNameLabel, 5, SpringLayout.WEST, frmOrderEntry.getContentPane());
+			firstLineSpringLayout.putConstraint(SpringLayout.NORTH, companyNameLabel, 0, SpringLayout.NORTH, firstLinePanel);
+			firstLineSpringLayout.putConstraint(SpringLayout.WEST, companyNameLabel, 5, SpringLayout.WEST, firstLinePanel);
+			firstLineSpringLayout.putConstraint(SpringLayout.SOUTH, firstLinePanel, 0, SpringLayout.SOUTH, companyNameLabel);
 			companyNameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 			companyNameLabel.setMinimumSize(new Dimension(90, 22));
 			companyNameLabel.setPreferredSize(new Dimension(90, 22));
 			companyNameLabel.setMaximumSize(new Dimension(90, 22));
-			frmOrderEntry.getContentPane().add(companyNameLabel);
+			firstLinePanel.add(companyNameLabel);
 			
 			companyComboBox = new JComboBox<String>();
-			springLayout.putConstraint(SpringLayout.NORTH, companyComboBox, 0, SpringLayout.NORTH, companyNameLabel);
-			springLayout.putConstraint(SpringLayout.WEST, companyComboBox, 5, SpringLayout.EAST, companyNameLabel);
+			firstLineSpringLayout.putConstraint(SpringLayout.NORTH, companyComboBox, 0, SpringLayout.NORTH, firstLinePanel);
+			firstLineSpringLayout.putConstraint(SpringLayout.WEST, companyComboBox, 5, SpringLayout.EAST, companyNameLabel);
 			companyNameLabel.setLabelFor(companyComboBox);
 			companyComboBox.setMinimumSize(new Dimension(150, 22));
 			companyComboBox.setPreferredSize(new Dimension(200, 22));
 			companyComboBox.setMaximumSize(new Dimension(32767, 22));
-			frmOrderEntry.getContentPane().add(companyComboBox);
+			firstLinePanel.add(companyComboBox);
 			
 			JButton customerDetailButton = new JButton("+");
-			springLayout.putConstraint(SpringLayout.NORTH, customerDetailButton, 0, SpringLayout.NORTH, companyNameLabel);
-			springLayout.putConstraint(SpringLayout.WEST, customerDetailButton, 5, SpringLayout.EAST, companyComboBox);
+			firstLineSpringLayout.putConstraint(SpringLayout.NORTH, customerDetailButton, 0, SpringLayout.NORTH, firstLinePanel);
+			firstLineSpringLayout.putConstraint(SpringLayout.WEST, customerDetailButton, 5, SpringLayout.EAST, companyComboBox);
 			customerDetailButton.setMinimumSize(new Dimension(41, 22));
 			customerDetailButton.setPreferredSize(new Dimension(41, 22));
 			customerDetailButton.setMaximumSize(new Dimension(41, 22));
-			frmOrderEntry.getContentPane().add(customerDetailButton);
+			firstLinePanel.add(customerDetailButton);
 			
 			JLabel agentNameLabel = new JLabel("Agent");
-			springLayout.putConstraint(SpringLayout.NORTH, agentNameLabel, 0, SpringLayout.NORTH, companyNameLabel);
-			springLayout.putConstraint(SpringLayout.WEST, agentNameLabel, 5, SpringLayout.EAST, customerDetailButton);
+			firstLineSpringLayout.putConstraint(SpringLayout.NORTH, agentNameLabel, 0, SpringLayout.NORTH, firstLinePanel);
+			firstLineSpringLayout.putConstraint(SpringLayout.WEST, agentNameLabel, 5, SpringLayout.EAST, customerDetailButton);
 			agentNameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 			agentNameLabel.setMinimumSize(new Dimension(90, 22));
 			agentNameLabel.setPreferredSize(new Dimension(90, 22));
 			agentNameLabel.setMaximumSize(new Dimension(90, 22));
-			frmOrderEntry.getContentPane().add(agentNameLabel);
+			firstLinePanel.add(agentNameLabel);
 			
 			agentComboBox = new JComboBox<String>();
+			firstLineSpringLayout.putConstraint(SpringLayout.NORTH, agentComboBox, 0, SpringLayout.NORTH, firstLinePanel);
+			firstLineSpringLayout.putConstraint(SpringLayout.WEST, agentComboBox, 5, SpringLayout.EAST, agentNameLabel);
 			agentComboBox.setName("agentComboBox");
 			agentComboBox.addActionListener(this);
 			agentNameLabel.setLabelFor(agentComboBox);
-			springLayout.putConstraint(SpringLayout.NORTH, agentComboBox, 0, SpringLayout.NORTH, companyNameLabel);
-			springLayout.putConstraint(SpringLayout.WEST, agentComboBox, 5, SpringLayout.EAST, agentNameLabel);
 			agentComboBox.setMinimumSize(new Dimension(150, 22));
 			agentComboBox.setPreferredSize(new Dimension(200, 22));
 			agentComboBox.setMaximumSize(new Dimension(32767, 22));
 			agentComboBox.addItem(null);
+			
 			this.retrieveAgents();
 			
-			frmOrderEntry.getContentPane().add(agentComboBox);
+			firstLinePanel.add(agentComboBox);
 			
 			JButton agentDetailButton = new JButton("+");
 			agentDetailButton.setName("agentDetailButton");
 			agentDetailButton.addActionListener(this);
-			springLayout.putConstraint(SpringLayout.NORTH, agentDetailButton, 0, SpringLayout.NORTH, companyNameLabel);
-			springLayout.putConstraint(SpringLayout.WEST, agentDetailButton, 5, SpringLayout.EAST, agentComboBox);
-			
+			firstLineSpringLayout.putConstraint(SpringLayout.NORTH, agentDetailButton, 0, SpringLayout.NORTH, firstLinePanel);
+			firstLineSpringLayout.putConstraint(SpringLayout.WEST, agentDetailButton, 5, SpringLayout.EAST, agentComboBox);
 			agentDetailButton.setMinimumSize(new Dimension(41, 22));
 			agentDetailButton.setPreferredSize(new Dimension(41, 22));
 			agentDetailButton.setMaximumSize(new Dimension(41, 22));
-			frmOrderEntry.getContentPane().add(agentDetailButton);
+			firstLinePanel.add(agentDetailButton);
 			
+			firstLineSpringLayout.putConstraint(SpringLayout.EAST, firstLinePanel, 5, SpringLayout.EAST, agentDetailButton);
+			
+			JPanel secondLinePanel = new JPanel();
+			SpringLayout secondLineSpringLayout = new SpringLayout();
+			secondLinePanel.setLayout(secondLineSpringLayout);
+			springLayout.putConstraint(SpringLayout.NORTH, secondLinePanel, 10, SpringLayout.SOUTH, firstLinePanel);
+			springLayout.putConstraint(SpringLayout.WEST, secondLinePanel, 0, SpringLayout.WEST, frmOrderEntry.getContentPane());
+			springLayout.putConstraint(SpringLayout.EAST, secondLinePanel, 0, SpringLayout.EAST, frmOrderEntry.getContentPane());
+			frmOrderEntry.getContentPane().add(secondLinePanel);
 			
 			JLabel shopTypeLabel = new JLabel("Shop Type");
-			springLayout.putConstraint(SpringLayout.NORTH, shopTypeLabel, 10, SpringLayout.SOUTH, companyNameLabel);
-			springLayout.putConstraint(SpringLayout.WEST, shopTypeLabel, 5, SpringLayout.WEST, frmOrderEntry.getContentPane());
+			secondLineSpringLayout.putConstraint(SpringLayout.NORTH, shopTypeLabel, 0, SpringLayout.NORTH, secondLinePanel);
+			secondLineSpringLayout.putConstraint(SpringLayout.WEST, shopTypeLabel, 5, SpringLayout.WEST, secondLinePanel);
+			secondLineSpringLayout.putConstraint(SpringLayout.SOUTH, secondLinePanel, 0, SpringLayout.SOUTH, shopTypeLabel);
 			shopTypeLabel.setMinimumSize(new Dimension(90, 22));
 			shopTypeLabel.setPreferredSize(new Dimension(90, 22));
 			shopTypeLabel.setMaximumSize(new Dimension(90, 22));
 			shopTypeLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-			frmOrderEntry.getContentPane().add(shopTypeLabel);
+			secondLinePanel.add(shopTypeLabel);
 			
 			shopTypeTextField = new JTextField();
 			shopTypeLabel.setLabelFor(shopTypeTextField);
-			springLayout.putConstraint(SpringLayout.NORTH, shopTypeTextField, 0, SpringLayout.NORTH, shopTypeLabel);
-			springLayout.putConstraint(SpringLayout.WEST, shopTypeTextField, 5, SpringLayout.EAST, shopTypeLabel);
+			secondLineSpringLayout.putConstraint(SpringLayout.NORTH, shopTypeTextField, 0, SpringLayout.NORTH, secondLinePanel);
+			secondLineSpringLayout.putConstraint(SpringLayout.WEST, shopTypeTextField, 5, SpringLayout.EAST, shopTypeLabel);
 			shopTypeTextField.setEditable(false);
 			shopTypeTextField.setMinimumSize(new Dimension(150, 22));
 			shopTypeTextField.setPreferredSize(new Dimension(200, 22));
 			shopTypeTextField.setMaximumSize(new Dimension(2147483647, 22));
-			frmOrderEntry.getContentPane().add(shopTypeTextField);
+			secondLinePanel.add(shopTypeTextField);
 			
 			JLabel vatCodeLabel = new JLabel("Vat Code");
-			springLayout.putConstraint(SpringLayout.NORTH, vatCodeLabel, 0, SpringLayout.NORTH, shopTypeLabel);
-			springLayout.putConstraint(SpringLayout.WEST, vatCodeLabel, 5, SpringLayout.EAST, shopTypeTextField);
+			secondLineSpringLayout.putConstraint(SpringLayout.NORTH, vatCodeLabel, 0, SpringLayout.NORTH, secondLinePanel);
+			secondLineSpringLayout.putConstraint(SpringLayout.WEST, vatCodeLabel, 5, SpringLayout.EAST, shopTypeTextField);
 			vatCodeLabel.setMinimumSize(new Dimension(90, 22));
 			vatCodeLabel.setPreferredSize(new Dimension(90, 22));
 			vatCodeLabel.setMaximumSize(new Dimension(90, 22));
 			vatCodeLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-			frmOrderEntry.getContentPane().add(vatCodeLabel);
+			secondLinePanel.add(vatCodeLabel);
 			
 			vatCodeTextField = new JTextField();
-			springLayout.putConstraint(SpringLayout.NORTH, vatCodeTextField, 0, SpringLayout.NORTH, shopTypeLabel);
-			springLayout.putConstraint(SpringLayout.WEST, vatCodeTextField, 5, SpringLayout.EAST, vatCodeLabel);
+			secondLineSpringLayout.putConstraint(SpringLayout.NORTH, vatCodeTextField, 0, SpringLayout.NORTH, secondLinePanel);
+			secondLineSpringLayout.putConstraint(SpringLayout.WEST, vatCodeTextField, 5, SpringLayout.EAST, vatCodeLabel);
 			vatCodeLabel.setLabelFor(vatCodeTextField);
 			vatCodeTextField.setEditable(false);
 			vatCodeTextField.setMinimumSize(new Dimension(150, 22));
 			vatCodeTextField.setPreferredSize(new Dimension(200, 22));
 			vatCodeTextField.setMaximumSize(new Dimension(2147483647, 22));
-			frmOrderEntry.getContentPane().add(vatCodeTextField);
+			secondLinePanel.add(vatCodeTextField);
 			
 			JLabel fiscalCodeLabel = new JLabel("Fiscal Code");
-			springLayout.putConstraint(SpringLayout.NORTH, fiscalCodeLabel, 0, SpringLayout.NORTH, shopTypeLabel);
-			springLayout.putConstraint(SpringLayout.WEST, fiscalCodeLabel, 5, SpringLayout.EAST, vatCodeTextField);
-			fiscalCodeLabel.setPreferredSize(new Dimension(90, 22));
+			secondLineSpringLayout.putConstraint(SpringLayout.NORTH, fiscalCodeLabel, 0, SpringLayout.NORTH, secondLinePanel);
+			secondLineSpringLayout.putConstraint(SpringLayout.WEST, fiscalCodeLabel, 5, SpringLayout.EAST, vatCodeTextField);
 			fiscalCodeLabel.setMinimumSize(new Dimension(90, 22));
+			fiscalCodeLabel.setPreferredSize(new Dimension(90, 22));
 			fiscalCodeLabel.setMaximumSize(new Dimension(90, 22));
 			fiscalCodeLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-			frmOrderEntry.getContentPane().add(fiscalCodeLabel);
+			secondLinePanel.add(fiscalCodeLabel);
 			
 			fiscalCodeTextField = new JTextField();
-			springLayout.putConstraint(SpringLayout.NORTH, fiscalCodeTextField, 0, SpringLayout.NORTH, shopTypeLabel);
-			springLayout.putConstraint(SpringLayout.WEST, fiscalCodeTextField, 5, SpringLayout.EAST, fiscalCodeLabel);
+			secondLineSpringLayout.putConstraint(SpringLayout.NORTH, fiscalCodeTextField, 0, SpringLayout.NORTH, secondLinePanel);
+			secondLineSpringLayout.putConstraint(SpringLayout.WEST, fiscalCodeTextField, 5, SpringLayout.EAST, fiscalCodeLabel);
 			fiscalCodeLabel.setLabelFor(fiscalCodeTextField);
 			fiscalCodeTextField.setEditable(false);
 			fiscalCodeTextField.setMinimumSize(new Dimension(150, 22));
 			fiscalCodeTextField.setPreferredSize(new Dimension(200, 22));
 			fiscalCodeTextField.setMaximumSize(new Dimension(2147483647, 22));
-			frmOrderEntry.getContentPane().add(fiscalCodeTextField);
+			secondLinePanel.add(fiscalCodeTextField);
+			
+			secondLineSpringLayout.putConstraint(SpringLayout.EAST, secondLinePanel, 5, SpringLayout.EAST, fiscalCodeTextField);
+			
+			JPanel thirdLinePanel = new JPanel();
+			SpringLayout thirdLineSpringLayout = new SpringLayout();
+			thirdLinePanel.setLayout(thirdLineSpringLayout);
+			springLayout.putConstraint(SpringLayout.NORTH, thirdLinePanel, 10, SpringLayout.SOUTH, secondLinePanel);
+			springLayout.putConstraint(SpringLayout.WEST, thirdLinePanel, 0, SpringLayout.WEST, frmOrderEntry.getContentPane());
+			springLayout.putConstraint(SpringLayout.EAST, thirdLinePanel, 0, SpringLayout.EAST, frmOrderEntry.getContentPane());
+			frmOrderEntry.getContentPane().add(thirdLinePanel);
 			
 			JLabel addressLabel = new JLabel("Address");
-			springLayout.putConstraint(SpringLayout.NORTH, addressLabel, 10, SpringLayout.SOUTH, shopTypeLabel);
-			springLayout.putConstraint(SpringLayout.WEST, addressLabel, 5, SpringLayout.WEST, frmOrderEntry.getContentPane());
+			thirdLineSpringLayout.putConstraint(SpringLayout.NORTH, addressLabel, 0, SpringLayout.NORTH, thirdLinePanel);
+			thirdLineSpringLayout.putConstraint(SpringLayout.WEST, addressLabel, 5, SpringLayout.WEST, thirdLinePanel);
+			thirdLineSpringLayout.putConstraint(SpringLayout.SOUTH, thirdLinePanel, 0, SpringLayout.SOUTH, addressLabel);
 			addressLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 			addressLabel.setMinimumSize(new Dimension(90, 22));
 			addressLabel.setPreferredSize(new Dimension(90, 22));
 			addressLabel.setMaximumSize(new Dimension(90, 22));
-			frmOrderEntry.getContentPane().add(addressLabel);
+			thirdLinePanel.add(addressLabel);
 			
 			addressTextField = new JTextField();
-			springLayout.putConstraint(SpringLayout.NORTH, addressTextField, 0, SpringLayout.NORTH, addressLabel);
-			springLayout.putConstraint(SpringLayout.WEST, addressTextField, 5, SpringLayout.EAST, addressLabel);
+			thirdLineSpringLayout.putConstraint(SpringLayout.NORTH, addressTextField, 0, SpringLayout.NORTH, thirdLinePanel);
+			thirdLineSpringLayout.putConstraint(SpringLayout.WEST, addressTextField, 5, SpringLayout.EAST, addressLabel);
 			
 			addressTextField.setEditable(false);
 			addressTextField.setMinimumSize(new Dimension(150, 22));
 			addressTextField.setPreferredSize(new Dimension(200, 22));
 			addressTextField.setMaximumSize(new Dimension(2147483647, 22));
-			frmOrderEntry.getContentPane().add(addressTextField);
+			thirdLinePanel.add(addressTextField);
+			
+			thirdLineSpringLayout.putConstraint(SpringLayout.EAST, thirdLinePanel, 5, SpringLayout.EAST, addressTextField);
+			
+			JPanel forthLinePanel = new JPanel();
+			SpringLayout forthLineSpringLayout = new SpringLayout();
+			forthLinePanel.setLayout(forthLineSpringLayout);
+			springLayout.putConstraint(SpringLayout.NORTH, forthLinePanel, 10, SpringLayout.SOUTH, thirdLinePanel);
+			springLayout.putConstraint(SpringLayout.WEST, forthLinePanel, 0, SpringLayout.WEST, frmOrderEntry.getContentPane());
+			springLayout.putConstraint(SpringLayout.EAST, forthLinePanel, 0, SpringLayout.EAST, frmOrderEntry.getContentPane());
+			frmOrderEntry.getContentPane().add(forthLinePanel);
 			
 			JLabel emailLabel = new JLabel("Email");
-			springLayout.putConstraint(SpringLayout.NORTH, emailLabel, 10, SpringLayout.SOUTH, addressLabel);
-			springLayout.putConstraint(SpringLayout.WEST, emailLabel, 5, SpringLayout.WEST, frmOrderEntry.getContentPane());
+			forthLineSpringLayout.putConstraint(SpringLayout.NORTH, emailLabel, 0, SpringLayout.NORTH, forthLinePanel);
+			forthLineSpringLayout.putConstraint(SpringLayout.WEST, emailLabel, 5, SpringLayout.WEST, forthLinePanel);
+			forthLineSpringLayout.putConstraint(SpringLayout.SOUTH, forthLinePanel, 0, SpringLayout.SOUTH, emailLabel);
 			emailLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 			emailLabel.setMinimumSize(new Dimension(90, 22));
 			emailLabel.setPreferredSize(new Dimension(90, 22));
 			emailLabel.setMaximumSize(new Dimension(90, 22));
-			frmOrderEntry.getContentPane().add(emailLabel);
+			forthLinePanel.add(emailLabel);
 			
 			emailTextField = new JTextField();
-			springLayout.putConstraint(SpringLayout.NORTH, emailTextField, 0, SpringLayout.NORTH, emailLabel);
-			springLayout.putConstraint(SpringLayout.WEST, emailTextField, 5, SpringLayout.EAST, emailLabel);
+			forthLineSpringLayout.putConstraint(SpringLayout.NORTH, emailTextField, 0, SpringLayout.NORTH, forthLinePanel);
+			forthLineSpringLayout.putConstraint(SpringLayout.WEST, emailTextField, 5, SpringLayout.EAST, emailLabel);
 			emailTextField.setMinimumSize(new Dimension(150, 22));
 			emailTextField.setPreferredSize(new Dimension(200, 22));
 			emailTextField.setMaximumSize(new Dimension(2147483647, 22));
 			emailLabel.setLabelFor(emailTextField);
-			frmOrderEntry.getContentPane().add(emailTextField);
+			forthLinePanel.add(emailTextField);
 			
 			JLabel phoneLabel = new JLabel("Phone");
-			springLayout.putConstraint(SpringLayout.NORTH, phoneLabel, 0, SpringLayout.NORTH, emailLabel);
-			springLayout.putConstraint(SpringLayout.WEST, phoneLabel, 5, SpringLayout.EAST, emailTextField);
+			forthLineSpringLayout.putConstraint(SpringLayout.NORTH, phoneLabel, 0, SpringLayout.NORTH, forthLinePanel);
+			forthLineSpringLayout.putConstraint(SpringLayout.WEST, phoneLabel, 5, SpringLayout.EAST, emailTextField);
 			phoneLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 			
 			phoneLabel.setMinimumSize(new Dimension(90, 22));
 			phoneLabel.setPreferredSize(new Dimension(90, 22));
 			phoneLabel.setMaximumSize(new Dimension(90, 22));
-			frmOrderEntry.getContentPane().add(phoneLabel);
+			forthLinePanel.add(phoneLabel);
 			
 			phoneTextField = new JTextField();
-			springLayout.putConstraint(SpringLayout.NORTH, phoneTextField, 0, SpringLayout.NORTH, emailLabel);
-			springLayout.putConstraint(SpringLayout.WEST, phoneTextField, 5, SpringLayout.EAST, phoneLabel);
+			forthLineSpringLayout.putConstraint(SpringLayout.NORTH, phoneTextField, 0, SpringLayout.NORTH, forthLinePanel);
+			forthLineSpringLayout.putConstraint(SpringLayout.WEST, phoneTextField, 5, SpringLayout.EAST, phoneLabel);
 			phoneTextField.setMinimumSize(new Dimension(150, 22));
 			phoneTextField.setPreferredSize(new Dimension(200, 22));
 			phoneTextField.setMaximumSize(new Dimension(2147483647, 22));
 			phoneLabel.setLabelFor(phoneTextField);
-			frmOrderEntry.getContentPane().add(phoneTextField);
+			forthLinePanel.add(phoneTextField);
 			
 			JLabel mobileLabel = new JLabel("Mobile");
-			springLayout.putConstraint(SpringLayout.NORTH, mobileLabel, 0, SpringLayout.NORTH, emailLabel);
-			springLayout.putConstraint(SpringLayout.WEST, mobileLabel, 5, SpringLayout.EAST, phoneTextField);
+			forthLineSpringLayout.putConstraint(SpringLayout.NORTH, mobileLabel, 0, SpringLayout.NORTH, forthLinePanel);
+			forthLineSpringLayout.putConstraint(SpringLayout.WEST, mobileLabel, 5, SpringLayout.EAST, phoneTextField);
 			mobileLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 			
 			mobileLabel.setMinimumSize(new Dimension(90, 22));
 			mobileLabel.setPreferredSize(new Dimension(90, 22));
 			mobileLabel.setMaximumSize(new Dimension(90, 22));
-			frmOrderEntry.getContentPane().add(mobileLabel);
+			forthLinePanel.add(mobileLabel);
 			
 			mobileTextField = new JTextField();
-			springLayout.putConstraint(SpringLayout.NORTH, mobileTextField, 0, SpringLayout.NORTH, emailLabel);
-			springLayout.putConstraint(SpringLayout.WEST, mobileTextField, 5, SpringLayout.EAST, mobileLabel);
+			forthLineSpringLayout.putConstraint(SpringLayout.NORTH, mobileTextField, 0, SpringLayout.NORTH, forthLinePanel);
+			forthLineSpringLayout.putConstraint(SpringLayout.WEST, mobileTextField, 5, SpringLayout.EAST, mobileLabel);
 			mobileTextField.setMinimumSize(new Dimension(150, 22));
 			mobileTextField.setPreferredSize(new Dimension(200, 22));
 			mobileTextField.setMaximumSize(new Dimension(2147483647, 22));
 			mobileLabel.setLabelFor(mobileTextField);
 			
-			frmOrderEntry.getContentPane().add(mobileTextField);
+			forthLinePanel.add(mobileTextField);
 			
-			springLayout.putConstraint(SpringLayout.EAST, fiscalCodeTextField, 0, SpringLayout.EAST, agentDetailButton);
-			springLayout.putConstraint(SpringLayout.EAST, addressTextField, 0, SpringLayout.EAST, fiscalCodeTextField);
-			springLayout.putConstraint(SpringLayout.EAST, mobileTextField, 0, SpringLayout.EAST, addressTextField);
-			springLayout.putConstraint(SpringLayout.EAST, frmOrderEntry.getContentPane(), 5, SpringLayout.EAST, mobileTextField);
+			forthLineSpringLayout.putConstraint(SpringLayout.EAST, forthLinePanel, 5, SpringLayout.EAST, mobileTextField);
 			
 		} catch (Exception e) {
 			logger.error(e);
