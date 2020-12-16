@@ -35,6 +35,7 @@ import com.hoffnungland.orderEntry.entity.Agent;
 import com.hoffnungland.orderEntry.entity.Customer;
 import javax.swing.JTextField;
 import javax.swing.JPanel;
+import javax.swing.JCheckBox;
 
 public class App extends WindowAdapter implements ActionListener {
 
@@ -367,6 +368,59 @@ public class App extends WindowAdapter implements ActionListener {
 			forthLinePanel.add(mobileTextField);
 			
 			forthLineSpringLayout.putConstraint(SpringLayout.EAST, forthLinePanel, 5, SpringLayout.EAST, mobileTextField);
+			
+			JPanel fifthLinePanel = new JPanel();
+			SpringLayout fifthLineSpringLayout = new SpringLayout();
+			fifthLinePanel.setLayout(fifthLineSpringLayout);
+			springLayout.putConstraint(SpringLayout.NORTH, fifthLinePanel, 10, SpringLayout.SOUTH, forthLinePanel);
+			springLayout.putConstraint(SpringLayout.WEST, fifthLinePanel, 0, SpringLayout.WEST, frmOrderEntry.getContentPane());
+			springLayout.putConstraint(SpringLayout.EAST, fifthLinePanel, 0, SpringLayout.EAST, frmOrderEntry.getContentPane());
+			frmOrderEntry.getContentPane().add(fifthLinePanel);
+			
+			JLabel closureDayLabel = new JLabel("Closure Day");
+			closureDayLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, closureDayLabel, 0, SpringLayout.NORTH, fifthLinePanel);
+			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, closureDayLabel, 5, SpringLayout.WEST, fifthLinePanel);
+			fifthLineSpringLayout.putConstraint(SpringLayout.SOUTH, fifthLinePanel, 0, SpringLayout.SOUTH, closureDayLabel);
+			closureDayLabel.setMinimumSize(new Dimension(90, 22));
+			closureDayLabel.setPreferredSize(new Dimension(90, 23));
+			closureDayLabel.setMaximumSize(new Dimension(90, 22));
+			fifthLinePanel.add(closureDayLabel);
+			
+			JCheckBox sundayClosureDayBox = new JCheckBox("sun");
+			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, sundayClosureDayBox, 0, SpringLayout.NORTH, fifthLinePanel);
+			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, sundayClosureDayBox, 5, SpringLayout.EAST, closureDayLabel);
+			fifthLinePanel.add(sundayClosureDayBox);
+			
+			JCheckBox mondayClosureDayBox = new JCheckBox("mon");
+			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, mondayClosureDayBox, 0, SpringLayout.NORTH, fifthLinePanel);
+			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, mondayClosureDayBox, 2, SpringLayout.EAST, sundayClosureDayBox);
+			fifthLinePanel.add(mondayClosureDayBox);
+			
+			JCheckBox tuesdayClosureDayBox = new JCheckBox("tue");
+			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, tuesdayClosureDayBox, 0, SpringLayout.NORTH, fifthLinePanel);
+			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, tuesdayClosureDayBox, 2, SpringLayout.EAST, mondayClosureDayBox);
+			fifthLinePanel.add(tuesdayClosureDayBox);
+			
+			JCheckBox wednesdayClosureDayBox = new JCheckBox("wed");
+			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, wednesdayClosureDayBox, 0, SpringLayout.NORTH, fifthLinePanel);
+			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, wednesdayClosureDayBox, 2, SpringLayout.EAST, mondayClosureDayBox);
+			fifthLinePanel.add(wednesdayClosureDayBox);
+			
+			JCheckBox thursdayClosureDayBox = new JCheckBox("thu");
+			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, thursdayClosureDayBox, 0, SpringLayout.NORTH, fifthLinePanel);
+			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, thursdayClosureDayBox, 2, SpringLayout.EAST, wednesdayClosureDayBox);
+			fifthLinePanel.add(thursdayClosureDayBox);
+			
+			JCheckBox fridayClosureDayBox = new JCheckBox("fri");
+			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, fridayClosureDayBox, 0, SpringLayout.NORTH, fifthLinePanel);
+			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, fridayClosureDayBox, 2, SpringLayout.EAST, thursdayClosureDayBox);
+			fifthLinePanel.add(fridayClosureDayBox);
+			
+			JCheckBox saturdayClosureDayBox = new JCheckBox("sat");
+			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, saturdayClosureDayBox, 0, SpringLayout.NORTH, fifthLinePanel);
+			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, saturdayClosureDayBox, 2, SpringLayout.EAST, fridayClosureDayBox);
+			fifthLinePanel.add(saturdayClosureDayBox);
 			
 		} catch (Exception e) {
 			logger.error(e);
