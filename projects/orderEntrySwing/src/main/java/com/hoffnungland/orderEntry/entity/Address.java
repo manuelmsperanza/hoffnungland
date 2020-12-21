@@ -2,6 +2,7 @@ package com.hoffnungland.orderEntry.entity;
 
 import java.time.DayOfWeek;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.ColumnTransformer;
 
 /**
  * 
@@ -49,8 +52,57 @@ public class Address {
 	@Temporal(TemporalType.TIME)
 	private java.util.Date deliveryTimeTo;
 	
-	@Enumerated(EnumType.STRING)
-	private DayOfWeek closingDate;
+	/*@Enumerated(EnumType.STRING)
+	private DayOfWeek closingDate;*/
+	
+	@Column(name = "closingDate")
+	@ColumnTransformer(
+		read = "bitget(closingDate, 1)",
+		write = "case when ? then bitor(0, 1) else bitand(0, bitnot(1)) end"
+	)
+	private boolean sundayClosure;
+	
+	@Column(name = "closingDate")
+	@ColumnTransformer(
+		read = "bitget(closingDate, 1)",
+		write = "case when ? then bitor(0, 2) else bitand(0, bitnot(2)) end"
+	)
+	private boolean mondayClosure;
+	
+	@Column(name = "closingDate")
+	@ColumnTransformer(
+		read = "bitget(closingDate, 1)",
+		write = "case when ? then bitor(0, 4) else bitand(0, bitnot(4)) end"
+	)
+	private boolean tuesdayClosure;
+	
+	@Column(name = "closingDate")
+	@ColumnTransformer(
+		read = "bitget(closingDate, 1)",
+		write = "case when ? then bitor(0, 8) else bitand(0, bitnot(8)) end"
+	)
+	private boolean wednesdayClosure;
+	
+	@Column(name = "closingDate")
+	@ColumnTransformer(
+		read = "bitget(closingDate, 1)",
+		write = "case when ? then bitor(0, 16) else bitand(0, bitnot(16)) end"
+	)
+	private boolean thursdayClosure;
+	
+	@Column(name = "closingDate")
+	@ColumnTransformer(
+		read = "bitget(closingDate, 1)",
+		write = "case when ? then bitor(0, 32) else bitand(0, bitnot(32)) end"
+	)
+	private boolean fridayClosure;
+	
+	@Column(name = "closingDate")
+	@ColumnTransformer(
+		read = "bitget(closingDate, 1)",
+		write = "case when ? then bitor(0, 64) else bitand(0, bitnot(64)) end"
+	)
+	private boolean saturdayClosure;
 	
 	private String otherAddressDetail;
 	
@@ -109,14 +161,38 @@ public class Address {
 		return deliveryTimeTo;
 	}
 
-	public DayOfWeek getClosingDate() {
-		return closingDate;
+	public boolean isSundayClosure() {
+		return sundayClosure;
+	}
+
+	public boolean isMondayClosure() {
+		return mondayClosure;
+	}
+
+	public boolean isTuesdayClosure() {
+		return tuesdayClosure;
+	}
+
+	public boolean isWednesdayClosure() {
+		return wednesdayClosure;
+	}
+
+	public boolean isThursdayClosure() {
+		return thursdayClosure;
+	}
+
+	public boolean isFridayClosure() {
+		return fridayClosure;
+	}
+
+	public boolean isSaturdayClosure() {
+		return saturdayClosure;
 	}
 
 	public String getOtherAddressDetail() {
 		return otherAddressDetail;
 	}
-
+	
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -168,9 +244,33 @@ public class Address {
 	public void setDeliveryTimeTo(java.util.Date deliveryTimeTo) {
 		this.deliveryTimeTo = deliveryTimeTo;
 	}
+	
+	public void setSundayClosure(boolean sundayClosure) {
+		this.sundayClosure = sundayClosure;
+	}
 
-	public void setClosingDate(DayOfWeek closingDate) {
-		this.closingDate = closingDate;
+	public void setMondayClosure(boolean mondayClosure) {
+		this.mondayClosure = mondayClosure;
+	}
+
+	public void setTuesdayClosure(boolean tuesdayClosure) {
+		this.tuesdayClosure = tuesdayClosure;
+	}
+
+	public void setWednesdayClosure(boolean wednesdayClosure) {
+		this.wednesdayClosure = wednesdayClosure;
+	}
+
+	public void setThursdayClosure(boolean thursdayClosure) {
+		this.thursdayClosure = thursdayClosure;
+	}
+
+	public void setFridayClosure(boolean fridayClosure) {
+		this.fridayClosure = fridayClosure;
+	}
+
+	public void setSaturdayClosure(boolean saturdayClosure) {
+		this.saturdayClosure = saturdayClosure;
 	}
 
 	public void setOtherAddressDetail(String otherAddressDetail) {
