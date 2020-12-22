@@ -55,49 +55,49 @@ public class Address {
 	/*@Enumerated(EnumType.STRING)
 	private DayOfWeek closingDate;*/
 	
-	@Column(name = "closingDate")
+	@Column(name = "closingDate", columnDefinition = "INT")
 	@ColumnTransformer(
 		read = "bitget(closingDate, 1)",
 		write = "case when ? then bitor(0, 1) else bitand(0, bitnot(1)) end"
 	)
 	private boolean sundayClosure;
 	
-	@Column(name = "closingDate")
+	@Column(name = "closingDate", columnDefinition = "INT")
 	@ColumnTransformer(
 		read = "bitget(closingDate, 1)",
 		write = "case when ? then bitor(0, 2) else bitand(0, bitnot(2)) end"
 	)
 	private boolean mondayClosure;
 	
-	@Column(name = "closingDate")
+	@Column(name = "closingDate", columnDefinition = "INT")
 	@ColumnTransformer(
 		read = "bitget(closingDate, 1)",
 		write = "case when ? then bitor(0, 4) else bitand(0, bitnot(4)) end"
 	)
 	private boolean tuesdayClosure;
 	
-	@Column(name = "closingDate")
+	@Column(name = "closingDate", columnDefinition = "INT")
 	@ColumnTransformer(
 		read = "bitget(closingDate, 1)",
 		write = "case when ? then bitor(0, 8) else bitand(0, bitnot(8)) end"
 	)
 	private boolean wednesdayClosure;
 	
-	@Column(name = "closingDate")
+	@Column(name = "closingDate", columnDefinition = "INT")
 	@ColumnTransformer(
 		read = "bitget(closingDate, 1)",
 		write = "case when ? then bitor(0, 16) else bitand(0, bitnot(16)) end"
 	)
 	private boolean thursdayClosure;
 	
-	@Column(name = "closingDate")
+	@Column(name = "closingDate", columnDefinition = "INT")
 	@ColumnTransformer(
 		read = "bitget(closingDate, 1)",
 		write = "case when ? then bitor(0, 32) else bitand(0, bitnot(32)) end"
 	)
 	private boolean fridayClosure;
 	
-	@Column(name = "closingDate")
+	@Column(name = "closingDate", columnDefinition = "INT")
 	@ColumnTransformer(
 		read = "bitget(closingDate, 1)",
 		write = "case when ? then bitor(0, 64) else bitand(0, bitnot(64)) end"

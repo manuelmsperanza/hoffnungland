@@ -423,6 +423,7 @@ public class App extends WindowAdapter implements ActionListener {
 			fifthLinePanel.add(saturdayClosureDayBox);
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error(e);
 			JOptionPane.showMessageDialog(this.frmOrderEntry, e.getMessage(), "Exception", JOptionPane.ERROR_MESSAGE);
 		}
