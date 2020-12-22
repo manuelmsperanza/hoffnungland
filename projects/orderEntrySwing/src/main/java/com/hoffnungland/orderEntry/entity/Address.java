@@ -52,57 +52,7 @@ public class Address {
 	@Temporal(TemporalType.TIME)
 	private java.util.Date deliveryTimeTo;
 	
-	/*@Enumerated(EnumType.STRING)
-	private DayOfWeek closingDate;*/
-	
-	@Column(name = "closingDate", columnDefinition = "INT")
-	@ColumnTransformer(
-		read = "bitget(closingDate, 1)",
-		write = "case when ? then bitor(0, 1) else bitand(0, bitnot(1)) end"
-	)
-	private boolean sundayClosure;
-	
-	@Column(name = "closingDate", columnDefinition = "INT")
-	@ColumnTransformer(
-		read = "bitget(closingDate, 1)",
-		write = "case when ? then bitor(0, 2) else bitand(0, bitnot(2)) end"
-	)
-	private boolean mondayClosure;
-	
-	@Column(name = "closingDate", columnDefinition = "INT")
-	@ColumnTransformer(
-		read = "bitget(closingDate, 1)",
-		write = "case when ? then bitor(0, 4) else bitand(0, bitnot(4)) end"
-	)
-	private boolean tuesdayClosure;
-	
-	@Column(name = "closingDate", columnDefinition = "INT")
-	@ColumnTransformer(
-		read = "bitget(closingDate, 1)",
-		write = "case when ? then bitor(0, 8) else bitand(0, bitnot(8)) end"
-	)
-	private boolean wednesdayClosure;
-	
-	@Column(name = "closingDate", columnDefinition = "INT")
-	@ColumnTransformer(
-		read = "bitget(closingDate, 1)",
-		write = "case when ? then bitor(0, 16) else bitand(0, bitnot(16)) end"
-	)
-	private boolean thursdayClosure;
-	
-	@Column(name = "closingDate", columnDefinition = "INT")
-	@ColumnTransformer(
-		read = "bitget(closingDate, 1)",
-		write = "case when ? then bitor(0, 32) else bitand(0, bitnot(32)) end"
-	)
-	private boolean fridayClosure;
-	
-	@Column(name = "closingDate", columnDefinition = "INT")
-	@ColumnTransformer(
-		read = "bitget(closingDate, 1)",
-		write = "case when ? then bitor(0, 64) else bitand(0, bitnot(64)) end"
-	)
-	private boolean saturdayClosure;
+	private int closingDate;
 	
 	private String otherAddressDetail;
 	
@@ -161,32 +111,39 @@ public class Address {
 		return deliveryTimeTo;
 	}
 
-	public boolean isSundayClosure() {
-		return sundayClosure;
+	public boolean isSundayClosed() {
+		int bitmask = 0b1;
+		return (this.closingDate & bitmask) > 0;
 	}
 
-	public boolean isMondayClosure() {
-		return mondayClosure;
+	public boolean isMondayClosed() {
+		int bitmask = 0b10;
+		return (this.closingDate & bitmask) > 0;
 	}
 
-	public boolean isTuesdayClosure() {
-		return tuesdayClosure;
+	public boolean isTuesdayClosed() {
+		int bitmask = 0b100;
+		return (this.closingDate & bitmask) > 0;
 	}
 
-	public boolean isWednesdayClosure() {
-		return wednesdayClosure;
+	public boolean isWednesdayClosed() {
+		int bitmask = 0b1000;
+		return (this.closingDate & bitmask) > 0;
 	}
 
-	public boolean isThursdayClosure() {
-		return thursdayClosure;
+	public boolean isThursdayClosed() {
+		int bitmask = 0b10000;
+		return (this.closingDate & bitmask) > 0;
 	}
 
-	public boolean isFridayClosure() {
-		return fridayClosure;
+	public boolean isFridayClosed() {
+		int bitmask = 0b100000;
+		return (this.closingDate & bitmask) > 0;
 	}
 
-	public boolean isSaturdayClosure() {
-		return saturdayClosure;
+	public boolean isSaturdayClosed() {
+		int bitmask = 0b1000000;
+		return (this.closingDate & bitmask) > 0;
 	}
 
 	public String getOtherAddressDetail() {
@@ -245,32 +202,67 @@ public class Address {
 		this.deliveryTimeTo = deliveryTimeTo;
 	}
 	
-	public void setSundayClosure(boolean sundayClosure) {
-		this.sundayClosure = sundayClosure;
+	public void setSundayClosed(boolean sundayClosed) {
+		int bitmask = 0b1;
+		if(sundayClosed) {
+			this.closingDate =  this.closingDate | bitmask;
+		} else {
+			this.closingDate =  this.closingDate & ~bitmask;
+		}
 	}
 
-	public void setMondayClosure(boolean mondayClosure) {
-		this.mondayClosure = mondayClosure;
+	public void setMondayClosed(boolean mondayClosed) {
+		int bitmask = 0b10;
+		if(mondayClosed) {
+			this.closingDate =  this.closingDate | bitmask;
+		} else {
+			this.closingDate =  this.closingDate & ~bitmask;
+		}
 	}
 
-	public void setTuesdayClosure(boolean tuesdayClosure) {
-		this.tuesdayClosure = tuesdayClosure;
+	public void setTuesdayClosed(boolean tuesdayClosed) {
+		int bitmask = 0b100;
+		if(tuesdayClosed) {
+			this.closingDate =  this.closingDate | bitmask;
+		} else {
+			this.closingDate =  this.closingDate & ~bitmask;
+		}
 	}
 
-	public void setWednesdayClosure(boolean wednesdayClosure) {
-		this.wednesdayClosure = wednesdayClosure;
+	public void setWednesdayClosed(boolean wednesdayClosed) {
+		int bitmask = 0b1000;
+		if(wednesdayClosed) {
+			this.closingDate =  this.closingDate | bitmask;
+		} else {
+			this.closingDate =  this.closingDate & ~bitmask;
+		}
 	}
 
-	public void setThursdayClosure(boolean thursdayClosure) {
-		this.thursdayClosure = thursdayClosure;
+	public void setThursdayClosed(boolean thursdayClosed) {
+		int bitmask = 0b10000;
+		if(thursdayClosed) {
+			this.closingDate =  this.closingDate | bitmask;
+		} else {
+			this.closingDate =  this.closingDate & ~bitmask;
+		}
 	}
 
-	public void setFridayClosure(boolean fridayClosure) {
-		this.fridayClosure = fridayClosure;
+	public void setFridayClosed(boolean fridayClosed) {
+		int bitmask = 0b100000;
+		if(fridayClosed) {
+			this.closingDate =  this.closingDate | bitmask;
+		} else {
+			this.closingDate =  this.closingDate & ~bitmask;
+		}
 	}
 
-	public void setSaturdayClosure(boolean saturdayClosure) {
-		this.saturdayClosure = saturdayClosure;
+	public void setSaturdayClosed(boolean saturdayClosed) {
+		int bitmask = 0b1000000;
+		if(saturdayClosed) {
+			this.closingDate =  this.closingDate | bitmask;
+		} else {
+			this.closingDate =  this.closingDate & ~bitmask;
+		}
 	}
 
 	public void setOtherAddressDetail(String otherAddressDetail) {
@@ -283,6 +275,14 @@ public class Address {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public int getClosingDate() {
+		return closingDate;
+	}
+
+	public void setClosingDate(int closingDate) {
+		this.closingDate = closingDate;
 	}
 	
 }
