@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.time.LocalTime;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -33,9 +34,15 @@ import org.h2.util.StringUtils;
 
 import com.hoffnungland.orderEntry.entity.Agent;
 import com.hoffnungland.orderEntry.entity.Customer;
+import com.hoffnungland.orderEntry.entity.PaymentType;
+
 import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.JCheckBox;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
+import java.util.Date;
+import java.util.Calendar;
 
 public class App extends WindowAdapter implements ActionListener {
 
@@ -59,6 +66,17 @@ public class App extends WindowAdapter implements ActionListener {
 	private JTextField vatCodeTextField;
 
 	private JTextField fiscalCodeTextField;
+	private JCheckBox sundayClosureDayBox;
+	private JCheckBox mondayClosureDayBox;
+	private JCheckBox tuesdayClosureDayBox;
+	private JCheckBox wednesdayClosureDayBox;
+	private JCheckBox thursdayClosureDayBox;
+	private JCheckBox fridayClosureDayBox;
+	private JCheckBox saturdayClosureDayBox;
+	private JSpinner deliveryTimeFromSpinner;
+	private JSpinner deliveryTimeToSpinner;
+	private JTextField ibanTextField;
+	private JComboBox<PaymentType> paymentTypeComboBox;
 	
 	public EntityManager getEntityManager() {
 		return entityManager;
@@ -382,45 +400,133 @@ public class App extends WindowAdapter implements ActionListener {
 			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, closureDayLabel, 0, SpringLayout.NORTH, fifthLinePanel);
 			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, closureDayLabel, 5, SpringLayout.WEST, fifthLinePanel);
 			fifthLineSpringLayout.putConstraint(SpringLayout.SOUTH, fifthLinePanel, 0, SpringLayout.SOUTH, closureDayLabel);
-			closureDayLabel.setMinimumSize(new Dimension(90, 22));
+			closureDayLabel.setMinimumSize(new Dimension(90, 23));
 			closureDayLabel.setPreferredSize(new Dimension(90, 23));
-			closureDayLabel.setMaximumSize(new Dimension(90, 22));
+			closureDayLabel.setMaximumSize(new Dimension(90, 23));
 			fifthLinePanel.add(closureDayLabel);
 			
-			JCheckBox sundayClosureDayBox = new JCheckBox("sun");
+			sundayClosureDayBox = new JCheckBox("sun");
 			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, sundayClosureDayBox, 0, SpringLayout.NORTH, fifthLinePanel);
 			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, sundayClosureDayBox, 5, SpringLayout.EAST, closureDayLabel);
 			fifthLinePanel.add(sundayClosureDayBox);
 			
-			JCheckBox mondayClosureDayBox = new JCheckBox("mon");
+			mondayClosureDayBox = new JCheckBox("mon");
 			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, mondayClosureDayBox, 0, SpringLayout.NORTH, fifthLinePanel);
 			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, mondayClosureDayBox, 2, SpringLayout.EAST, sundayClosureDayBox);
 			fifthLinePanel.add(mondayClosureDayBox);
 			
-			JCheckBox tuesdayClosureDayBox = new JCheckBox("tue");
+			tuesdayClosureDayBox = new JCheckBox("tue");
 			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, tuesdayClosureDayBox, 0, SpringLayout.NORTH, fifthLinePanel);
 			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, tuesdayClosureDayBox, 2, SpringLayout.EAST, mondayClosureDayBox);
 			fifthLinePanel.add(tuesdayClosureDayBox);
 			
-			JCheckBox wednesdayClosureDayBox = new JCheckBox("wed");
+			wednesdayClosureDayBox = new JCheckBox("wed");
 			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, wednesdayClosureDayBox, 0, SpringLayout.NORTH, fifthLinePanel);
 			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, wednesdayClosureDayBox, 2, SpringLayout.EAST, mondayClosureDayBox);
 			fifthLinePanel.add(wednesdayClosureDayBox);
 			
-			JCheckBox thursdayClosureDayBox = new JCheckBox("thu");
+			thursdayClosureDayBox = new JCheckBox("thu");
 			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, thursdayClosureDayBox, 0, SpringLayout.NORTH, fifthLinePanel);
 			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, thursdayClosureDayBox, 2, SpringLayout.EAST, wednesdayClosureDayBox);
 			fifthLinePanel.add(thursdayClosureDayBox);
 			
-			JCheckBox fridayClosureDayBox = new JCheckBox("fri");
+			fridayClosureDayBox = new JCheckBox("fri");
 			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, fridayClosureDayBox, 0, SpringLayout.NORTH, fifthLinePanel);
 			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, fridayClosureDayBox, 2, SpringLayout.EAST, thursdayClosureDayBox);
 			fifthLinePanel.add(fridayClosureDayBox);
 			
-			JCheckBox saturdayClosureDayBox = new JCheckBox("sat");
+			saturdayClosureDayBox = new JCheckBox("sat");
 			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, saturdayClosureDayBox, 0, SpringLayout.NORTH, fifthLinePanel);
 			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, saturdayClosureDayBox, 2, SpringLayout.EAST, fridayClosureDayBox);
 			fifthLinePanel.add(saturdayClosureDayBox);
+			
+			JLabel deliveryTimeFromLabel = new JLabel("Delivery From");
+			deliveryTimeFromLabel.setPreferredSize(new Dimension(70, 23));
+			deliveryTimeFromLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+			deliveryTimeFromLabel.setMinimumSize(new Dimension(70, 23));
+			deliveryTimeFromLabel.setMaximumSize(new Dimension(90, 23));
+			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, deliveryTimeFromLabel, 0, SpringLayout.NORTH, fifthLinePanel);
+			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, deliveryTimeFromLabel, 5, SpringLayout.EAST, saturdayClosureDayBox);
+			fifthLinePanel.add(deliveryTimeFromLabel);
+			
+			deliveryTimeFromSpinner = new JSpinner();
+			
+			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, deliveryTimeFromSpinner, 2, SpringLayout.NORTH, closureDayLabel);
+			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, deliveryTimeFromSpinner, 5, SpringLayout.EAST, deliveryTimeFromLabel);
+			
+			deliveryTimeFromSpinner.setModel(new SpinnerDateModel(new Date(0), null, null, Calendar.HOUR_OF_DAY));
+			deliveryTimeFromSpinner.setEditor(new JSpinner.DateEditor(deliveryTimeFromSpinner, "HH:mm"));
+			fifthLinePanel.add(deliveryTimeFromSpinner);
+			
+			JLabel deliveryTimeToLabel = new JLabel("Delivery To");
+			deliveryTimeToLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+			deliveryTimeToLabel.setMaximumSize(new Dimension(90, 23));
+			deliveryTimeToLabel.setMinimumSize(new Dimension(70, 23));
+			deliveryTimeToLabel.setPreferredSize(new Dimension(70, 23));
+			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, deliveryTimeToLabel, 0, SpringLayout.NORTH, closureDayLabel);
+			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, deliveryTimeToLabel, 5, SpringLayout.EAST, deliveryTimeFromSpinner);
+			fifthLinePanel.add(deliveryTimeToLabel);
+			
+			deliveryTimeToSpinner = new JSpinner();
+			fifthLineSpringLayout.putConstraint(SpringLayout.NORTH, deliveryTimeToSpinner, 2, SpringLayout.NORTH, fifthLinePanel);
+			fifthLineSpringLayout.putConstraint(SpringLayout.WEST, deliveryTimeToSpinner, 5, SpringLayout.EAST, deliveryTimeToLabel);
+			
+			deliveryTimeToSpinner.setModel(new SpinnerDateModel(new Date(0), null, null, Calendar.HOUR_OF_DAY));
+			deliveryTimeToSpinner.setEditor(new JSpinner.DateEditor(deliveryTimeFromSpinner, "HH:mm"));
+			fifthLinePanel.add(deliveryTimeToSpinner);
+			
+			JPanel sixthLinePanel = new JPanel();
+			springLayout.putConstraint(SpringLayout.NORTH, sixthLinePanel, 10, SpringLayout.SOUTH, fifthLinePanel);
+			springLayout.putConstraint(SpringLayout.WEST, sixthLinePanel, 0, SpringLayout.WEST, frmOrderEntry.getContentPane());
+			springLayout.putConstraint(SpringLayout.EAST, sixthLinePanel, 0, SpringLayout.EAST, frmOrderEntry.getContentPane());
+			frmOrderEntry.getContentPane().add(sixthLinePanel);
+			SpringLayout sixthLineSpringLayout = new SpringLayout();
+			sixthLinePanel.setLayout(sixthLineSpringLayout);
+			
+			JLabel paymentTypeLabel = new JLabel("Payment Type");
+			sixthLineSpringLayout.putConstraint(SpringLayout.WEST, paymentTypeLabel, 5, SpringLayout.WEST, sixthLinePanel);
+			paymentTypeLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+			paymentTypeLabel.setPreferredSize(new Dimension(90, 23));
+			paymentTypeLabel.setMinimumSize(new Dimension(90, 23));
+			paymentTypeLabel.setMaximumSize(new Dimension(90, 23));
+			sixthLineSpringLayout.putConstraint(SpringLayout.NORTH, paymentTypeLabel, 0, SpringLayout.NORTH, sixthLinePanel);
+			sixthLineSpringLayout.putConstraint(SpringLayout.SOUTH, sixthLinePanel, 0, SpringLayout.SOUTH, paymentTypeLabel);
+			sixthLinePanel.add(paymentTypeLabel);
+			
+			paymentTypeComboBox = new JComboBox<PaymentType>();
+			sixthLineSpringLayout.putConstraint(SpringLayout.NORTH, paymentTypeComboBox, 0, SpringLayout.NORTH, sixthLinePanel);
+			paymentTypeComboBox.setPreferredSize(new Dimension(200, 22));
+			paymentTypeComboBox.setMinimumSize(new Dimension(150, 22));
+			sixthLineSpringLayout.putConstraint(SpringLayout.WEST, paymentTypeComboBox, 5, SpringLayout.EAST, paymentTypeLabel);
+			sixthLinePanel.add(paymentTypeComboBox);
+			
+			JLabel ibanLabel = new JLabel("IBAN");
+			ibanLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+			ibanLabel.setPreferredSize(new Dimension(90, 23));
+			ibanLabel.setMinimumSize(new Dimension(90, 23));
+			ibanLabel.setMaximumSize(new Dimension(90, 23));
+			sixthLineSpringLayout.putConstraint(SpringLayout.NORTH, ibanLabel, 0, SpringLayout.NORTH, sixthLinePanel);
+			sixthLineSpringLayout.putConstraint(SpringLayout.WEST, ibanLabel, 5, SpringLayout.EAST, paymentTypeComboBox);
+			sixthLinePanel.add(ibanLabel);
+			
+			ibanTextField = new JTextField();
+			ibanTextField.setToolTipText("");
+			ibanLabel.setLabelFor(ibanTextField);
+			ibanTextField.setMaximumSize(new Dimension(2147483647, 23));
+			ibanTextField.setPreferredSize(new Dimension(250, 23));
+			sixthLineSpringLayout.putConstraint(SpringLayout.WEST, ibanTextField, 5, SpringLayout.EAST, ibanLabel);
+			ibanTextField.setMinimumSize(new Dimension(250, 23));
+			sixthLineSpringLayout.putConstraint(SpringLayout.NORTH, ibanTextField, 0, SpringLayout.NORTH, sixthLinePanel);
+			sixthLinePanel.add(ibanTextField);
+			ibanTextField.setColumns(30);
+			
+			JButton btnNewButton = new JButton("validate");
+			sixthLineSpringLayout.putConstraint(SpringLayout.WEST, btnNewButton, 4, SpringLayout.EAST, ibanTextField);
+			sixthLinePanel.add(btnNewButton);
+			
+			
+			
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
