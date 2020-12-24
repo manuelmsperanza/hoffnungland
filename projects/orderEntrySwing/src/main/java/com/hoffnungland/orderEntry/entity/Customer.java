@@ -44,7 +44,7 @@ public class Customer {
 	
 	private String vatCode;
 	
-	private String fiscalCode;
+	private String taxpayerIdentificationNumber;
 	
 	private String IBAN;
 	
@@ -79,8 +79,8 @@ public class Customer {
 		return vatCode;
 	}
 
-	public String getFiscalCode() {
-		return fiscalCode;
+	public String getTaxpayerIdentificationNumber() {
+		return taxpayerIdentificationNumber;
 	}
 
 	public String getIBAN() {
@@ -119,8 +119,8 @@ public class Customer {
 		this.vatCode = vatCode;
 	}
 
-	public void setFiscalCode(String fiscalCode) {
-		this.fiscalCode = fiscalCode;
+	public void setTaxpayerIdentificationNumber(String taxpayerIdentificationNumber) {
+		this.taxpayerIdentificationNumber = taxpayerIdentificationNumber;
 	}
 
 	public void setIBAN(String iBAN) {
@@ -162,7 +162,7 @@ public class Customer {
 	}
 	
 	public String getFiscalId() {
-		return StringUtils.isNullOrEmpty(this.vatCode) ? this.fiscalCode : this.vatCode;
+		return StringUtils.isNullOrEmpty(this.vatCode) ? this.taxpayerIdentificationNumber : this.vatCode;
 	}
 	
 }
