@@ -112,7 +112,7 @@
 				</executions>
 				<configuration>
 					<wsdlUrls>
-						<wsdlUrl>https://ssl.ibanrechner.de/soap/index.php?wsdl</wsdlUrl>
+						<wsdlUrl>https://ec.europa.eu/taxation_customs/vies/checkVatTestService.wsdl</wsdlUrl>
 					</wsdlUrls>
 				</configuration>
 			</plugin>
