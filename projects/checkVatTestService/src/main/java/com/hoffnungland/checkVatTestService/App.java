@@ -26,7 +26,7 @@ public class App
 	{
 		logger.traceEntry();
 		CheckVatTestService checkVatTestService = new CheckVatTestService();
-		System.out.println(checkVatTestService.getWSDLDocumentLocation());
+		logger.debug(checkVatTestService.getWSDLDocumentLocation());
 		CheckVatPortType checkVatPort = checkVatTestService.getCheckVatPort();
 		
 		String endpointURL = "http://ec.europa.eu/taxation_customs/vies/services/checkVatService";

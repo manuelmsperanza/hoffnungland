@@ -13,8 +13,9 @@
 	</parent>
 	<modules>
 		<module>logging</module>
+    	<module>checkTinService</module>
 		<module>checkVatTestService</module>
 		<module>ibanRechner</module>
 		<module>orderEntrySwing</module>
-	</modules>
+  </modules>
 </project>
