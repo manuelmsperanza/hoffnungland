@@ -28,8 +28,8 @@ public class App
     {
 		logger.traceEntry();
 		
-		String username="manuelmsperanza";
-	    String password="#VzjSP6kBf5X";
+		String username = args[0];
+	    String password = args[1];
 	    String usernameAndPassword = username + ":" + password;
 	    String authorizationHeaderValue = "Basic " + java.util.Base64.getEncoder().encodeToString( usernameAndPassword.getBytes() );
 		
