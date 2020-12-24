@@ -43,10 +43,15 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import java.util.Date;
 import java.util.Calendar;
+import javax.swing.DefaultComboBoxModel;
 
 public class App extends WindowAdapter implements ActionListener {
 
 	private static final Logger logger = LogManager.getLogger(App.class);
+	
+	private static final int emojiQuestionMark = 0x2753; //black question mark ornament
+	private static final int emojiCheckMark = 0x2705; //white heavy check mark
+	private static final int emojiCrossMark = 0x274C; //cross mark
 	
 	private EntityManager entityManager;
 	private JFrame frmOrderEntry;
@@ -77,6 +82,7 @@ public class App extends WindowAdapter implements ActionListener {
 	private JSpinner deliveryTimeToSpinner;
 	private JTextField ibanTextField;
 	private JComboBox<PaymentType> paymentTypeComboBox;
+	private JTextField stateTextField;
 	
 	public EntityManager getEntityManager() {
 		return entityManager;
@@ -297,10 +303,29 @@ public class App extends WindowAdapter implements ActionListener {
 			springLayout.putConstraint(SpringLayout.EAST, thirdLinePanel, 0, SpringLayout.EAST, frmOrderEntry.getContentPane());
 			frmOrderEntry.getContentPane().add(thirdLinePanel);
 			
+			JLabel stateLabel = new JLabel("State");
+			thirdLineSpringLayout.putConstraint(SpringLayout.NORTH, stateLabel, 0, SpringLayout.NORTH, thirdLinePanel);
+			thirdLineSpringLayout.putConstraint(SpringLayout.WEST, stateLabel, 5, SpringLayout.WEST, thirdLinePanel);
+			thirdLineSpringLayout.putConstraint(SpringLayout.SOUTH, thirdLinePanel, 0, SpringLayout.SOUTH, stateLabel);
+			stateLabel.setPreferredSize(new Dimension(90, 22));
+			stateLabel.setMinimumSize(new Dimension(90, 22));
+			stateLabel.setMaximumSize(new Dimension(90, 22));
+			stateLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+			thirdLinePanel.add(stateLabel);
+			
+			stateTextField = new JTextField();
+			stateTextField.setPreferredSize(new Dimension(50, 22));
+			stateTextField.setMaximumSize(new Dimension(50, 22));
+			stateTextField.setMinimumSize(new Dimension(50, 22));
+			stateTextField.setEditable(false);
+			thirdLineSpringLayout.putConstraint(SpringLayout.NORTH, stateTextField, 0, SpringLayout.NORTH, thirdLinePanel);
+			thirdLineSpringLayout.putConstraint(SpringLayout.WEST, stateTextField, 5, SpringLayout.EAST, stateLabel);
+			thirdLinePanel.add(stateTextField);
+			
+			
 			JLabel addressLabel = new JLabel("Address");
 			thirdLineSpringLayout.putConstraint(SpringLayout.NORTH, addressLabel, 0, SpringLayout.NORTH, thirdLinePanel);
-			thirdLineSpringLayout.putConstraint(SpringLayout.WEST, addressLabel, 5, SpringLayout.WEST, thirdLinePanel);
-			thirdLineSpringLayout.putConstraint(SpringLayout.SOUTH, thirdLinePanel, 0, SpringLayout.SOUTH, addressLabel);
+			thirdLineSpringLayout.putConstraint(SpringLayout.WEST, addressLabel, 5, SpringLayout.EAST, stateTextField);
 			addressLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 			addressLabel.setMinimumSize(new Dimension(90, 22));
 			addressLabel.setPreferredSize(new Dimension(90, 22));
@@ -494,6 +519,7 @@ public class App extends WindowAdapter implements ActionListener {
 			sixthLinePanel.add(paymentTypeLabel);
 			
 			paymentTypeComboBox = new JComboBox<PaymentType>();
+			paymentTypeComboBox.setModel(new DefaultComboBoxModel(PaymentType.values()));
 			sixthLineSpringLayout.putConstraint(SpringLayout.NORTH, paymentTypeComboBox, 0, SpringLayout.NORTH, sixthLinePanel);
 			paymentTypeComboBox.setPreferredSize(new Dimension(200, 22));
 			paymentTypeComboBox.setMinimumSize(new Dimension(150, 22));
@@ -520,14 +546,11 @@ public class App extends WindowAdapter implements ActionListener {
 			sixthLinePanel.add(ibanTextField);
 			ibanTextField.setColumns(30);
 			
-			JButton btnNewButton = new JButton("validate");
+			JButton btnNewButton = new JButton(new String(Character.toChars(App.emojiQuestionMark)));
 			sixthLineSpringLayout.putConstraint(SpringLayout.WEST, btnNewButton, 4, SpringLayout.EAST, ibanTextField);
 			sixthLinePanel.add(btnNewButton);
 			
-			
-			
-			
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e);
