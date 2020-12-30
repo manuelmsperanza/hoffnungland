@@ -13,9 +13,11 @@
 	</parent>
 	<modules>
 		<module>logging</module>
-    	<module>checkTinService</module>
+		<module>checkTinService</module>
 		<module>checkVatTestService</module>
 		<module>ibanRechner</module>
 		<module>orderEntrySwing</module>
+		<module>echoClient</module>
+		<module>echoServer</module>
   </modules>
 </project>
