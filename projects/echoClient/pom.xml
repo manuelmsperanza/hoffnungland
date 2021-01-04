@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>projects</artifactId>
-    <groupId>com.hoffnungland</groupId>
-    <version>1.0</version>
-  </parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>projects</artifactId>
+		<groupId>com.hoffnungland</groupId>
+		<version>1.0</version>
+	</parent>
 
-  <groupId>com.hoffnungland</groupId>
-  <artifactId>echoClient</artifactId>
-  <version>0.0.1</version>
+	<groupId>com.hoffnungland</groupId>
+	<artifactId>echoClient</artifactId>
+	<version>0.0.1</version>
 
-  <name>echoClient</name>
+	<name>echoClient</name>
 
-  <build>
-    <plugins>
-        <plugin>
+	<build>
+		<plugins>
+			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<executions>
 					<execution>
@@ -37,6 +39,14 @@
 					</execution>
 				</executions>
 			</plugin>
-    </plugins>
-  </build>
+		</plugins>
+	</build>
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.11</version>
+		</dependency>
+	</dependencies>
 </project>

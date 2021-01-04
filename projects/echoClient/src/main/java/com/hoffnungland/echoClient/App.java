@@ -7,13 +7,16 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-/**
- * Hello world!
- *
- */
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class App 
 {
-    public static void main( String[] args )
+    
+	private static final Logger logger = LogManager.getLogger(App.class);
+	
+	public static void main( String[] args )
     {
         if (args.length != 2) {
             System.err.println(
