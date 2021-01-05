@@ -19,5 +19,6 @@
 		<module>orderEntrySwing</module>
 		<module>echoClient</module>
 		<module>echoServer</module>
+    	<module>startH2db</module>
   </modules>
 </project>
