@@ -33,6 +33,4 @@ npm install
 
 ## Install D3
 
-npm install --save d3
-npm install 
-
+npm install d3 && npm install @types/d3 --save-dev
