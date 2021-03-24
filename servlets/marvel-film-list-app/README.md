@@ -28,9 +28,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Install Ag-Grid
 
-npm install --save ag-grid-community ag-grid-angular
-npm install 
+	npm install --save ag-grid-community ag-grid-angular
+	npm install 
 
 ## Install D3
 
-npm install d3 && npm install @types/d3 --save-dev
+[Data visualization in Angular using D3.js](https://blog.logrocket.com/data-visualization-angular-d3/) by [Karl Hughes] (https://blog.logrocket.com/author/karlhughes/)
+
+	npm install d3 && npm install @types/d3 --save-dev
+
+
+
