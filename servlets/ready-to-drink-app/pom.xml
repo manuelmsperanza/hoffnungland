@@ -51,7 +51,7 @@
 						</goals>
 						<configuration>
 							<executable>ng.cmd</executable>
-							<commandlineArgs>build --prod --base-href=/readyToDrink/</commandlineArgs>
+							<commandlineArgs>build --configuration production --base-href=/readyToDrink/</commandlineArgs>
 						</configuration>
 					</execution>
 				</executions>
