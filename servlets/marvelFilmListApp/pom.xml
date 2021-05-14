@@ -11,7 +11,7 @@
 
 	<groupId>com.hoffnungland</groupId>
 	<artifactId>marvelFilmListApp</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>war</packaging>
 
 	<name>marvelFilmListApp Maven Webapp</name>
