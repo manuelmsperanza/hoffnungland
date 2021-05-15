@@ -50,7 +50,7 @@ export class AppComponent implements OnInit, OnChanges, AfterViewChecked, AfterC
 
   ngOnInit() {
     console.log("ngOnInit");
-     this.http.get('/marvelFilmListApp/assets/marvel-film-list.json').pipe(
+     this.http.get('/marvelFilmListApp/MarvelFilmApplication/MarvelFilmsService').pipe(
       catchError((err, caught) => caught)
      )
       .subscribe(
