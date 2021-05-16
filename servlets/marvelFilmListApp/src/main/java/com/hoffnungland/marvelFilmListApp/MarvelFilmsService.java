@@ -20,7 +20,6 @@ import javax.ws.rs.core.UriInfo;
 import com.hoffnungland.marvelFilmListApp.entity.Film;
 
 @Stateless
-@Named
 @Path("MarvelFilmsService")
 public class MarvelFilmsService {
 	
@@ -32,18 +31,12 @@ public class MarvelFilmsService {
 	@PersistenceContext
     private EntityManager em;
 	
-	/*@PersistenceUnit
-	EntityManagerFactory emf;*/
-	
 	@GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Film> getHtml() {
 		
 		logger.info("Calling getAllCurrentEvents");
-		/*if(this.em == null) {
-			logger.warning("EntityManager is null");
-			this.em = this.emf.createEntityManager();
-		}*/
+
 		TypedQuery<Film> filmsQuery = this.em.createQuery("SELECT f FROM Film f ORDER BY f.releaseDate", Film.class);
         List<Film> allFilms = filmsQuery.getResultList();
         if (allFilms == null || allFilms.size() == 0) {

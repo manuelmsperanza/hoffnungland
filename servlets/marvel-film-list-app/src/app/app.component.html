@@ -8,4 +8,18 @@
 	[columnTypes]="columnTypes"
 	[rowData]="rowData"
 	[columnDefs]="columnDefs"></ag-grid-angular>
+<div>
+	<ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+		<button (click)="auth.logout({ returnTo: document.location.origin })">
+			Log out
+		</button>
+	</ng-container>
+
+	<ng-template #loggedOut>
+		<button (click)="auth.loginWithRedirect({redirectUri : document.location.href})">Log in</button>
+	</ng-template>
+	<span *ngIf="auth.user$ | async as user">
+		Hello {{ user.name }} - {{ user.email }}
+	</span>
+</div>
 <router-outlet></router-outlet>
