@@ -170,6 +170,13 @@
 			<version>${javaee.api.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.security.enterprise/javax.security.enterprise-api -->
+		<dependency>
+		    <groupId>javax.security.enterprise</groupId>
+		    <artifactId>javax.security.enterprise-api</artifactId>
+		    <version>1.0</version>
+		    <scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>com.hoffnungland</groupId>
 			<artifactId>Log4j</artifactId>
