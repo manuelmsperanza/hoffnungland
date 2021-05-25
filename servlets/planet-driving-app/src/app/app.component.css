@@ -1,0 +1,14 @@
+.menu-card {
+    width: 300px;
+    float: left;
+    margin: 5px
+}
+
+.menu-card-sub-item {
+    float: left;
+}
+
+.menu-card-button {
+    right: 10px;
+    position: absolute;
+}
