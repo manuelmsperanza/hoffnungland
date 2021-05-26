@@ -9,7 +9,7 @@ import { DOCUMENT } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnChanges, AfterViewChecked, AfterContentChecked, DoCheck {
+export class AppComponent implements AfterContentChecked {
 
   private gridColumnApi;
   toggleAutosize : boolean = true;
@@ -38,34 +38,15 @@ export class AppComponent implements OnInit, OnChanges, AfterViewChecked, AfterC
       filter: 'agDateColumnFilter'}
     }
   }
+
   ngAfterContentChecked(): void {
-    console.log("ngAfterContentChecked");
+    //console.log("ngAfterContentChecked");
     this.autoSizeAll(false);
   }
-  ngAfterViewChecked(): void {
-    console.log("ngAfterViewChecked");
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log("ngOnChanges");
-  }
-
-  ngDoCheck(): void {
-    console.log("ngDoCheck");
-  }
-
-  ngOnInit() {
-    console.log("ngOnInit");
-    /*this.http.get('/marvelFilmListApp/MarvelFilmApplication/MarvelFilmsService').pipe(
-      catchError((err, caught) => caught)
-     )
-      .subscribe(
-        data => this.rowData = data
-      );*/
-  }
+  
 
   onGridReady(params) {
-    console.log("onGridReady");
+    //console.log("onGridReady");
     this.gridColumnApi = params.columnApi;
     this.http.get('/marvelFilmListApp/MarvelFilmApplication/MarvelFilmsService').pipe(
       catchError((err, caught) => caught)
@@ -84,8 +65,6 @@ export class AppComponent implements OnInit, OnChanges, AfterViewChecked, AfterC
       }
       this.toggleAutosize = !this.toggleAutosize;
     }
-
-
   }
 
 }
