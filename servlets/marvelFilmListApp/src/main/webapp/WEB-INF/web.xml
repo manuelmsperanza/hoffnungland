@@ -16,26 +16,6 @@
 			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
 		</user-data-constraint>
 	</security-constraint>
-	<env-entry>
-	    <env-entry-name>auth0.domain</env-entry-name>
-	    <env-entry-type>java.lang.String</env-entry-type>
-	    <env-entry-value>hoffnungland.us.auth0.com</env-entry-value>
-	</env-entry>
-	<env-entry>
-	    <env-entry-name>auth0.clientId</env-entry-name>
-	    <env-entry-type>java.lang.String</env-entry-type>
-	    <env-entry-value>oGkoTO7htixNRqf8o0iY6EElZuoMMdEj</env-entry-value>
-	</env-entry>
-	<env-entry>
-	    <env-entry-name>auth0.clientSecret</env-entry-name>
-	    <env-entry-type>java.lang.String</env-entry-type>
-	    <env-entry-value>QSScLRtXHhq9VvEcYgk9u_xn6GYhiVSbmGjLI6G6gm2G6j3YZKXmJExgq9DH8ueV</env-entry-value>
-	</env-entry>
-	<env-entry>
-	    <env-entry-name>auth0.scope</env-entry-name>
-	    <env-entry-type>java.lang.String</env-entry-type>
-	    <env-entry-value>openid profile email</env-entry-value>
-	</env-entry>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
