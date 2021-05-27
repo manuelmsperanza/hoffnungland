@@ -1,18 +1,18 @@
-import { Component, Inject, OnInit, ViewChild, OnChanges, SimpleChanges, AfterContentChecked, AfterViewChecked, DoCheck } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap, map, catchError } from 'rxjs/operators';
 import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
+import { environment } from './../environments/environment';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterContentChecked {
+export class AppComponent {
 
   private gridColumnApi;
-  toggleAutosize : boolean = true;
   title = 'marvel-film-list-app';
 
   defaultColDef;
@@ -39,16 +39,15 @@ export class AppComponent implements AfterContentChecked {
     }
   }
 
-  ngAfterContentChecked(): void {
-    //console.log("ngAfterContentChecked");
+  onFirstDataRendered(params) {
     this.autoSizeAll(false);
   }
-  
-
+  onBodyScroll(params) {
+    this.autoSizeAll(false);
+  }
   onGridReady(params) {
-    //console.log("onGridReady");
     this.gridColumnApi = params.columnApi;
-    this.http.get('/marvelFilmListApp/MarvelFilmApplication/MarvelFilmsService').pipe(
+    this.http.get(environment.marvelFilmsServiceUrl).pipe(
       catchError((err, caught) => caught)
      )
       .subscribe(
@@ -58,12 +57,8 @@ export class AppComponent implements AfterContentChecked {
   }
 
   autoSizeAll(skipHeader) {
-    console.log('autoSizeAll toggle: ' + this.toggleAutosize);
     if(this.gridColumnApi){
-      if(this.toggleAutosize){
-        this.gridColumnApi.autoSizeAllColumns(skipHeader);
-      }
-      this.toggleAutosize = !this.toggleAutosize;
+      this.gridColumnApi.autoSizeAllColumns(skipHeader);
     }
   }
 

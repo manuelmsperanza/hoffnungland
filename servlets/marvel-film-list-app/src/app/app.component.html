@@ -7,7 +7,9 @@
 	[columnTypes]="columnTypes"
 	[rowData]="rowData"
 	[columnDefs]="columnDefs"
-	(gridReady)="onGridReady($event)"></ag-grid-angular>
+	(gridReady)="onGridReady($event)"
+	(bodyScroll)="onBodyScroll($event)"
+	(firstDataRendered)="onFirstDataRendered($event)"></ag-grid-angular>
 <footer>
 	<!--button mat-button (click)="autoSizeAll(false)">Auto-Size All</button-->
 	<ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
