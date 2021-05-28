@@ -109,7 +109,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!--plugin>
+			<plugin>
         		<artifactId>maven-jarsigner-plugin</artifactId>
 		        <executions>
 		        	<execution>
@@ -121,6 +121,8 @@
           					<keystore>${hoffnunglandJksPath}</keystore>
           					<alias>${hoffnunglandJksEntry}</alias>
           					<storepass>${hoffnunglandJksPasswd}</storepass>
+          					<keypass>${hoffnunglandKeyPasswd}</keypass>
+          					<tsa>${hoffnunglandTsaUrl}</tsa>
 		            	</configuration>
 		          	</execution>
 		          	<execution>
@@ -133,7 +135,7 @@
 		            	</configuration>
 		          	</execution>
 		        </executions>
-      		</plugin-->
+      		</plugin>
 		</plugins>
 	</build>
 	<dependencyManagement>
