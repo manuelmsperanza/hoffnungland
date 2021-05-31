@@ -66,6 +66,37 @@
 					</urls>
 				</configuration>
 			</plugin>
+			<plugin>
+				<artifactId>maven-jarsigner-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>sign</id>
+						<phase>package</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+						<configuration>
+							<keystore>${hoffnunglandJksPath}</keystore>
+							<alias>${hoffnunglandJksEntry}</alias>
+							<storepass>${hoffnunglandJksPasswd}</storepass>
+							<keypass>${hoffnunglandKeyPasswd}</keypass>
+							<tsa>${hoffnunglandTsaUrl}</tsa>
+							<archiveDirectory>${project.build.directory}</archiveDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>verify-sign</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>verify</goal>
+						</goals>
+						<configuration>
+							<certs>true</certs>
+							<archiveDirectory>${project.build.directory}</archiveDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
