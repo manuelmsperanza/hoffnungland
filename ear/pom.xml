@@ -41,6 +41,12 @@
 		</dependency>
 		<dependency>
 			<groupId>com.hoffnungland</groupId>
+			<artifactId>planetDrivingApp</artifactId>
+			<type>war</type>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.hoffnungland</groupId>
 			<artifactId>readyToDrink</artifactId>
 			<type>war</type>
 			<version>0.0.1-SNAPSHOT</version>
@@ -51,7 +57,6 @@
 			<type>war</type>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.hoffnungland</groupId>
 			<artifactId>primary-source</artifactId>
