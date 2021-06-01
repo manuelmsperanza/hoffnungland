@@ -1,46 +1,43 @@
-<mat-card class="menu-card">
-  <mat-card-header class="menu-card-sub-item">
-    <div mat-card-avatar class="material-icons">subscriptions</div>
-    <mat-card-title>Subscriptions</mat-card-title>
-  </mat-card-header>
-  <mat-card-actions class="menu-card-sub-item">
-    <button mat-button class="menu-card-button">Go to</button>
-  </mat-card-actions>
-</mat-card>
-<mat-card class="menu-card">
-  <mat-card-header class="menu-card-sub-item">
-    <div mat-card-avatar class="material-icons">sports_motorsports</div>
-    <mat-card-title>Book a drive</mat-card-title>
-  </mat-card-header>
-  <mat-card-actions class="menu-card-sub-item">
-    <button mat-button class="menu-card-button">Go to</button>
-  </mat-card-actions>
-</mat-card>
-<mat-card class="menu-card">
-  <mat-card-header class="menu-card-sub-item">
-    <div mat-card-avatar class="material-icons">electric_car</div>
-    <mat-card-title>Track a drive</mat-card-title>
-  </mat-card-header>
-  <mat-card-actions class="menu-card-sub-item">
-    <button mat-button class="menu-card-button">Go to</button>
-  </mat-card-actions>
-</mat-card>
-<mat-card class="menu-card">
-  <mat-card-header class="menu-card-sub-item">
-    <div mat-card-avatar class="material-icons">health_and_safety</div>
-    <mat-card-title>Sanitary Inspection</mat-card-title>
-  </mat-card-header>
-  <mat-card-actions class="menu-card-sub-item">
-    <button mat-button class="menu-card-button">Go to</button>
-  </mat-card-actions>
-</mat-card>
-<mat-card class="menu-card">
-  <mat-card-header class="menu-card-sub-item">
-    <div mat-card-avatar class="material-icons">badge</div>
-    <mat-card-title>Employees</mat-card-title>
-  </mat-card-header>
-  <mat-card-actions class="menu-card-sub-item">
-    <button mat-button class="menu-card-button">Go to</button>
-  </mat-card-actions>
-</mat-card>
-<router-outlet></router-outlet>
+<a routerLink="/subscriptions-component">
+  <mat-card class="menu-card">
+    <mat-card-header class="menu-card-sub-item">
+      <div mat-card-avatar class="material-icons">subscriptions</div>
+      <mat-card-title>Subscriptions</mat-card-title>
+    </mat-card-header>
+  </mat-card>
+</a>
+<a routerLink="/drive-booking">
+  <mat-card class="menu-card">
+    <mat-card-header class="menu-card-sub-item">
+      <div mat-card-avatar class="material-icons">sports_motorsports</div>
+      <mat-card-title>Book a drive</mat-card-title>
+    </mat-card-header>
+  </mat-card>
+</a>
+<a routerLink="/drive-tracking">
+  <mat-card class="menu-card">
+    <mat-card-header class="menu-card-sub-item">
+      <div mat-card-avatar class="material-icons">electric_car</div>
+      <mat-card-title>Track a drive</mat-card-title>
+    </mat-card-header>
+  </mat-card>
+</a>
+<a routerLink="/sanitary-inspection">
+  <mat-card class="menu-card">
+    <mat-card-header class="menu-card-sub-item">
+      <div mat-card-avatar class="material-icons">health_and_safety</div>
+      <mat-card-title>Sanitary Inspection</mat-card-title>
+    </mat-card-header>
+  </mat-card>
+</a>
+<a routerLink="/employee">
+  <mat-card class="menu-card">
+    <mat-card-header class="menu-card-sub-item">
+      <div mat-card-avatar class="material-icons">badge</div>
+      <mat-card-title>Employees</mat-card-title>
+    </mat-card-header>
+  </mat-card>
+</a>
+<div style="clear:left">
+  <router-outlet></router-outlet>
+</div>

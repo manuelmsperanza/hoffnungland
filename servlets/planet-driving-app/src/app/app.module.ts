@@ -9,11 +9,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { TodoComponent } from './todo/todo.component';
+import { DriveBookingComponent } from './drive-booking/drive-booking.component';
+import { DriveTrackingComponent } from './drive-tracking/drive-tracking.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TodoComponent,
+    DriveBookingComponent,
+    DriveTrackingComponent
   ],
   imports: [
     BrowserModule,
