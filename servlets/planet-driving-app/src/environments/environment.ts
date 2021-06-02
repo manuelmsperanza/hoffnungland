@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  drivingSchoolsPath: '/planetDrivingApp/PlanetDrivingApplication/PlanetDrivingService/drivingSchools',
+  drivingSchoolPath: '/planetDrivingApp/PlanetDrivingApplication/PlanetDrivingService/drivingSchool'
 };
 
 /*
