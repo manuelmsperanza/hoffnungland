@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-                                    
+                                            
+    
+    
     
     
     
@@ -8,7 +10,9 @@
     
     
     <wb-module deploy-name="hoffnungland">
-                                                                        
+                                                                                        
+        
+        
         
         
         
@@ -17,7 +21,9 @@
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
-                                                                        
+                                                                                        
+        
+        
         
         
         
@@ -47,7 +53,7 @@
         <dependent-module archiveName="marvelFilmListApp-0.0.1.war" deploy-path="/" handle="module:/resource/marvelFilmListApp/marvelFilmListApp">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="planetDrivingApp-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/hoffnungland/planetDrivingApp/0.0.1-SNAPSHOT/planetDrivingApp-0.0.1-SNAPSHOT.war">
+        <dependent-module archiveName="planetDrivingApp-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/planetDrivingApp/planetDrivingApp">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="readyToDrink-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/readyToDrink/readyToDrink">
@@ -60,9 +66,6 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="logging-1.0.jar" deploy-path="/" handle="module:/resource/logging/logging">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="Log4j-1.0.9.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/hoffnungland/Log4j/1.0.9/Log4j-1.0.9.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="log4j-api-2.14.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/logging/log4j/log4j-api/2.14.1/log4j-api-2.14.1.jar">
@@ -89,7 +92,12 @@
         <dependent-module archiveName="log4j-1.2-api-2.14.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/logging/log4j/log4j-1.2-api/2.14.1/log4j-1.2-api-2.14.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-                                                                    
+        <dependent-module archiveName="Log4j-1.0.9.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/hoffnungland/Log4j/1.0.9/Log4j-1.0.9.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+                                                                                    
+    
+    
     
     
     
@@ -98,7 +106,9 @@
     
     
     </wb-module>
-                                
+                                        
+
+
 
 
 
