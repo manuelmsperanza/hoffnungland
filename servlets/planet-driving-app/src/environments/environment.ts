@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  drivingSchoolsPath: '/planetDrivingApp/PlanetDrivingApplication/PlanetDrivingService/drivingSchools',
+  drivingSchoolsPath: 'assets/drivingSchools.json',
   drivingSchoolPath: '/planetDrivingApp/PlanetDrivingApplication/PlanetDrivingService/drivingSchool'
 };
 

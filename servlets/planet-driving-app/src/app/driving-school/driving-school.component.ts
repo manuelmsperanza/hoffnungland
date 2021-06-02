@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { DrivingSchool } from '../drivingSchool';
+import { DrivingSchool, DrivingSchoolObject } from '../drivingSchool';
 
 @Component({
   selector: 'app-driving-school',
@@ -11,18 +11,26 @@ import { DrivingSchool } from '../drivingSchool';
 export class DrivingSchoolComponent implements OnInit {
 
   DRIVINGSCHOOLS: DrivingSchool[] = [];
-
-  constructor(private http: HttpClient) { }
+  newDrivingSchool: DrivingSchool = new DrivingSchoolObject();
+  constructor(private http: HttpClient) {
+    
+  }
 
   ngOnInit(): void {
 
-    this.http.get(environment.drivingSchoolsPath).pipe()
+    this.http.get<DrivingSchool[]>(environment.drivingSchoolsPath).pipe()
     .subscribe(
-        data => {
-          console.log(JSON.stringify(data));
-        }
+        data => this.DRIVINGSCHOOLS = data
       );
 
+  }
+
+  addDrivingSchool(){
+    this.http.post<DrivingSchool>(environment.drivingSchoolPath, this.newDrivingSchool).pipe()
+    .subscribe(element => {
+      this.DRIVINGSCHOOLS.push(element)
+      this.newDrivingSchool = new DrivingSchoolObject();
+    });
   }
 
 }
