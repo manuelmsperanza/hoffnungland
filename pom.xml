@@ -77,13 +77,13 @@
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-	        		<artifactId>maven-jarsigner-plugin</artifactId>
-	        		<version>3.0.0</version>
-        		</plugin>
-        		<plugin>
-        			<artifactId>maven-assembly-plugin</artifactId>
-        			<version>3.3.0</version>
-        		</plugin>
+					<artifactId>maven-jarsigner-plugin</artifactId>
+					<version>3.0.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>3.3.0</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -109,33 +109,13 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!--plugin>
-        		<artifactId>maven-jarsigner-plugin</artifactId>
-		        <executions>
-		        	<execution>
-		            	<id>sign</id>
-		            	<goals>
-		              		<goal>sign</goal>
-		            	</goals>
-		            	<configuration>
-          					<keystore>${hoffnunglandJksPath}</keystore>
-          					<alias>${hoffnunglandJksEntry}</alias>
-          					<storepass>${hoffnunglandJksPasswd}</storepass>
-          					<keypass>${hoffnunglandKeyPasswd}</keypass>
-          					<tsa>${hoffnunglandTsaUrl}</tsa>
-		            	</configuration>
-		          	</execution>
-		          	<execution>
-		            	<id>verify</id>
-		            	<goals>
-		              		<goal>verify</goal>
-		            	</goals>
-		            	<configuration>
-		            		<certs>true</certs>
-		            	</configuration>
-		          	</execution>
-		        </executions>
-      		</plugin-->
+			<!--plugin> <artifactId>maven-jarsigner-plugin</artifactId> <executions> 
+				<execution> <id>sign</id> <goals> <goal>sign</goal> </goals> <configuration> 
+				<keystore>${hoffnunglandJksPath}</keystore> <alias>${hoffnunglandJksEntry}</alias> 
+				<storepass>${hoffnunglandJksPasswd}</storepass> <keypass>${hoffnunglandKeyPasswd}</keypass> 
+				<tsa>${hoffnunglandTsaUrl}</tsa> </configuration> </execution> <execution> 
+				<id>verify</id> <goals> <goal>verify</goal> </goals> <configuration> <certs>true</certs> 
+				</configuration> </execution> </executions> </plugin -->
 		</plugins>
 	</build>
 	<dependencyManagement>
@@ -174,10 +154,10 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/javax.security.enterprise/javax.security.enterprise-api -->
 		<dependency>
-		    <groupId>javax.security.enterprise</groupId>
-		    <artifactId>javax.security.enterprise-api</artifactId>
-		    <version>1.0</version>
-		    <scope>provided</scope>
+			<groupId>javax.security.enterprise</groupId>
+			<artifactId>javax.security.enterprise-api</artifactId>
+			<version>1.0</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>
