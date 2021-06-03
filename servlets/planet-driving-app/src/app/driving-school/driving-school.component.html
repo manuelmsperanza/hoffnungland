@@ -2,14 +2,23 @@
     <mat-expansion-panel *ngFor="let drivingSchool of DRIVINGSCHOOLS; let i=index;">
         <mat-expansion-panel-header>
             <mat-panel-title>{{drivingSchool.name}}</mat-panel-title>
-            <mat-panel-description>{{drivingSchool.id}}</mat-panel-description>
+            <mat-panel-description>{{drivingSchool.id}} (v. {{drivingSchool.version}})</mat-panel-description>
         </mat-expansion-panel-header>
-        <p>This is the primary content of the panel.</p>
+        <mat-form-field class="example-full-width">
+            <mat-label>Driving School Name</mat-label>
+            <input matInput placeholder="Ex. Company Name" [(ngModel)]="drivingSchool.name">
+        </mat-form-field>
+        <button mat-button color="primary" (click)="saveDrivingSchool(drivingSchool)">
+            <mat-icon>save</mat-icon>
+        </button>
+        <button mat-button color="primary" (click)="deleteDrivingSchool(drivingSchool)">
+            <mat-icon>delete</mat-icon>
+        </button>
     </mat-expansion-panel>
 </mat-accordion>
 <mat-form-field class="example-full-width">
     <mat-label>Driving School Name</mat-label>
-    <input matInput placeholder="Ex. Pizza" [(ngModel)]="newDrivingSchool.name">
+    <input matInput placeholder="Ex. Company Name" [(ngModel)]="newDrivingSchool.name">
 </mat-form-field>
 <button mat-button color="primary" (click)="addDrivingSchool()">
     <mat-icon>plus_one</mat-icon>
