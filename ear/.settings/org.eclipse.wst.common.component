@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-                                            
+                                                
+    
     
     
     
@@ -10,7 +11,8 @@
     
     
     <wb-module deploy-name="hoffnungland">
-                                                                                        
+                                                                                                
+        
         
         
         
@@ -21,7 +23,8 @@
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
-                                                                                        
+                                                                                                
+        
         
         
         
@@ -51,9 +54,6 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="marvelFilmListApp-0.0.1.war" deploy-path="/" handle="module:/resource/marvelFilmListApp/marvelFilmListApp">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="planetDrivingApp-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/planetDrivingApp/planetDrivingApp">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="readyToDrink-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/readyToDrink/readyToDrink">
@@ -95,7 +95,8 @@
         <dependent-module archiveName="Log4j-1.0.9.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/hoffnungland/Log4j/1.0.9/Log4j-1.0.9.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-                                                                                    
+                                                                                            
+    
     
     
     
@@ -106,7 +107,8 @@
     
     
     </wb-module>
-                                        
+                                            
+
 
 
 
