@@ -33,7 +33,7 @@ public class PlanetDrivingService {
 	@Context
 	private UriInfo context;
 
-	@PersistenceContext
+	@PersistenceContext(unitName = "planetDrivingHibernate")
 	private EntityManager em;
 
 	@Path("drivingSchools")
