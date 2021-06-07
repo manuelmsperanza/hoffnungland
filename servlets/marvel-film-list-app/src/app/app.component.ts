@@ -60,9 +60,9 @@ export class AppComponent {
 
     if(cookieExists){
       let selectedMarvelFilmId : string = this.cookieService.get( 'selectedMarvelFilmId');
-      const rowNode = this.gridApi.getRowNode(selectedMarvelFilmId); 
+      const rowNode = this.gridApi.getRowNode(selectedMarvelFilmId);
       rowNode.setSelected(true);
-      this.gridApi.ensureIndexVisible(Number(selectedMarvelFilmId), 'middle');
+      this.gridApi.ensureNodeVisible(rowNode, 'middle');
     }
   }
   onBodyScroll(params) {
@@ -88,6 +88,7 @@ export class AppComponent {
 
 
   onRowClicked(event) {
+    console.log(JSON.stringify(event.api.getSelectedRows()));
     this.cookieService.set( 'selectedMarvelFilmId', event.api.getSelectedRows()[0].id );  
   }
 }
