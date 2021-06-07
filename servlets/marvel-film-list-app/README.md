@@ -42,4 +42,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 	npm install d3 && npm install @types/d3 --save-dev
 
 
+## Install Cookie Service
 
+[ngx-cookie-service - npm (npmjs.com)](https://www.npmjs.com/package/ngx-cookie-service)
+
+	npm install ngx-cookie-service --save

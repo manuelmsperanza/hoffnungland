@@ -6,10 +6,12 @@
 	class="ag-theme-alpine"
 	[columnTypes]="columnTypes"
 	[rowData]="rowData"
+	[rowSelection]="rowSelection"
 	[columnDefs]="columnDefs"
 	(gridReady)="onGridReady($event)"
 	(bodyScroll)="onBodyScroll($event)"
-	(firstDataRendered)="onFirstDataRendered($event)"></ag-grid-angular>
+	(firstDataRendered)="onFirstDataRendered($event)"
+	(rowClicked)="onRowClicked($event)"></ag-grid-angular>
 <footer>
 	<!--button mat-button (click)="autoSizeAll(false)">Auto-Size All</button-->
 	<ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">

@@ -4,6 +4,7 @@ import { tap, map, catchError } from 'rxjs/operators';
 import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
 import { environment } from './../environments/environment';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,10 @@ import { environment } from './../environments/environment';
 })
 export class AppComponent {
 
+  private gridApi;
   private gridColumnApi;
+  
+  rowSelection = 'single';
   title = 'marvel-film-list-app';
 
   defaultColDef;
@@ -25,6 +29,8 @@ export class AppComponent {
     {headerName: 'Release Date', field: 'releaseDate', sortable: true, filter: true, type: 'dateColumn'}
 ];
 
+  
+
   rowData : any;
   chartElement : any;
   height = 202;
@@ -32,6 +38,7 @@ export class AppComponent {
   margin = ({top: 20, right: 0, bottom: 0, left: 30});
 
   constructor(private http: HttpClient,
+    private cookieService: CookieService,
     @Inject(DOCUMENT) public document: Document,
       public auth: AuthService) {
     this.columnTypes = {dateColumn: {
@@ -39,16 +46,33 @@ export class AppComponent {
     }
   }
 
+  gridOptions = {
+    // callback tells the grid to use the 'id' attribute for IDs, IDs should always be strings
+    getRowNodeId: data => data.id,
+  
+    // other grid options ...
+  }
+
   onFirstDataRendered(params) {
     this.autoSizeAll(false);
+
+    let cookieExists: boolean = this.cookieService.check('selectedMarvelFilmId');
+
+    if(cookieExists){
+      let selectedMarvelFilmId : string = this.cookieService.get( 'selectedMarvelFilmId');
+      const rowNode = this.gridApi.getRowNode(selectedMarvelFilmId); 
+      rowNode.setSelected(true);
+      this.gridApi.ensureIndexVisible(Number(selectedMarvelFilmId), 'middle');
+    }
   }
   onBodyScroll(params) {
     this.autoSizeAll(false);
   }
   onGridReady(params) {
+    this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     this.http.get(environment.marvelFilmsServiceUrl).pipe(
-      catchError((err, caught) => caught)
+      catchError((err, caught) => caught),
      )
       .subscribe(
         data => this.rowData = data
@@ -62,4 +86,9 @@ export class AppComponent {
     }
   }
 
+
+  onRowClicked(event) {
+    this.cookieService.set( 'selectedMarvelFilmId', event.api.getSelectedRows()[0].id );  
+  }
 }
+
