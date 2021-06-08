@@ -29,8 +29,6 @@ export class AppComponent {
     {headerName: 'Release Date', field: 'releaseDate', sortable: true, filter: true, type: 'dateColumn'}
 ];
 
-  
-
   rowData : any;
   chartElement : any;
   height = 202;
@@ -88,8 +86,8 @@ export class AppComponent {
 
 
   onRowClicked(event) {
-    console.log(JSON.stringify(event.api.getSelectedRows()));
-    this.cookieService.set( 'selectedMarvelFilmId', event.api.getSelectedRows()[0].id );  
+    let selectedMarvelFilmId = event.api.getSelectedRows()[0].id;
+    this.cookieService.set( 'selectedMarvelFilmId', selectedMarvelFilmId, {expires: 365, secure: true, sameSite: 'Strict'} );  
   }
 }
 
