@@ -38,7 +38,6 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import com.hoffnungland.xpath.XmlExtractor;
-import com.sun.org.apache.xml.internal.security.utils.Base64;
 
 import net.sf.saxon.s9api.SaxonApiException;
 
