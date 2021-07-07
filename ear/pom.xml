@@ -22,11 +22,11 @@
 			<type>war</type>
 			<version>0.0.1</version>
 		</dependency>
-		<dependency>
+		<!-- dependency>
 			<groupId>com.hoffnungland</groupId>
 			<artifactId>servlet</artifactId>
 			<type>war</type>
-		</dependency>
+		</dependency-->
 		<dependency>
 			<groupId>com.hoffnungland</groupId>
 			<artifactId>faceletWeb</artifactId>
