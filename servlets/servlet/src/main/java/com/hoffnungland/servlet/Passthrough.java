@@ -1,15 +1,20 @@
 package com.hoffnungland.servlet;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.security.NoSuchAlgorithmException;
+import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.Properties;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletInputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -82,7 +87,12 @@ public class Passthrough extends HttpServlet {
 		logger.entering("Passthrough", "service");
 		
 		try {
+			Enumeration<String> headerNameEnum = req.getHeaderNames();
 			
+			while(headerNameEnum.hasMoreElements()) {
+				String headerEntryName = headerNameEnum.nextElement();
+				logger.info(headerEntryName + ": " + req.getHeader(headerEntryName));
+			}
 			StringBuffer content = new StringBuffer();
 			try (BufferedReader in = req.getReader();) {
 				String line = null;
