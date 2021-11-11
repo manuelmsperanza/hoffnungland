@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>com.hoffnungland</groupId>
-	<artifactId>readyToDrink</artifactId>
+	<artifactId>ready-to-drink</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 

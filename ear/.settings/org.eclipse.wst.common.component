@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-                                                                
+                                                                    
+    
     
     
     
@@ -15,7 +16,8 @@
     
     
     <wb-module deploy-name="hoffnungland">
-                                                                                                                                
+                                                                                                                                        
+        
         
         
         
@@ -31,7 +33,8 @@
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
-                                                                                                                                
+                                                                                                                                        
+        
         
         
         
@@ -62,16 +65,16 @@
         <dependent-module archiveName="servlet-1.0.war" deploy-path="/" handle="module:/resource/servlet/servlet">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="faceletWeb-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/faceletWeb/faceletWeb">
+        <dependent-module archiveName="faceletWeb-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/hoffnungland/faceletWeb/0.0.1-SNAPSHOT/faceletWeb-0.0.1-SNAPSHOT.war">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="marvelFilmListApp-0.0.1.war" deploy-path="/" handle="module:/resource/marvelFilmListApp/marvelFilmListApp">
+        <dependent-module archiveName="marvelFilmListApp-0.0.1.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/hoffnungland/marvelFilmListApp/0.0.1/marvelFilmListApp-0.0.1.war">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="readyToDrink-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/readyToDrink/readyToDrink">
+        <dependent-module archiveName="readyToDrink-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/hoffnungland/readyToDrink/0.0.1-SNAPSHOT/readyToDrink-0.0.1-SNAPSHOT.war">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="orderEntryWeb-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/orderEntryWeb/orderEntryWeb">
+        <dependent-module archiveName="orderEntryWeb-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/hoffnungland/orderEntryWeb/0.0.1-SNAPSHOT/orderEntryWeb-0.0.1-SNAPSHOT.war">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="primary-source-1.0.jar" deploy-path="/" handle="module:/resource/primary-source/primary-source">
@@ -107,7 +110,8 @@
         <dependent-module archiveName="Log4j-1.0.9.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/hoffnungland/Log4j/1.0.9/Log4j-1.0.9.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-                                                                                                                            
+                                                                                                                                    
+    
     
     
     
@@ -123,7 +127,8 @@
     
     
     </wb-module>
-                                                            
+                                                                
+
 
 
 

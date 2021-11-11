@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>com.hoffnungland</groupId>
-	<artifactId>ibanRechner</artifactId>
+	<artifactId>iban-rechner</artifactId>
 	<version>0.0.1</version>
 	<name>ibanRechner</name>
 

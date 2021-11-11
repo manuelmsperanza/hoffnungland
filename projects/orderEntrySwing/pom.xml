@@ -9,7 +9,7 @@
 		<version>1.0</version>
 	</parent>
 	<groupId>com.hoffnungland</groupId>
-	<artifactId>orderEntrySwing</artifactId>
+	<artifactId>order-entry-swing</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>orderEntrySwing</name>
 	<properties>

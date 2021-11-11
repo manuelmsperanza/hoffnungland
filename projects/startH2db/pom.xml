@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>com.hoffnungland</groupId>
-	<artifactId>startH2db</artifactId>
+	<artifactId>start-h2db</artifactId>
 	<version>0.0.1</version>
 
 	<name>startH2db</name>

@@ -8,11 +8,11 @@
   </parent>
 
   <groupId>com.hoffnungland</groupId>
-  <artifactId>faceletWeb</artifactId>
+  <artifactId>facelet-web</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>longDrinkWeb</name>
+  <name>faceletWeb</name>
   <url>http://${webdomain}/${project.build.finalName}</url>
 
   <build>
