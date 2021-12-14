@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-                                                                    
+                                                                        
+    
     
     
     
@@ -16,7 +17,8 @@
     
     
     <wb-module deploy-name="hoffnungland">
-                                                                                                                                        
+                                                                                                                                                
+        
         
         
         
@@ -33,7 +35,8 @@
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
-                                                                                                                                        
+                                                                                                                                                
+        
         
         
         
@@ -83,34 +86,35 @@
         <dependent-module archiveName="logging-1.0.jar" deploy-path="/" handle="module:/resource/logging/logging">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="log4j-api-2.14.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/logging/log4j/log4j-api/2.14.1/log4j-api-2.14.1.jar">
+        <dependent-module archiveName="log4j-api-2.16.0.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/logging/log4j/log4j-api/2.16.0/log4j-api-2.16.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="log4j-core-2.14.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/logging/log4j/log4j-core/2.14.1/log4j-core-2.14.1.jar">
+        <dependent-module archiveName="log4j-core-2.16.0.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/logging/log4j/log4j-core/2.16.0/log4j-core-2.16.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="log4j-slf4j-impl-2.14.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/logging/log4j/log4j-slf4j-impl/2.14.1/log4j-slf4j-impl-2.14.1.jar">
+        <dependent-module archiveName="log4j-slf4j-impl-2.16.0.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/logging/log4j/log4j-slf4j-impl/2.16.0/log4j-slf4j-impl-2.16.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="slf4j-api-1.7.25.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="log4j-jcl-2.14.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/logging/log4j/log4j-jcl/2.14.1/log4j-jcl-2.14.1.jar">
+        <dependent-module archiveName="log4j-jcl-2.16.0.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/logging/log4j/log4j-jcl/2.16.0/log4j-jcl-2.16.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="commons-logging-1.2.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/commons-logging/commons-logging/1.2/commons-logging-1.2.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="log4j-web-2.14.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/logging/log4j/log4j-web/2.14.1/log4j-web-2.14.1.jar">
+        <dependent-module archiveName="log4j-web-2.16.0.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/logging/log4j/log4j-web/2.16.0/log4j-web-2.16.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="log4j-1.2-api-2.14.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/logging/log4j/log4j-1.2-api/2.14.1/log4j-1.2-api-2.14.1.jar">
+        <dependent-module archiveName="log4j-1.2-api-2.16.0.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/logging/log4j/log4j-1.2-api/2.16.0/log4j-1.2-api-2.16.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="Log4j-1.0.9.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/hoffnungland/Log4j/1.0.9/Log4j-1.0.9.jar">
+        <dependent-module archiveName="Log4j-1.0.10.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/hoffnungland/Log4j/1.0.10/Log4j-1.0.10.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-                                                                                                                                    
+                                                                                                                                            
+    
     
     
     
@@ -127,7 +131,8 @@
     
     
     </wb-module>
-                                                                
+                                                                    
+
 
 
 
