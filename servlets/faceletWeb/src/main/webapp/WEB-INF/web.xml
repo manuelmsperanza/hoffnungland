@@ -19,15 +19,30 @@
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
+    <login-config>
+	    <auth-method>FORM</auth-method>
+	    <realm-name>db-realm</realm-name>
+	    <form-login-config>
+	        <form-login-page>/login.html</form-login-page>
+            <form-error-page>/error.html</form-error-page>
+	    </form-login-config>
+	</login-config>
     <security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Viewpoint Secure URLs</web-resource-name>
 			<url-pattern>/*</url-pattern>
 		</web-resource-collection>
+		<auth-constraint>
+	        <role-name>CLIENT</role-name>
+	    </auth-constraint>
 		<user-data-constraint>
 			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
 		</user-data-constraint>
 	</security-constraint>
+	<security-role>
+        <description/>
+        <role-name>CLIENT</role-name>
+    </security-role>
     <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
