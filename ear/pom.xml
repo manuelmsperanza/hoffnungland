@@ -29,31 +29,31 @@
 		</dependency>
 		<dependency>
 			<groupId>com.hoffnungland</groupId>
-			<artifactId>facelet-web</artifactId>
+			<artifactId>faceletWeb</artifactId>
 			<type>war</type>
 			<version>0.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.hoffnungland</groupId>
-			<artifactId>marvel-film-list-web</artifactId>
+			<artifactId>marvelFilmListApp</artifactId>
 			<type>war</type>
 			<version>0.0.1</version>
 		</dependency>
 		<!--dependency
 			<groupId>com.hoffnungland</groupId>
-			<artifactId>planet-driving-web</artifactId>
+			<artifactId>planetDrivingApp</artifactId>
 			<type>war</type>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency-->
 		<dependency>
 			<groupId>com.hoffnungland</groupId>
-			<artifactId>ready-to-drink</artifactId>
+			<artifactId>readyToDrink</artifactId>
 			<type>war</type>
 			<version>0.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.hoffnungland</groupId>
-			<artifactId>order-entry-web</artifactId>
+			<artifactId>orderEntryWeb</artifactId>
 			<type>war</type>
 			<version>0.0.1</version>
 		</dependency>
@@ -82,21 +82,6 @@
 							<groupId>com.hoffnungland</groupId>
 							<artifactId>curriculum-vitae</artifactId>
 							<contextRoot>/</contextRoot>
-						</webModule>
-						<webModule>
-							<groupId>com.hoffnungland</groupId>
-							<artifactId>facelet-web</artifactId>
-							<contextRoot>/faceletWeb</contextRoot>
-						</webModule>
-						<webModule>
-							<groupId>com.hoffnungland</groupId>
-							<artifactId>order-entry-web</artifactId>
-							<contextRoot>/orderEntryWeb</contextRoot>
-						</webModule>
-						<webModule>
-							<groupId>com.hoffnungland</groupId>
-							<artifactId>marvel-film-list-web</artifactId>
-							<contextRoot>/marvelFilmListApp</contextRoot>
 						</webModule>
 					</modules>
 				</configuration>

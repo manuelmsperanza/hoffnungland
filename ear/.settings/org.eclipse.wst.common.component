@@ -71,15 +71,6 @@
         <dependent-module archiveName="curriculum-vitae-0.0.1.war" deploy-path="/" handle="module:/resource/curriculum-vitae/curriculum-vitae">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="facelet-web-0.0.1.war" deploy-path="/" handle="module:/resource/faceletWeb/faceletWeb">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="order-entry-web-0.0.1.war" deploy-path="/" handle="module:/resource/orderEntryWeb/orderEntryWeb">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="marvel-film-list-web-0.0.1.war" deploy-path="/" handle="module:/resource/marvelFilmListApp/marvelFilmListApp">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="ejbs-1.0.jar" deploy-path="/" handle="module:/resource/ejbs/ejbs">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -92,7 +83,16 @@
         <dependent-module archiveName="servlet-1.0.war" deploy-path="/" handle="module:/resource/servlet/servlet">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="ready-to-drink-0.0.1.war" deploy-path="/" handle="module:/resource/readyToDrink/readyToDrink">
+        <dependent-module archiveName="faceletWeb-0.0.1.war" deploy-path="/" handle="module:/resource/faceletWeb/faceletWeb">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="marvelFilmListApp-0.0.1.war" deploy-path="/" handle="module:/resource/marvelFilmListApp/marvelFilmListApp">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="readyToDrink-0.0.1.war" deploy-path="/" handle="module:/resource/readyToDrink/readyToDrink">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="orderEntryWeb-0.0.1.war" deploy-path="/" handle="module:/resource/orderEntryWeb/orderEntryWeb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="primary-source-1.0.jar" deploy-path="/" handle="module:/resource/primary-source/primary-source">

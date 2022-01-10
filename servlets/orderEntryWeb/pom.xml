@@ -10,11 +10,11 @@
 	</parent>
 
 	<groupId>com.hoffnungland</groupId>
-	<artifactId>order-entry-web</artifactId>
+	<artifactId>orderEntryWeb</artifactId>
 	<version>0.0.1</version>
 	<packaging>war</packaging>
 
-	<name>orderEntryWeb</name>
+	<name>orderEntryWeb Maven Webapp</name>
 	<url>http://${webdomain}/${project.build.finalName}</url>
 
 	<properties>
@@ -22,7 +22,6 @@
 	</properties>
 
 	<build>
-		<finalName>orderEntryWeb</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>

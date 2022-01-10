@@ -10,11 +10,11 @@
 	</parent>
 
 	<groupId>com.hoffnungland</groupId>
-	<artifactId>ready-to-drink</artifactId>
+	<artifactId>readyToDrink</artifactId>
 	<version>0.0.1</version>
 	<packaging>war</packaging>
 
-	<name>readyToDrink</name>
+	<name>readyToDrink Maven Webapp</name>
 	<url>http://${webdomain}/${project.build.finalName}</url>
 
 	<properties>

@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>com.hoffnungland</groupId>
-	<artifactId>planet-driving-web</artifactId>
+	<artifactId>planetDrivingApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
@@ -19,7 +19,6 @@
 	<url>http://${webdomain}/${project.build.finalName}</url>
 
 	<build>
-		<finalName>planetDrivingApp</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>

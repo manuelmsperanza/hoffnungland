@@ -10,11 +10,11 @@
 	</parent>
 
 	<groupId>com.hoffnungland</groupId>
-	<artifactId>marvel-film-list-web</artifactId>
+	<artifactId>marvelFilmListApp</artifactId>
 	<version>0.0.1</version>
 	<packaging>war</packaging>
 
-	<name>marvelFilmListApp</name>
+	<name>marvelFilmListApp Maven Webapp</name>
 	<url>http://${webdomain}/${project.build.finalName}</url>
 
 	<build>
