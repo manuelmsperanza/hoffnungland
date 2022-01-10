@@ -29,33 +29,33 @@
 		</dependency>
 		<dependency>
 			<groupId>com.hoffnungland</groupId>
-			<artifactId>faceletWeb</artifactId>
-			<type>war</type>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.hoffnungland</groupId>
-			<artifactId>marvelFilmListApp</artifactId>
+			<artifactId>facelet-web</artifactId>
 			<type>war</type>
 			<version>0.0.1</version>
 		</dependency>
-		<!-- dependency>
+		<dependency>
 			<groupId>com.hoffnungland</groupId>
-			<artifactId>planetDrivingApp</artifactId>
+			<artifactId>marvel-film-list-web</artifactId>
+			<type>war</type>
+			<version>0.0.1</version>
+		</dependency>
+		<!--dependency
+			<groupId>com.hoffnungland</groupId>
+			<artifactId>planet-driving-web</artifactId>
 			<type>war</type>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency-->
 		<dependency>
 			<groupId>com.hoffnungland</groupId>
-			<artifactId>readyToDrink</artifactId>
+			<artifactId>ready-to-drink</artifactId>
 			<type>war</type>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.hoffnungland</groupId>
-			<artifactId>orderEntryWeb</artifactId>
+			<artifactId>order-entry-web</artifactId>
 			<type>war</type>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.hoffnungland</groupId>
@@ -82,6 +82,21 @@
 							<groupId>com.hoffnungland</groupId>
 							<artifactId>curriculum-vitae</artifactId>
 							<contextRoot>/</contextRoot>
+						</webModule>
+						<webModule>
+							<groupId>com.hoffnungland</groupId>
+							<artifactId>facelet-web</artifactId>
+							<contextRoot>/faceletWeb</contextRoot>
+						</webModule>
+						<webModule>
+							<groupId>com.hoffnungland</groupId>
+							<artifactId>order-entry-web</artifactId>
+							<contextRoot>/orderEntryWeb</contextRoot>
+						</webModule>
+						<webModule>
+							<groupId>com.hoffnungland</groupId>
+							<artifactId>marvel-film-list-web</artifactId>
+							<contextRoot>/marvelFilmListApp</contextRoot>
 						</webModule>
 					</modules>
 				</configuration>

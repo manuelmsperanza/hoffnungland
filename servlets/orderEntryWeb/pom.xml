@@ -11,10 +11,10 @@
 
 	<groupId>com.hoffnungland</groupId>
 	<artifactId>order-entry-web</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>war</packaging>
 
-	<name>orderEntryWeb Maven Webapp</name>
+	<name>orderEntryWeb</name>
 	<url>http://${webdomain}/${project.build.finalName}</url>
 
 	<properties>
