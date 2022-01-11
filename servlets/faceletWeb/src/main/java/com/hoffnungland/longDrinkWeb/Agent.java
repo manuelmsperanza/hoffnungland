@@ -2,8 +2,11 @@ package com.hoffnungland.longDrinkWeb;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 @SessionScoped
 @Named
@@ -16,6 +19,12 @@ public class Agent implements Serializable {
 	public Agent() {
 		
 	}
+	
+	@PostConstruct
+	public void getSessionInfo() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		this.name = context.getExternalContext().getUserPrincipal().getName();
+	}
 
 	public String getName() {
 		return name;
@@ -27,5 +36,12 @@ public class Agent implements Serializable {
 	
 	public void reset() {
 		this.name = null;
+	}
+	
+	public String logout() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+		session.invalidate();
+		return "logout";
 	}
 }
