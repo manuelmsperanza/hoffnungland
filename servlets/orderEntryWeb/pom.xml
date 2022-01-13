@@ -22,6 +22,7 @@
 	</properties>
 
 	<build>
+		<finalName>orderEntryWeb</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
