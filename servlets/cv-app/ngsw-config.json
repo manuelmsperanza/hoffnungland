@@ -30,7 +30,9 @@
       "updateMode": "lazy",
       "resources": {
         "urls": [
+          "j_security_check",
           "faceletWeb",
+          "loginAuth0",
           "marvelFilmListApp",
           "orderEntryWeb",
           "readyToDrink"

@@ -29,6 +29,6 @@ export class AppComponent {
     this.trustedStackOverflowUrl = sanitizer.bypassSecurityTrustUrl("https://stackoverflow.com/users/8607724/pin%c3%b6ch");
     this.trustedLinkedinBadge = sanitizer.bypassSecurityTrustUrl("https://it.linkedin.com/in/manuelmsperanza?trk=profile-badge");
     this.trustedW3CssUrl = sanitizer.bypassSecurityTrustUrl("https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_cv&amp;stacked=h");
-	this.trustedIubendaUrl = sanitizer.bypassSecurityTrustUrl("https://www.iubenda.com/privacy-policy/29010372");
+	  this.trustedIubendaUrl = sanitizer.bypassSecurityTrustUrl("https://www.iubenda.com/privacy-policy/29010372");
   }
 }
