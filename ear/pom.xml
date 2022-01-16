@@ -33,6 +33,12 @@
 			<type>war</type>
 			<version>0.0.1</version>
 		</dependency>
+		<!-- <dependency>
+			<groupId>com.hoffnungland</groupId>
+			<artifactId>loginAuth0</artifactId>
+			<type>war</type>
+			<version>0.0.1</version>
+		</dependency> -->
 		<dependency>
 			<groupId>com.hoffnungland</groupId>
 			<artifactId>marvelFilmListApp</artifactId>

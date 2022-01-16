@@ -14,6 +14,7 @@
   <modules>
     <module>servlet</module>
     <module>faceletWeb</module>
+    <module>loginAuth0</module>
     <module>order-entry-app</module>
     <module>orderEntryWeb</module>
     <module>ready-to-drink-app</module>

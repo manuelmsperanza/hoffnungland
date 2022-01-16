@@ -1,7 +1,0 @@
-<navigation-rule>
-    <from-view-id>/index.xhtml</from-view-id>
-    <navigation-case>
-        <from-outcome>logout</from-outcome>
-        <to-view-id>/login.html</to-view-id>
-    </navigation-case>
-</navigation-rule>
