@@ -55,6 +55,7 @@ public class Passthrough extends HttpServlet {
 	private static final Logger logger = Logger.getLogger("Passthrough");
 
 	private Properties props;
+	private Properties userProps;
 	private XmlExtractor xmlExtractor;
 	private DocumentBuilder builder;
 	private Transformer transformer;
@@ -74,7 +75,10 @@ public class Passthrough extends HttpServlet {
 			
 			this.props = new Properties();
 			this.xmlExtractor = new XmlExtractor();
-			this.props.load(this.getClass().getResourceAsStream("/users.properties"));
+			this.props.load(this.getClass().getResourceAsStream("/passthrough.properties"));
+			
+			this.userProps = new Properties();
+			this.userProps.load(this.getClass().getResourceAsStream("/users.properties"));
 		} catch (IOException | ParserConfigurationException | TransformerConfigurationException e) {
 			logger.severe(e.getMessage());
 			e.printStackTrace();
@@ -120,7 +124,7 @@ public class Passthrough extends HttpServlet {
 					
 					String createdDate = this.xmlExtractor.extractString("//wsse:Security/wsse:UsernameToken/wsu:Created", wsseNs);
 					logger.info("createdDate: " + createdDate);
-					String userPasswd = this.props.getProperty(userName);
+					String userPasswd = this.userProps.getProperty(userName);
 					
 					String digestCheck = GeneratePasswordDigest.buildPasswordDigest(userPasswd, nonce, nonceEncodingType, createdDate);
 					if(!digestCheck.equals(password)) {
@@ -152,9 +156,14 @@ public class Passthrough extends HttpServlet {
 					logger.info("contentToSend " + contentToSend);
 				}
 			}
-
+			
+			String newHostName = props.getProperty("host");
+			String newContextPath = props.getProperty("contextPath");
+			String newServletPath = props.getProperty("servletPath");
+			String targetUrl = req.getRequestURL().toString().replace(req.getServerName(), newHostName).replace(req.getContextPath(), newContextPath).replace(req.getServletPath(), newServletPath);
+			
 			try(PrintWriter writer = resp.getWriter();){			
-				writer.write(getResponseFromBackend(contentToSend, "https://ec.europa.eu/taxation_customs/tin/services/checkTinService", req));
+				writer.write(getResponseFromBackend(contentToSend, targetUrl, req));
 			}
 			
 		} catch (SaxonApiException | IOException | SAXException | TransformerException | NoSuchAlgorithmException e) {
