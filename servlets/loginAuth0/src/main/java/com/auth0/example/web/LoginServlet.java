@@ -18,7 +18,13 @@ import java.util.logging.Logger;
 @WebServlet(urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
 
-    private static final Logger logger = Logger.getLogger("com.auth0.example.web.LoginServlet");
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8059362242271896954L;
+
+
+	private static final Logger logger = Logger.getLogger("com.auth0.example.web.LoginServlet");
 
 
     private final Auth0AuthenticationConfig config;

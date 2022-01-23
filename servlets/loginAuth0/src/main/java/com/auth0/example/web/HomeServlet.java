@@ -18,6 +18,10 @@ import java.util.logging.Logger;
 @WebServlet(urlPatterns = "")
 public class HomeServlet extends HttpServlet {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8283023741614623374L;
 	private static final Logger logger = Logger.getLogger("com.auth0.example.web.HomeServlet");
 	
     @Override
@@ -38,6 +42,6 @@ public class HomeServlet extends HttpServlet {
          * This is so the home page will always be shown, and the user will be able to login if not
          * already authenticated.
          */
-        request.getRequestDispatcher("/home.jsp").forward(request, response);
+        request.getRequestDispatcher("/profile").forward(request, response);
     }
 }

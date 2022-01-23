@@ -15,7 +15,11 @@ import java.util.logging.Logger;
 @WebServlet(urlPatterns = {"/callback"})
 public class CallbackServlet extends HttpServlet {
 
-    private static final Logger logger = Logger.getLogger("com.auth0.example.web.CallbackServlet");
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -9007125654826932361L;
+	private static final Logger logger = Logger.getLogger("com.auth0.example.web.CallbackServlet");
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {

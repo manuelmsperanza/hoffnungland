@@ -18,7 +18,12 @@ import java.util.logging.Logger;
 @WebServlet(urlPatterns = "/logout")
 public class LogoutServlet extends HttpServlet {
 
-    private static final Logger logger = Logger.getLogger("com.auth0.example.web.LogoutServlet");
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2267209792514959802L;
+
+	private static final Logger logger = Logger.getLogger("com.auth0.example.web.LogoutServlet");
 
     private final Auth0AuthenticationConfig config;
 
