@@ -24,7 +24,12 @@ import java.util.logging.Logger;
 @WebServlet(urlPatterns = {"/profile"})
 public class ProfileServlet extends HttpServlet {
 
-    private static final Logger logger = Logger.getLogger("com.auth0.example.web.ProfileServlet");
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8467031452534885020L;
+
+	private static final Logger logger = Logger.getLogger("com.auth0.example.web.ProfileServlet");
 
     private static final String JSON_PROCESSING_ERROR_MESSAGE = "Error converting JWT claims to JSON";
 

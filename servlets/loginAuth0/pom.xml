@@ -25,7 +25,7 @@
 		<javaee.api.version>8.0.1</javaee.api.version>
 		<webdomain>hoffnungland.com</webdomain>
 	    <version.auth0-mvc>[1.0, 2.0)</version.auth0-mvc>
-	    <version.jackson>2.9.10.7</version.jackson>
+	    <version.jackson>2.13.1</version.jackson>
 	</properties>
 
   <dependencies>
