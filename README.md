@@ -7,6 +7,19 @@
 	git remote add origin git@github.com:manuelmsperanza/hoffnungland.git
 	git push -u origin master
 
+# add .gitignore to mandatory empty directory
+
+	# Ignore everything in this directory
+	*
+	# Except this file
+	!.gitignore
+
+# Configure the Package Clean UP Automation with GitHub Action
+
+The Action run during the release phase of package (or you can run it manually).
+Leave only the latest package version into the repository.
+Create the .github/workflows/cleanupPackages.yml file.
+
 #Build settings
 ##Add prerequisites
 
