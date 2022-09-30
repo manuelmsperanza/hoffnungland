@@ -19,7 +19,7 @@ import { CookieService } from 'ngx-cookie-service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AgGridModule.withComponents([]),
+    AgGridModule,
     HttpClientModule,
     AuthModule.forRoot({
       domain: 'hoffnungland.us.auth0.com',

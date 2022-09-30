@@ -15,7 +15,7 @@
 		<module>logging</module>
 		<module>checkTinService</module>
 		<module>checkVatTestService</module>
-		<module>ibanRechner</module>
+		<!--module>ibanRechner</module-->
 		<module>orderEntrySwing</module>
 		<!--module>echoClient</module> <module>echoServer</module -->
 		<module>startH2db</module>
@@ -24,7 +24,7 @@
 		<dependency>
 			<groupId>com.hoffnungland</groupId>
 			<artifactId>Log4j</artifactId>
-			<version>1.0.13</version>
+			<version>1.0.19</version>
 		</dependency>
 	</dependencies>
 </project>
