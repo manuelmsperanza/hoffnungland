@@ -1,0 +1,14 @@
+*.class
+*.jar
+*.zip
+*.log
+.classpath
+.factorypath
+.project
+.settings
+.vscode
+bin
+logs
+target
+.apt_generated
+.apt_generated_tests
