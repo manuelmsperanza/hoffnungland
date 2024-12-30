@@ -1,103 +1,59 @@
-#Generate
-	mvn archetype:generate -Dfilter="org.apache.maven.archetypes:maven-archetype-j2ee-simple" -Dgroupid="com.hoffnungland" -DartifactId=hoffnungland -Dpackage="com.hoffnungland" -Dversion="0.0.1-SNAPSHOT"
+# Hoffnungland
 
-#Add to git
-	git init
-	git commit -a -m "first commit"
-	git remote add origin git@github.com:manuelmsperanza/hoffnungland.git
-	git push -u origin master
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
 
-# add .gitignore to mandatory empty directory
+## Development server
 
-	# Ignore everything in this directory
-	*
-	# Except this file
-	!.gitignore
+To start a local development server, run:
 
-# Configure the Package Clean UP Automation with GitHub Action
+```bash
+ng serve
+```
 
-The Action run during the release phase of package (or you can run it manually).
-Leave only the latest package version into the repository.
-Create the .github/workflows/cleanupPackages.yml file.
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-#Build settings
-##Add prerequisites
+## Code scaffolding
 
-	<prerequisites>
-		<maven>3.0.5</maven>
-	</prerequisites>
-###Update to java 1.8
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.source.version>1.8</java.source.version>
-		<java.target.version>1.8</java.target.version>
-	</properties>
+```bash
+ng generate component component-name
+```
 
-##Configure the plugins
-	
-	<build>
-		<pluginManagement><!-- lock down plugins versions to avoid using Maven 
-				defaults (may be moved to parent pom) -->
-			<plugins>
-				<plugin>
-					<artifactId>maven-clean-plugin</artifactId>
-					<version>3.1.0</version>
-				</plugin>
-				<!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
-				<plugin>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.1.0</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.8.0</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>3.0.0-M2</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>3.1.1</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-install-plugin</artifactId>
-					<version>3.0.0-M1</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<version>3.0.0-M1</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>3.0.0-M2</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-enforcer-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>enforce-maven</id>
-						<goals>
-							<goal>enforce</goal>
-						</goals>
-						<configuration>
-							<rules>
-								<requireMavenVersion>
-									<version>3.0.5</version>
-								</requireMavenVersion>
-								<requireJavaVersion>
-									<version>1.8.0</version>
-								</requireJavaVersion>
-							</rules>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+
+```bash
+ng generate --help
+```
+
+## Building
+
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
