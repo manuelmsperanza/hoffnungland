@@ -40,8 +40,8 @@ export class ContactFormComponent {
           this.outcome = 'Email sent!';
         },
         error: (err) => {
-          this.outcome = 'Error: ' + err.message;
-          console.log('Error', err);
+          this.outcome = 'Error: ' + err.error.error; //'Error: ' + err.message;
+          
         },
         complete : () => {
           this.outcome = 'Email sent!, but complete';
