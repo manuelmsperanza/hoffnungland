@@ -57,7 +57,7 @@ export class ContactFormComponent {
         },
         complete : () => {
           //this.outcome = 'Email sent, but complete the validation';
-          this._snackBar.open('Message archived');
+          this._snackBar.open(this.outcome);
         },
       });
   }
