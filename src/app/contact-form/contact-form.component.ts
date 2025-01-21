@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
@@ -7,6 +7,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-contact-form',
@@ -21,6 +22,8 @@ export class ContactFormComponent {
   email = new FormControl('');
   message = new FormControl('');
   outcome = '';
+  
+  private _snackBar = inject(MatSnackBar);
 
   constructor(private http: HttpClient) {}
 
@@ -42,13 +45,11 @@ export class ContactFormComponent {
       )*/
       .subscribe({
         next: (res) => {
-          console.log('Response: ', res);
           if((res as any).success){
             this.outcome = 'Email sent, but complete the validation';
           } else {
             this.outcome = 'Error: ' + (res as any).error;
           }
-          console.log('Outcome: ', this.outcome);
         },
         error: (err) => {
           this.outcome = 'Error: ' + err.message;
@@ -56,7 +57,7 @@ export class ContactFormComponent {
         },
         complete : () => {
           //this.outcome = 'Email sent, but complete the validation';
-          console.log('Outcome: ', this.outcome);
+          this._snackBar.open('Message archived');
         },
       });
   }
