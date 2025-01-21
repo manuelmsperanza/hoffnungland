@@ -43,7 +43,7 @@ export class ContactFormComponent {
       .subscribe({
         next: (res) => {
           if((res as any).success){
-            this.outcome = 'Email sent!';
+            this.outcome = 'Email sent, but complete the validation';
           } else {
             this.outcome = 'Error: ' + (res as any).error;
           }
@@ -54,7 +54,7 @@ export class ContactFormComponent {
           
         },
         complete : () => {
-          this.outcome = 'Email sent!, but complete';
+          //this.outcome = 'Email sent, but complete the validation';
         },
       });
   }
