@@ -1,6 +1,11 @@
-    <h2>Would you like get in touch with me? Please leave a message.</h2>
-    <input type="email" [formControl]="email" placeholder="Enter your email" required /><br>
-    <input id="message" type="text" placeholder="Enter your Message" [formControl]="message"><br>
-    <button type="button" (click)="submitEmail()">Send</button>
-
-    <h2>{{ outcome }}</h2>
+<mat-card appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>Would you like get in touch with me? Please leave a message.</mat-card-title>    
+    </mat-card-header>
+    <mat-card-content>
+        <input type="email" [formControl]="email" placeholder="Enter your email" required /><br>
+        <input id="message" type="text" placeholder="Enter your Message" [formControl]="message"><br>
+        <button type="button" (click)="submitEmail()">Send</button>
+        <h2>{{ outcome }}</h2>
+    </mat-card-content>
+</mat-card>

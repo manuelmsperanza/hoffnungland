@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-contact-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, MatCardModule],
   templateUrl: './contact-form.component.html',
-  styleUrl: './contact-form.component.css'
+  styleUrl: './contact-form.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class ContactFormComponent {
@@ -37,10 +39,15 @@ export class ContactFormComponent {
       )*/
       .subscribe({
         next: (res) => {
-          this.outcome = 'Email sent!';
+          if((res as any).success){
+            this.outcome = 'Email sent!';
+          } else {
+            this.outcome = 'Error: ' + (res as any).error;
+          }
+          
         },
         error: (err) => {
-          this.outcome = 'Error: ' + err.error.error; //'Error: ' + err.message;
+          this.outcome = 'Error: ' + err.message;
           
         },
         complete : () => {
