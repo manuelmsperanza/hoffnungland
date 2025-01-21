@@ -56,6 +56,7 @@ export class ContactFormComponent {
         },
         complete : () => {
           //this.outcome = 'Email sent, but complete the validation';
+          console.log('Outcome: ', this.outcome);
         },
       });
   }
