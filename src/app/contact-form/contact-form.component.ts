@@ -48,7 +48,7 @@ export class ContactFormComponent {
           } else {
             this.outcome = 'Error: ' + (res as any).error;
           }
-          
+          console.log('Outcome: ', this.outcome);
         },
         error: (err) => {
           this.outcome = 'Error: ' + err.message;
