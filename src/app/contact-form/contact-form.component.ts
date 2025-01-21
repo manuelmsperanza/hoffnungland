@@ -42,6 +42,7 @@ export class ContactFormComponent {
       )*/
       .subscribe({
         next: (res) => {
+          console.log('Response: ', res);
           if((res as any).success){
             this.outcome = 'Email sent, but complete the validation';
           } else {
