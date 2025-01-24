@@ -16,7 +16,7 @@ export const appConfig: ApplicationConfig = {
       domain: env.auth.domain,
       clientId: env.auth.clientId,
       authorizationParams: {
-        redirect_uri: window.location.origin
+        redirect_uri: window.location.origin + '/callback'
       }
     })]
 };
