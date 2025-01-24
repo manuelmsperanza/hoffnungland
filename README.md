@@ -2,6 +2,16 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
 
+```bash
+ng new hoffnungland
+cd hoffnungland
+ng add @angular/forms
+ng add @angular/material
+npm install @angular/common
+npm install @auth0/auth0-angular
+npm start
+```
+
 ## Development server
 
 To start a local development server, run:

@@ -5,6 +5,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
+// Import the AuthService type from the SDK
+import { AuthService } from '@auth0/auth0-angular';
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, ContactFormComponent, MatToolbarModule, MatButtonModule, MatIconModule],
@@ -13,4 +16,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 })
 export class AppComponent {
   title = 'hoffnungland';
+
+  constructor(public auth: AuthService) {}
 }
