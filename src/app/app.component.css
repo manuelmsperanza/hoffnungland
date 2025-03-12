@@ -9,16 +9,3 @@
     display: flex;
     gap: 10px;
   }
-
-  /* app.component.scss or a global stylesheet */
-.card-container {
-  display: flex;
-  flex-direction: row; /* Cards aligned horizontally */
-  gap: 1rem;          /* Adds spacing between cards */
-  padding: 1rem;      /* Optional: adds spacing around the container */
-}
-
-mat-card {
-  flex: 1;            /* Distribute space evenly if you want them to share space */
-  /* or use a specific width, e.g. width: 300px; if you want fixed-width cards */
-}
