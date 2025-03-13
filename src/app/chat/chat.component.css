@@ -16,7 +16,7 @@ mat-card {
     overflow-y: auto;
     padding: 1rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   mat-list {
