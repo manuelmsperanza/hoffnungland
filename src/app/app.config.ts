@@ -16,6 +16,7 @@ export const appConfig: ApplicationConfig = {
       domain: env.auth.domain,
       clientId: env.auth.clientId,
       authorizationParams: {
+        audience: env.auth.authorizationParams.audience,
         redirect_uri: window.location.origin
       }
     })]

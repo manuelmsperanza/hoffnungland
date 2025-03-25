@@ -17,8 +17,9 @@ npm start
 To start a local development server, run:
 
 ```bash
-ng serve
+ng serve --proxy-config src/proxy.conf.json
 ```
+Proxy is required to test backend running on node express
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 

@@ -1,13 +1,13 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
-import {MatCardModule} from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { Component, ChangeDetectionStrategy, inject, input, effect } from '@angular/core';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '@auth0/auth0-angular';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contact-form',
@@ -19,13 +19,26 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 
 export class ContactFormComponent {
-  email = new FormControl('');
+  emailValue = input<string>('')
+  email = new FormControl('', [Validators.required, Validators.email]);
   message = new FormControl('');
   outcome = '';
   
   private _snackBar = inject(MatSnackBar);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private auth: AuthService) {
+
+    effect(() => {
+      this.email.setValue(this.emailValue());
+    });
+
+    this.email.valueChanges.subscribe((value) => {
+      if (this.email.invalid) {
+        this.outcome = 'Please enter a valid email address';
+        this._snackBar.open(this.outcome);
+      }
+    });
+  }
 
   submitEmail() {
     
@@ -61,5 +74,7 @@ export class ContactFormComponent {
         },
       });
   }
+
+
 
 }
