@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { ChatMessage } from './chat-message.model';
 import { FormsModule } from '@angular/forms';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule}  from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from '@auth0/auth0-angular';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-chat',
@@ -31,7 +34,20 @@ export class ChatComponent {
 
   userMessage: string = '';
 
-  constructor() {}
+  constructor(private http: HttpClient, private auth: AuthService) {}
+
+  testLogin() {
+    
+
+    this.auth.getAccessTokenSilently().pipe(
+      switchMap(token => {
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`).set('X-User-Language', navigator.language);
+        return this.http.get('/api/private', { headers });
+      })
+    ).subscribe(response => {
+      console.log('Backend response:', response);
+    });
+  }
 
   sendMessage() {
     if (!this.userMessage.trim()) {

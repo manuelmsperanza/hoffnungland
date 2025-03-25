@@ -1,16 +1,18 @@
 <mat-card appearance="outlined">
   <mat-card-header>
-      <mat-card-title>Otherwise you can talk with my assistant.<br>Try it!</mat-card-title>    
+      <mat-card-title>Otherwise you can talk with my assistant. Try it!</mat-card-title>    
   </mat-card-header>
   <mat-card-content>
     <div class="chat-container">
-      <mat-list role="list">
-        <mat-list-item 
-          *ngFor="let msg of messages"
-          [ngClass]="{'user-message': msg.sender === 'user', 'assistant-message': msg.sender === 'assistant'}">
-          {{ msg.text }}
-        </mat-list-item>
-      </mat-list>
+      <div class="message-list">      
+        <mat-list role="list">
+          <mat-list-item 
+            *ngFor="let msg of messages"
+            [ngClass]="{'user-message': msg.sender === 'user', 'assistant-message': msg.sender === 'assistant'}">
+            {{ msg.text }}
+          </mat-list-item>
+        </mat-list>
+      </div>
       <form (ngSubmit)="sendMessage()" class="input-container">
         <mat-form-field class="message-input" appearance="outline">
           <mat-label>Type your message</mat-label>
@@ -19,6 +21,7 @@
         <button mat-raised-button color="primary" type="submit">
           Send
         </button>
+        <button mat-stroked-button type="button" (click)="testLogin()">Test</button>
       </form>
     </div>
   </mat-card-content>

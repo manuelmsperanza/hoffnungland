@@ -1,7 +1,7 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build -c production` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-import config from '../../auth_config.json';
+import config from '../../auth_config_dev.json';
 
 const { domain, clientId, authorizationParams: { audience }, apiUri, errorPath } = config as {
   domain: string;
@@ -20,8 +20,8 @@ export const environment = {
     clientId,
     authorizationParams: {
       ...(audience && audience !== 'YOUR_API_IDENTIFIER' ? { audience } : null),
-      redirect_uri: window.location.origin,
     },
+    redirect_uri: window.location.origin,
     errorPath,
   },
   httpInterceptor: {
