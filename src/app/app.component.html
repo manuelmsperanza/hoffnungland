@@ -25,11 +25,11 @@
 <router-outlet />
 @if (isAuthenticated) {
 <div class="card-container">
-  <app-contact-form emailValue="{{ userEmailAddress }}"/>
-</div>
-<div class="card-container">
   <app-chat></app-chat>
 </div>
+<!--div class="card-container">
+  <app-contact-form emailValue="{{ userEmailAddress }}"/>
+</div-->
 } @else {
   Please do login to access the features.
 }

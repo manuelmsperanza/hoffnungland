@@ -78,7 +78,7 @@ export class ChatComponent {
     this.isWaitingForResponse = true;
     // Add the user’s message to the conversation
     this.messages.push({
-      text: this.userMessage.trim(),
+      text: [this.userMessage.trim()],
       sender: 'user',
       timestamp: new Date()
     });

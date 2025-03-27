@@ -1,6 +1,6 @@
 <mat-card appearance="outlined">
   <mat-card-header>
-      <mat-card-title>Otherwise you can talk with my assistant. Try it!</mat-card-title>    
+      <mat-card-title>Now you can talk with my assistant. Try it!</mat-card-title>    
   </mat-card-header>
   <mat-card-content>
     <div class="chat-container">
@@ -9,7 +9,9 @@
           <div  
             *ngFor="let msg of messages"
             [ngClass]="{'user-message': msg.sender === 'user', 'assistant-message': msg.sender === 'assistant'}">
-            {{ msg.text }}
+            <p *ngFor="let line of msg.text">
+              {{ line }}
+            </p>
         </div>
         </mat-list>
       </div>

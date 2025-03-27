@@ -14,7 +14,7 @@ import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ContactFormComponent, MatGridListModule, MatToolbarModule, MatButtonModule, MatIconModule, ChatComponent],
+  imports: [RouterOutlet, MatGridListModule, MatToolbarModule, MatButtonModule, MatIconModule, ChatComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
