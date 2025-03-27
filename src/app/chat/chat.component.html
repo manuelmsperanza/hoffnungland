@@ -6,11 +6,11 @@
     <div class="chat-container">
       <div class="message-list">      
         <mat-list role="list">
-          <mat-list-item 
+          <div  
             *ngFor="let msg of messages"
             [ngClass]="{'user-message': msg.sender === 'user', 'assistant-message': msg.sender === 'assistant'}">
             {{ msg.text }}
-          </mat-list-item>
+        </div>
         </mat-list>
       </div>
       <form (ngSubmit)="sendMessage()" class="input-container">
@@ -18,10 +18,14 @@
           <mat-label>Type your message</mat-label>
           <input matInput [(ngModel)]="userMessage" name="userMessage" />
         </mat-form-field>
-        <button mat-raised-button color="primary" type="submit">
-          Send
-        </button>
-        <button mat-stroked-button type="button" (click)="testLogin()">Test</button>
+        
+        @if (isWaitingForResponse) {
+        <mat-spinner></mat-spinner>
+        } @else {
+          <button mat-raised-button color="primary" type="submit">
+            Send
+          </button>
+        }
       </form>
     </div>
   </mat-card-content>

@@ -27,6 +27,7 @@ export class AppComponent {
   constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService) {
     
     this.auth.user$.subscribe(user => {
+      console.log(user)
       this.userName = user?.name ?? null;
       this.userEmailAddress = user?.email ?? null;
     });
