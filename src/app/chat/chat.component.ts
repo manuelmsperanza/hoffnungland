@@ -57,7 +57,7 @@ export class ChatComponent {
           return this.http.get('/api/retrieveThread', { headers });
         })
       ).subscribe(response => {
-        console.log('Backend response:', response);
+        //console.log('Backend response:', response);
         this.isWaitingForResponse = false;
         const replyMessages : Object[] = (response as any) ;
 
@@ -89,7 +89,7 @@ export class ChatComponent {
         return this.http.post('/api/enquiry', { userMessage: openAiUserMessage }, { headers });
       })
     ).subscribe(response => {
-      console.log('Backend response:', response);
+      //console.log('Backend response:', response);
       this.isWaitingForResponse = false;
       const replyText  =(response as any).content ;
       this.messages.push({

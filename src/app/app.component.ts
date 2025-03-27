@@ -27,13 +27,13 @@ export class AppComponent {
   constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService) {
     
     this.auth.user$.subscribe(user => {
-      console.log(user)
+      //console.log(user)
       this.userName = user?.name ?? null;
       this.userEmailAddress = user?.email ?? null;
     });
 
     this.auth.getAccessTokenSilently().subscribe(token => {  
-      console.log('token ' + token);
+      //console.log('token ' + token);
     });
 
     this.auth.isAuthenticated$.subscribe(isAuthenticated => {
