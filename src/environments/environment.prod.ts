@@ -13,7 +13,9 @@ export const environment = {
   auth: {
     domain,
     clientId,
-    ...(audience && audience !== "YOUR_API_IDENTIFIER" ? { audience } : null),
+    authorizationParams: {
+      ...(audience && audience !== 'YOUR_API_IDENTIFIER' ? { audience } : null),
+    },
     redirectUri: window.location.origin,
     errorPath,
   },
