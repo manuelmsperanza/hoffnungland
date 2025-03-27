@@ -31,15 +31,18 @@ mat-card {
     padding: 0.5rem;
   }
   
+  
   .user-message {
     background-color: #d1f8ff;  /* Light blue for user messages */
     align-self: flex-end;
     text-align: right;
+    height: auto;
   }
   
   .assistant-message {
     background-color: #ebebeb;  /* Light gray for assistant messages */
     align-self: flex-start;
+    height: auto;
   }
   
   .input-container {
