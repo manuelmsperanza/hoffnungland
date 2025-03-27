@@ -94,7 +94,10 @@
               "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              { "start_dev" : "ng serve --proxy-config proxy.conf.json"},
+              { "start": "ng serve"}
+            ]
           }
         }
       }
