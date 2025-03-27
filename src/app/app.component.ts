@@ -1,12 +1,13 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ContactFormComponent } from './contact-form/contact-form.component';
+//import { ContactFormComponent } from './contact-form/contact-form.component';
 import { ChatComponent } from './chat/chat.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { ProjectsComponent } from './projects/projects.component';
 
 // Import the AuthService type from the SDK
 import { AuthService } from '@auth0/auth0-angular';
@@ -14,7 +15,7 @@ import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MatGridListModule, MatToolbarModule, MatButtonModule, MatIconModule, ChatComponent],
+  imports: [RouterOutlet, MatGridListModule, MatToolbarModule, MatButtonModule, MatIconModule, ChatComponent, ProjectsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -1,0 +1,19 @@
+.projects-container {
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 1rem;
+    overflow-y: auto;
+  }
+  
+mat-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+  }
+  mat-grid-tile {
+    
+    
+  }

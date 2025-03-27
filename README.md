@@ -29,6 +29,8 @@ Angular CLI includes powerful code scaffolding tools. To generate a new componen
 
 ```bash
 ng generate component contact-form
+ng generate component chat
+ng generate component projects
 ng generate component callback-auth0
 ```
 
