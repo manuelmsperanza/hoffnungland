@@ -162,4 +162,4 @@ docker-compose.override.yml
 .env.production.local
 
 auth_config.json
-auth_config_dev.json
+auth_config*.json
