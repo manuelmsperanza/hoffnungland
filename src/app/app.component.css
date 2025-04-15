@@ -1,3 +1,4 @@
+
 .footer {
     display: flex;
     justify-content: center;
@@ -9,3 +10,14 @@
     display: flex;
     gap: 10px;
   }
+
+  .button.primary {
+    background-color: #4acaa8;
+    color: #ffffff !important;
+  }
+
+  .header.p {
+		color: #aaa;
+		position: relative;
+		margin: 0 0 1.6875em 0;
+	}

@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-//import { ContactFormComponent } from './contact-form/contact-form.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 import { ChatComponent } from './chat/chat.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,7 +15,7 @@ import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MatGridListModule, MatToolbarModule, MatButtonModule, MatIconModule, ChatComponent, ProjectsComponent],
+  imports: [RouterOutlet, MatGridListModule, MatToolbarModule, MatButtonModule, MatIconModule, ChatComponent, ProjectsComponent, ContactFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
