@@ -32,12 +32,12 @@ export class ContactFormComponent {
       this.email.setValue(this.emailValue());
     });
 
-    this.email.valueChanges.subscribe((value) => {
-      if (this.email.invalid) {
+    /*this.email.valueChanges.subscribe((value) => {
+      if (this.email != null && this.email.invalid) {
         this.outcome = 'Please enter a valid email address';
         this._snackBar.open(this.outcome);
       }
-    });
+    });*/
   }
 
   submitEmail() {
@@ -58,6 +58,7 @@ export class ContactFormComponent {
       )*/
       .subscribe({
         next: (res) => {
+          console.log(res);
           if((res as any).success){
             this.outcome = 'Email sent, but complete the validation';
           } else {
@@ -65,12 +66,14 @@ export class ContactFormComponent {
           }
         },
         error: (err) => {
+          console.log(err);
           this.outcome = 'Error: ' + err.message;
           
         },
         complete : () => {
           //this.outcome = 'Email sent, but complete the validation';
-          this._snackBar.open(this.outcome);
+          console.log(this.outcome)
+          //this._snackBar.open(this.outcome);
         },
       });
   }

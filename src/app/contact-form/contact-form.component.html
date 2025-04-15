@@ -1,16 +1,20 @@
-<mat-card appearance="outlined">
-    <mat-card-header>
-        <mat-card-title>Would you like get in touch with me? Please leave a message.</mat-card-title>    
-    </mat-card-header>
-    <mat-card-content>
-        <mat-form-field>
-            <input matInput type="email" [formControl]="email" placeholder="Enter your email" required />
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <textarea matInput id="message" type="text" placeholder="Enter your Message" [formControl]="message"></textarea>
-        </mat-form-field>
-        <button mat-stroked-button type="button" (click)="submitEmail()">Send</button>
-        <!--h2>{{ outcome }}</h2-->
-    </mat-card-content>
-</mat-card>
+<section id="contact">
+    <div class="container">
+      <h3>Contact Me</h3>
+      <p>Would you like get in touch with me? Please leave a message.</p>
+      <form method="post" action="#">
+        <div class="row gtr-uniform">
+          <div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
+          <div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" [formControl]="email" required/></div>
+          <div class="col-12"><input type="text" name="subject" id="subject" placeholder="Subject" /></div>
+          <div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="6" [formControl]="message"></textarea></div>
+          <div class="col-12">
+            <ul class="actions">
+              <li><input type="submit" class="primary" value="Send Message" (click)="submitEmail()"/></li>
+              <li><input type="reset" value="Reset Form" /></li>
+            </ul>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
