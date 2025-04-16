@@ -33,8 +33,20 @@ export class ChatComponent {
 
   userMessage: string = '';
   isWaitingForResponse : boolean = false;
+  isAuthenticated : boolean = false;
 
-  constructor(private http: HttpClient, private auth: AuthService) {}
+  constructor(private http: HttpClient, private auth: AuthService) {
+    this.auth.isAuthenticated$.subscribe(isAuthenticated => {
+      this.isAuthenticated = isAuthenticated;
+      if(!isAuthenticated) {
+        this.messages.push({
+          text: ['Please log in to start chatting.'],
+          sender: 'assistant',
+          timestamp: new Date()
+        });
+      }
+    });
+  }
 
   /*testLogin() {
     

@@ -6,22 +6,20 @@
   <div class="container">
     <header class="major">
 @if (isAuthenticated) {
-      <h2>Welcome {{ userName }} to {{ title}}...</h2>
-      
-      <button class="button primary" (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">Log out</button>
-      <span class="example-spacer"></span>
-      <app-chat></app-chat>
-      
-    } @else {
+      <h2>Welcome {{ userName }} to {{ title}}...</h2>      
+      <p class="header p">Now you can talk with my assistant. Try it!
+        <span class="example-spacer"></span>
+        <button class="button primary" (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">Log out</button>
+        </p> 
+} @else {
       <h2>Welcome to {{ title}}...</h2>
-      <p class="header p">Please do login to access the features.
+      <p class="header p">Please do login to talk with my assistant.
         <span class="example-spacer"></span>
         <button class="button alt icon solid fa-check" (click)="auth.loginWithRedirect()">Log in</button>
       </p>
-      
-      
-      
-    }
+}
+    <span class="example-spacer"></span>
+    <app-chat></app-chat>
     </header>
   </div>
 </section>

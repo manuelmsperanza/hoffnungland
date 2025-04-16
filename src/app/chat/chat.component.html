@@ -1,10 +1,7 @@
 <mat-card appearance="outlined">
-  <mat-card-header>
-      <mat-card-title>Now you can talk with my assistant. Try it!</mat-card-title>    
-  </mat-card-header>
   <mat-card-content>
     <div class="chat-container">
-      <div class="message-list">      
+      <div class="message-list">
         <mat-list role="list">
           <div  
             *ngFor="let msg of messages"
@@ -15,20 +12,23 @@
         </div>
         </mat-list>
       </div>
+    </div>
+  </mat-card-content>
+@if (isAuthenticated) {
+  <mat-card-footer>
+    <div class="form-container">
       <form (ngSubmit)="sendMessage()" class="input-container">
         <mat-form-field class="message-input" appearance="outline">
           <mat-label>Type your message</mat-label>
           <input matInput [(ngModel)]="userMessage" name="userMessage" />
         </mat-form-field>
-        
-        @if (isWaitingForResponse) {
+  @if (isWaitingForResponse) {
         <mat-spinner></mat-spinner>
-        } @else {
-          <button mat-raised-button color="primary" type="submit">
-            Send
-          </button>
-        }
+  } @else {
+        <button mat-raised-button color="primary" type="submit">Send</button>
+  }
       </form>
     </div>
-  </mat-card-content>
+  </mat-card-footer>
+}
 </mat-card>
